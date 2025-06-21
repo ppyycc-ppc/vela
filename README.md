@@ -36,3 +36,7 @@
     ├── UI
     └── logo.png
 ~~~
+
+## 友情链接
+https://iot.mi.com/vela/quickapp/zh/  ————小米vela JS 应用开发文档
+
