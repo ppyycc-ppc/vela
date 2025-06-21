@@ -1,0 +1,731 @@
+<import name="input-method" src="../../components/InputMethod/InputMethod.ux"></import>
+<template>
+  <div class="page" style="background-color: black;">
+    <div class="page" if="{{showPage[0]}}">
+      <scroll scroll-y="true" bounces="true" class="scroll1 page inside" style="top:40px">
+        <div class="blackBtn" style="background-color: rgba(0, 0, 0, 0);"></div>
+        <!-- 占位 -->
+
+        <div class="blackBtn" @click="()=>{showPage[0]=false,showPage[10]=true}">
+          <text class="tex">登记</text>
+          <text class="paragraphs">开始登记啦</text>
+        </div>
+        <div class="blackBtn "@click="()=>{showPage[0]=false,showPage[20]=true}">
+          <text class="tex">缺交</text>
+          <text class="paragraphs">就让我看看</text>
+        </div>
+        <div class="blackBtn" @click="()=>{showPage[0]=false,showPage[1]=true}">
+          <text class="tex">设置</text>
+          <text class="paragraphs">学生与科目</text>
+        </div>
+        <div class="blackBtn" @click="()=>{showPage[0]=false,showPage[999]=true}">
+          <text class="tex">关于</text>
+          <text class="paragraphs">关于本软件</text>
+        </div>
+      </scroll>
+
+      <image src="/common/UI/top.png" style="position: absolute;bottom:378px"></image>
+      <image src="/common/UI/return.png" style="left: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;"></image>
+      <text class="title">主页</text>
+    </div> 
+    
+    <div class="page" if="{{showPage[1]}}">
+      <scroll scroll-y="true" bounces="true" class="scroll1 page inside" style="top:40px">
+        <div class="blackBtn" style="background-color: rgba(0, 0, 0, 0);"></div>
+        <!-- 占位 -->
+
+        <div class="blackBtn" @click="()=>{showPage[1]=false,showPage[3]=true}">
+          <text class="tex">学生</text>
+          <text class="paragraphs">咱们班都有谁呢</text>
+        </div>
+        <div class="blackBtn" @click="()=>{showPage[1]=false,showPage[2]=true}">
+          <text class="tex">科目</text>
+          <text class="paragraphs">看看啊，9门...</text>
+        </div>
+
+        <div class="blackBtn" style="background-color: rgba(0, 0, 0, 0);"></div>
+        <!-- 占位 -->
+      </scroll>
+
+      <image src="/common/UI/top.png" style="position: absolute;bottom:378px"></image>
+      <image src="/common/UI/return.png" style="left: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="()=>{showPage[1]=false,showPage[0]=true}"></image>
+      <text class="title">设置</text>
+    </div> 
+
+
+    <!-- 设置页面 -->
+    <div class="page" if="{{showPage[3]}}">
+      <scroll scroll-y="true" bounces="true" class="scroll1 page inside" style="top:40px">
+        <div class="blackBtn" style="background-color: rgba(0, 0, 0, 0);"></div>
+        <!-- 占位 -->
+
+        <div class="blackBtn" for="{{student}}" @click="()=>{showPage[100]=true;nowChange=$idx}">
+          <text class="tex">{{"学生 : " + student[$idx].number + " 号"}}</text>
+          <text class="paragraphs">{{student[$idx].name}}</text>
+        </div>
+
+        <div class="blackBtn" style="background-color: rgba(0, 0, 0, 0);"></div>
+        <!-- 占位 -->
+      </scroll>
+
+      <!-- 更改学生信息 -->
+      <div style="position: absolute;left: 6px;top: 81px;width: 324px;height: 247px;" class="backGround" if="{{showPage[100]}}">
+        <text style="position:absolute;left: 19px;top: 14px;width: 128px;height: 45px;" class="pass">管理学生</text>
+        <text style="position:absolute;left: 19px;top: 61px;width: 128px;height: 45px;" class="name">{{student[nowChange].name}}</text>
+        <text style="position:absolute;right: 19px;top: 61px;width: 128px;height: 45px;text-align: right;" class="name">{{student[nowChange].number + " 号"}}</text>
+        
+        <image src="/common/UI/del.png" style="position:absolute;left: 20px;top: 117px;" @click="()=>{showPage[102]=true}"></image>
+        <text class="dpn" style="position:absolute;left: 19px;top: 201px;width: 73px;">删除</text>
+        
+        <image src="/common/UI/return.png" style="position:absolute;left: 126px;top: 117px;" @click="()=>{showPage[100]=false;}"></image>
+        <text class="dpn" style="position:absolute;left: 126px;top: 201px;width: 73px;">返回</text>
+
+        <image src="/common/UI/rename.png" style="position:absolute;right: 20px;top: 117px;" @click="()=>{showPage[100]=false;showPage[101]=true;stu.name=student[nowChange].name;stu.number=student[nowChange].number}"></image>
+        <text class="dpn" style="position:absolute;right: 19px;top: 201px;width: 73px;">新命</text>
+
+      </div>
+
+      <div style="position: absolute;left: 6px;top: 81px;width: 324px;height: 277px;" class="backGround" if="{{showPage[101]}}">
+        <text style="position:absolute;left: 19px;top: 14px;width: 128px;height: 45px;" class="pass">修改学生</text>
+        <text style="position:absolute;left: 19px;top: 61px;width: 128px;height: 45px;" class="name">姓名：</text>
+        <text style="position:absolute;left: 19px;top: 109px;width: 128px;height: 45px;" class="name">学号：</text>
+
+        <div class="input" style="position:absolute;left: 103px;top: 59px;" @click="()=>{
+        hide=!hide,nowInput=0,showPin=false;
+        if(!hide)ID[0]=setInterval(() => {showPin=!showPin}, 500);
+        else clearInterval(ID[0]);
+        }">
+          <text class="inp" style="left: 8px;">{{stu.name}}</text><text class="inp" style="color: rgb(0, 102, 255);font-weight: 700;left:6px" if="{{showPin && nowInput==0}}">|</text>
+        </div>
+
+        <div class="input" style="position:absolute;left: 103px;top: 110px;" @click="()=>{
+        hide=!hide,nowInput=1,showPin=false;
+        if(!hide)ID[0]=setInterval(() => {showPin=!showPin}, 500);
+        else clearInterval(ID[0]);
+        }">
+          <text class="inp" style="left: 8px;">{{stu.number}}</text><text class="inp" style="color: rgb(0, 102, 255);font-weight: 700;left:6px" if="{{showPin && nowInput==1}}">|</text>
+        </div>
+        
+        <image src="/common/UI/return.png" style="position:absolute;left: 19px;top: 173px;" @click="()=>{showPage[101]=false;}"></image>
+        <image src="/common/UI/yes.png" style="position:absolute;right: 19px;top: 173px;" @click="()=>{student.push(stu);stu={name:'LIHUA',number:'114514',condition:[false]};showPage[101]=false;}"></image>
+      </div>
+
+      <div style="position: absolute;left: 6px;top: 81px;width: 324px;height: 218px;" class="backGround" if="{{showPage[102]}}">
+        <text style="position:absolute;left: 19px;top: 14px;width: 128px;height: 45px;" class="pass">确认操作</text>
+
+        <image src="/common/UI/ye.png" style="position:absolute;left: 19px;top: 87px;" @click="()=>{student.splice(nowChange,1);showPage[102]=false;send('已删除')}"></image>
+        <image src="/common/UI/no.png" style="position:absolute;right: 19px;top: 87px;" @click="()=>{showPage[102]=false;}"></image>
+      </div>
+
+      <input-method
+        hide="{{hide}}"
+        keyboardtype="{{keyboardtype}}"
+        maxlength="5"
+        vibratemode="{{vibratemode}}"
+        screentype="{{screentype}}"
+        @visibility-change="onVisibilityChange"
+        @key-down="onKeyDown"
+        @delete="onDelete"
+        @complete="onComplete"
+      ></input-method>
+
+      <image src="/common/UI/down.png" style="position:absolute;right:258px;top:402px;" @click="()=>{hide=true;clearInterval(ID[0]);}" if="{{!hide}}"></image>
+      <image src="/common/UI/plus.png" style="position:absolute;left:258px;top:402px;" @click="()=>{showPage[101]=true}"></image>
+      <image src="/common/UI/top.png" style="position: absolute;bottom:378px"></image>
+      <image src="/common/UI/return.png" style="left: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="()=>{showPage[3]=false,showPage[1]=true}"></image>
+      <image src="/common/UI/save.png" style="right: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="tmp"></image>
+      <text class="title">管理学生</text>
+    </div> 
+
+    <div class="page" if="{{showPage[2]}}">
+      <scroll scroll-y="true" bounces="true" class="scroll1 page inside" style="top:40px">
+        <div class="blackBtn" style="background-color: rgba(0, 0, 0, 0);"></div>
+        <!-- 占位 -->
+
+        <div class="blackBtn" for="{{subject}}" @click="()=>{showPage[90]=true;nowChange=$idx}">
+          <text class="tex">{{subject[$idx]}}</text>
+          <text class="paragraphs">{{"第" + ($idx+1) + "个"}}</text>
+        </div>
+
+        <div class="blackBtn" style="background-color: rgba(0, 0, 0, 0);"></div>
+        <!-- 占位 -->
+      </scroll>
+
+      <!-- 更改科目信息 -->
+      <div style="position: absolute;left: 6px;top: 81px;width: 324px;height: 247px;" class="backGround" if="{{showPage[90]}}">
+        <text style="position:absolute;left: 19px;top: 14px;width: 128px;height: 45px;" class="pass">管理科目</text>
+        <text style="position:absolute;left: 19px;top: 61px;width: 128px;height: 45px;" class="name">{{subject[nowChange]}}</text>
+        
+        <image src="/common/UI/del.png" style="position:absolute;left: 20px;top: 117px;" @click="()=>{showPage[92]=true}"></image>
+        <text class="dpn" style="position:absolute;left: 19px;top: 201px;width: 73px;">删除</text>
+        
+        <image src="/common/UI/return.png" style="position:absolute;left: 126px;top: 117px;" @click="()=>{showPage[90]=false;}"></image>
+        <text class="dpn" style="position:absolute;left: 126px;top: 201px;width: 73px;">返回</text>
+
+        <image src="/common/UI/rename.png" style="position:absolute;right: 20px;top: 117px;" @click="()=>{showPage[90]=false;showPage[101]=true;stu.name=student[nowChange].name;stu.number=student[nowChange].number}"></image>
+        <text class="dpn" style="position:absolute;right: 19px;top: 201px;width: 73px;">新命</text>
+
+      </div>
+
+      <div style="position: absolute;left: 6px;top: 81px;width: 324px;height: 277px;" class="backGround" if="{{showPage[91]}}">
+        <text style="position:absolute;left: 19px;top: 14px;width: 128px;height: 45px;" class="pass">修改科目</text>
+        <text style="position:absolute;left: 19px;top: 61px;width: 128px;height: 45px;" class="name">名称 :</text>
+
+        <div class="input" style="position:absolute;left: 103px;top: 59px;" @click="()=>{
+        hide=!hide,nowInput=3,showPin=false;
+        if(!hide)ID[0]=setInterval(() => {showPin=!showPin}, 500);
+        else clearInterval(ID[0]);
+        }">
+          <text class="inp" style="left: 8px;">{{sbj}}</text><text class="inp" style="color: rgb(0, 102, 255);font-weight: 700;left:6px" if="{{showPin && nowInput==3}}">|</text>
+        </div>
+        
+        <image src="/common/UI/return.png" style="position:absolute;left: 19px;top: 173px;" @click="()=>{showPage[91]=false;}"></image>
+        <image src="/common/UI/yes.png" style="position:absolute;right: 19px;top: 173px;" @click="()=>{subject.push(sbj);sbj=''}"></image>
+      </div>
+
+      <div style="position: absolute;left: 6px;top: 81px;width: 324px;height: 218px;" class="backGround" if="{{showPage[92]}}">
+        <text style="position:absolute;left: 19px;top: 14px;width: 128px;height: 45px;" class="pass">确认操作</text>
+
+        <image src="/common/UI/ye.png" style="position:absolute;left: 19px;top: 87px;" @click="()=>{subject.splice(nowChange,1);showPage[92]=false;send('已删除')}"></image>
+        <image src="/common/UI/no.png" style="position:absolute;right: 19px;top: 87px;" @click="()=>{showPage[92]=false;}"></image>
+      </div>
+
+      <input-method
+        hide="{{hide}}"
+        keyboardtype="{{keyboardtype}}"
+        maxlength="5"
+        vibratemode="{{vibratemode}}"
+        screentype="{{screentype}}"
+        @visibility-change="onVisibilityChange"
+        @key-down="onKeyDown"
+        @delete="onDelete"
+        @complete="onComplete"
+      ></input-method>
+
+      <image src="/common/UI/down.png" style="position:absolute;right:258px;top:402px;" @click="()=>{hide=true;clearInterval(ID[0]);}" if="{{!hide}}"></image>
+      <image src="/common/UI/plus.png" style="position:absolute;left:258px;top:402px;" @click="()=>{showPage[91]=true}"></image>
+      <image src="/common/UI/top.png" style="position: absolute;bottom:378px"></image>
+      <image src="/common/UI/return.png" style="left: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="()=>{showPage[2]=false,showPage[1]=true}"></image>
+      <image src="/common/UI/save.png" style="right: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="tmp2"></image>
+      <text class="title">管理科目</text>
+    </div> 
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 登记页面 -->
+    <div class="page" if="{{showPage[10]}}">
+      <scroll scroll-y="true" bounces="true" class="scroll1 page inside" style="top:40px">
+        <div class="blackBtn" style="background-color: rgba(0, 0, 0, 0);"></div>
+        <!-- 占位 -->
+
+        <div class="blackBtn"  @click="()=>{showPage[10]=false,showPage[11]=true}">
+          <text class="tex">科目</text>
+          <text class="paragraphs">{{nowSubject ==-1 ? "请先选择科目！":subject[nowSubject]}}</text>
+        </div>
+
+        <div class="blackBtn"  @click="()=>{showPage[10]=false,showPage[12]=true}">
+          <text class="tex">登记</text>
+          <text class="paragraphs">{{nowSubject ==-1 ? "请先选择科目！":"可以开始了"}}</text>
+        </div>
+
+        <div class="blackBtn" style="background-color: rgba(0, 0, 0, 0);"></div>
+        <!-- 占位 -->
+      </scroll>
+      <image src="/common/UI/top.png" style="position: absolute;bottom:378px"></image>
+      <image src="/common/UI/save.png" style="right: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="tmp"></image>
+      <image src="/common/UI/return.png" style="left: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="()=>{showPage[10]=false,showPage[0]=true}"></image>
+      <text class="title">作业登记</text>
+    </div> 
+    <div class="page" if="{{showPage[11]}}">
+      <scroll scroll-y="true" bounces="true" class="scroll1 page inside" style="top:40px">
+        <div class="blackBtn" style="background-color: rgba(0, 0, 0, 0);"></div>
+        <!-- 占位 -->
+
+        <div class="blackBtn"  for="{{subject}}" @click="()=>{nowSubject=$idx}">
+          <div class="blackBtn" style="background-color: rgba(13, 110, 255, 1);position : absolute;"  if="{{nowSubject==$idx}}"></div>
+          <text class="tex" style="top:36px">{{subject[$idx]}}</text>
+          <image style="position : absolute;left:264px;top:36px" if="{{nowSubject==$idx}}" src="/common/UI/chose.png"></image>
+          
+        </div>
+
+        <div class="blackBtn" style="background-color: rgba(0, 0, 0, 0);"></div>
+        <!-- 占位 -->
+      </scroll>
+
+      
+      <image src="/common/UI/top.png" style="position: absolute;bottom:378px"></image>
+      <image src="/common/UI/return.png" style="left: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="()=>{showPage[11]=false,showPage[10]=true}"></image>
+      <text class="title">选择科目</text>
+    </div> 
+    <div class="page" if="{{showPage[12]}}">
+      <scroll scroll-y="true" bounces="true" class="scroll1 page inside" style="top:40px">
+        <div class="blackBtn" style="background-color: rgba(0, 0, 0, 0);"></div>
+        <!-- 占位 -->
+
+        <div class="blackBtn"  for="{{student}}" @click="()=>{student[$idx].condition[nowSubject]=!student[$idx].condition[nowSubject]}">
+          <div class="blackBtn" style="background-color: rgb(10, 77, 179);position : absolute;"  if="{{student[$idx].condition[nowSubject]}}"></div>
+          <div class="blackBtn" style="background-color: rgb(153, 8, 8);position : absolute;"  if="{{!student[$idx].condition[nowSubject]}}"></div>
+          <image style="position : absolute;left:264px;top:36px" if="{{student[$idx].condition[nowSubject]}}" src="/common/UI/chose.png"></image>
+
+          <text class="tex">{{"学生 : " + student[$idx].number + " 号"}}</text>
+          <text class="paragraphs">{{student[$idx].name}}</text>
+          
+        </div>
+
+        <div class="blackBtn" style="background-color: rgba(0, 0, 0, 0);"></div>
+        <!-- 占位 -->
+      </scroll>
+
+      <div style="position: absolute;left: 6px;top: 81px;width: 324px;height: 218px;" class="backGround" if="{{showPage[80]}}">
+        <text style="position:absolute;left: 19px;top: 14px;width: 128px;height: 45px;" class="pass">确认操作</text>
+
+        <image src="/common/UI/ye.png" style="position:absolute;left: 19px;top: 87px;" @click="()=>{
+          send('已清空');
+          for(let i=0;i<student.length;i++){
+            student[i].condition[nowSubject]=false
+          }
+          showPage[80]=false;
+        }"></image>
+        
+        <image src="/common/UI/no.png" style="position:absolute;right: 19px;top: 87px;" @click="()=>{showPage[80]=false;}"></image>
+      </div>
+
+      
+      <image src="/common/UI/top.png" style="position: absolute;bottom:378px"></image>
+      <image src="/common/UI/clear.png" style="right: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="()=>{showPage[80]=true}"></image>
+      <image src="/common/UI/return.png" style="left: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="()=>{showPage[12]=false,showPage[10]=true}"></image>
+      <text class="title">打勾登记</text>
+    </div> 
+
+
+    <!-- 缺交页面 -->
+    <div class="page" if="{{showPage[20]}}">
+      <scroll scroll-y="true" bounces="true" class="scroll1 page inside" style="top:40px">
+        <div class="blackBtn" style="background-color: rgba(0, 0, 0, 0);"></div>
+        <!-- 占位 -->
+
+        <div class="blackBtn"  @click="()=>{showPage[20]=false,showPage[21]=true}">
+          <text class="tex">科目</text>
+          <text class="paragraphs">{{nowSubject ==-1 ? "请先选择科目！":subject[nowSubject]}}</text>
+        </div>
+
+        <div class="blackBtn"  @click="()=>{cheak(nowSubject);showPage[20]=false,showPage[22]=true}">
+          <text class="tex">审查</text>
+          <text class="paragraphs">{{nowSubject ==-1 ? "请先选择科目！":"快点开始吧哼哼！"}}</text>
+        </div>
+
+        <div class="blackBtn" style="background-color: rgba(0, 0, 0, 0);"></div>
+        <!-- 占位 -->
+      </scroll>
+      <image src="/common/UI/top.png" style="position: absolute;bottom:378px"></image>
+      <image src="/common/UI/return.png" style="left: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="()=>{showPage[20]=false,showPage[0]=true}"></image>
+      <text class="title">缺交查看</text>
+    </div> 
+    <div class="page" if="{{showPage[21]}}">
+      <scroll scroll-y="true" bounces="true" class="scroll1 page inside" style="top:40px">
+        <div class="blackBtn" style="background-color: rgba(0, 0, 0, 0);"></div>
+        <!-- 占位 -->
+
+        <div class="blackBtn"  for="{{subject}}" @click="()=>{nowSubject=$idx}">
+          <div class="blackBtn" style="background-color: rgba(13, 110, 255, 1);position : absolute;"  if="{{nowSubject==$idx}}"></div>
+          <text class="tex" style="top:36px">{{subject[$idx]}}</text>
+          <image style="position : absolute;left:264px;top:36px" if="{{nowSubject==$idx}}" src="/common/UI/chose.png"></image>
+          
+        </div>
+
+        <div class="blackBtn" style="background-color: rgba(0, 0, 0, 0);"></div>
+        <!-- 占位 -->
+      </scroll>
+
+      
+      <image src="/common/UI/top.png" style="position: absolute;bottom:378px"></image>
+      <image src="/common/UI/return.png" style="left: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="()=>{showPage[21]=false,showPage[20]=true}"></image>
+      <text class="title">选择科目</text>
+    </div> 
+    <div class="page" if="{{showPage[22]}}">
+      <scroll scroll-y="true" bounces="true" class="scroll1 page inside" style="top:40px">
+        <div class="blackBtn" style="background-color: rgba(0, 0, 0, 0);"></div>
+        <!-- 占位 -->
+        <div for="{{undone}}" class="blackBtn"    style="background-color: rgb(177, 33, 33)" >
+          <image style="position : absolute;left:264px;top:26px" src="/common/UI/un.png"></image>
+          <text class="tex">{{"学生 : " + student[undone[$idx]].number + " 号"}}</text>
+          <text class="paragraphs">{{student[undone[$idx]].name}}</text>
+        </div>
+
+        <div class="blackBtn"    style="background-color: rgb(33, 177, 98)" if="{{undone.length==0}}">
+          <image style="position : absolute;left:264px;top:36px" src="/common/UI/chose.png"></image>
+          <text class="tex">WELL DONE</text>
+          <text class="paragraphs">好！没有一个缺交！</text>
+        </div>
+
+        <div class="blackBtn" style="background-color: rgba(0, 0, 0, 0);"></div>
+        <!-- 占位 -->
+      </scroll>
+      
+      <image src="/common/UI/top.png" style="position: absolute;bottom:378px"></image>
+      <image src="/common/UI/return.png" style="left: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="()=>{showPage[22]=false,showPage[20]=true}"></image>
+      <text class="title">课代表审视</text>
+    </div> 
+
+    <!-- 关于 -->
+    <div class="page" if="{{showPage[999]}}">
+
+      <div class="inside">
+        <div style="left: 0px;top: 0px; width: 324px;height: 194px;opacity: 1;border-radius: 36px;background-color: rgba(38, 38, 38, 1);border: 3px;border-color:rgba(255, 255, 255, 0.06);">
+          <text style="font-size: 36px;font-weight: 570;line-height: 50.4px;color: rgba(255, 255, 255, 1);text-align: left;left: 19px;top: 16px;width: 144px;height: 51px;position: absolute;">
+            作业统计
+          </text>
+
+          <text style="font-size: 36px;font-weight: 700;line-height: 50.4px;color: rgba(255, 255, 255, 0.6);left: 19px; top: 68px; width: 97px;height: 48px;position: absolute;">
+            1.0.0
+          </text>
+
+          <image src="/common/logo.png" style="width:90px;left: 218px;top: 88px;opacity: 1;
+          background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.6) 100%);position: absolute;"></image>
+        </div>
+
+        
+
+      </div>
+      <text style="font-size: 32px;font-weight: 700;line-height: 44.8px;color: rgba(255, 255, 255, 0.6);text-align: left; left: 11px;top: 292px;width: 226px;height: 42px;position: absolute;">
+        参与的开发人员
+      </text>
+      <text style="font-size: 32px;
+          font-weight: 700;
+          line-height: 44.8px;
+          color: rgba(255, 255, 255, 1);
+          text-align: left;
+          position: absolute;
+          left: 11px;
+          top: 338px;
+          height: 45px;
+          ">
+        @无源流沙
+      </text>
+      <text style="font-size: 32px;
+          font-weight: 700;
+          line-height: 44.8px;
+          color: rgba(255, 255, 255, 1);
+          text-align: left;
+          position: absolute;
+          left: 11px;
+          top: 384px;
+          height: 45px;
+          ">
+        @ppyycc
+      </text>
+
+      <image src="/common/about/1.png" style="
+          position: absolute;
+          left: 159px;
+          top: 390px;">
+        </image>
+
+        <text class="title">关于</text>
+      <image src="/common/UI/return.png" style="left: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="()=>{showPage[999]=false,showPage[0]=true}"></image>
+    </div>
+  </div>
+</template>
+
+<script>
+import router from "@system.router";
+import vibrator from '@system.vibrator' ;
+import configuration from "@system.configuration";
+import file from '@system.file';
+import storage from '@system.storage';
+import prompt from '@system.prompt' 
+import { show } from "@system.notification";
+
+export default {
+  // 页面级组件的数据模型，影响传入数据的覆盖机制：private内定义的属性不允许被覆盖
+  private: {
+    showPage:[true,false,false],
+
+    student:[],
+    subject:["学习"],
+    undone:[0],
+    
+    //登记页面变量
+    nowSubject:-1,
+
+    // 设置页面变量
+    sbj:"",
+    chose:false,
+    ID:[""],
+    showPin:false,//光标
+    nowInput:0,
+    stu:{name:"LIHUA",number:1,condition:[false]},
+    textValue: "",
+    nowChange:0,
+    hide: true,
+    keyboardtype: "T9", //QWERTY, T9
+    vibratemode: "short",
+    screentype: "rect", //pill-shaped, rect, circle
+  },
+
+  tmp(){this.send('已保存');storage.set({key: 'student',value: JSON.stringify(this.student),success: (data)=> {console.log('handling success')},})},
+  tmp2(){this.send('已保存');storage.set({key: 'subject',value: JSON.stringify(this.subject),success: (data)=> {console.log('handling success')},})},
+  send(sth){
+    prompt.showToast({message: sth})
+  },
+
+  //INPUTER
+  onVisibilityChange(evt) {
+    console.log("显示状态变更:"+JSON.stringify(evt));
+  },
+  onKeyDown(evt) {
+    // this.textValue += evt.detail.content;
+    console.log("按下按键:"+JSON.stringify(evt));
+  },
+  onDelete() {
+    this.textValue = this.textValue.slice(0, -1);
+    console.log("删除字符");
+    if(this.nowInput==0){this.stu.name=this.textValue}
+    else if(this.nowInput==1)this.stu.number=this.textValue
+    else if(this.nowInput==3)this.sbj=this.textValue
+  },
+  changeState() {
+    this.hide = !this.hide;
+  },
+  onComplete(evt) {
+    this.textValue += evt.detail.content;
+    console.log("返回字符:"+JSON.stringify(evt));
+    if(this.nowInput==0){this.stu.name=this.textValue}
+    else if(this.nowInput==1)this.stu.number=this.textValue
+    else if(this.nowInput==3)this.sbj=this.textValue
+  },
+
+  cheak(sub){
+    this.undone=[];
+    for(let i=0;i<this.student.length;i++){
+      if(!this.student[i].condition[sub])this.undone.push(i);
+    }
+    // this.send(JSON.stringify(this.undone))
+    return;
+  },
+
+ onInit() {
+    storage.get({
+      key: 'student',
+      success: (data) =>{
+        console.log('handling success')
+        this.student=JSON.parse(data);
+      },
+      fail: (data)=> {
+        storage.set({
+          key: 'student',
+          value: JSON.stringify(this.student),
+          success: (data)=> {
+            console.log('handling success')
+          },
+        })
+    }})
+
+    storage.get({
+      key: 'student',
+      success: (data) =>{
+        console.log('handling success')
+        this.student=JSON.parse(data);
+    }})
+
+    storage.get({
+      key: 'subject',
+      success: (data) =>{
+        console.log('handling success')
+        this.subject=JSON.parse(data);
+      },
+      fail: (data)=> {
+        storage.set({
+          key: 'subject',
+          value: JSON.stringify(this.subject),
+          success: (data)=> {
+            console.log('handling success')
+          },
+        })
+    }})
+
+    storage.get({
+      key: 'subject',
+      success: (data) =>{
+        console.log('handling success')
+        this.subject=JSON.parse(data);
+    }})
+
+    
+  },
+
+  
+}
+</script>
+
+<style>
+
+.page {
+  width: 336px;
+  height: 480px;
+  position: absolute;
+}
+
+.inside{
+  /* position: absolute; */
+  
+  left: 6px;
+  top: 86px;
+  width: 324px;
+  opacity: 1;
+  height: 394px;
+  overflow: visible;
+}
+
+.tex{
+  left: 19px;
+  top: 14px;
+  height: 45px;
+  opacity: 1;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 44.8px;
+  color: rgba(255, 255, 255, 1);
+  text-align: left;
+}
+
+.blackBtn{
+
+  /* position: absolute; */
+
+  margin-bottom: 20px;
+  width: 324px;
+  height: 112px;
+  border-radius: 36px;
+  background-color: rgba(38, 38, 38, 1);
+
+}
+
+/* 选项部分 */
+.backGround{
+  border-radius: 36px;
+  background-color: rgba(38, 38, 38, 0.83);
+  backdrop-filter: blur(8px);
+}
+.pass{
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: 0px;
+  line-height: 44.8px;
+  color: rgba(255, 255, 255, 1);
+  text-align: left;
+  vertical-align: top;
+}
+.name{
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 0px;
+  line-height: 39.2px;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: left;
+  vertical-align: top;
+}
+.dpn{
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0px;
+  line-height: 26.52px;
+  color: rgba(255, 255, 255, 1);
+  text-align: center;
+}
+.input{
+  width: 209px;
+  height: 40px;
+  opacity: 1;
+  border-radius: 19px;
+  background-color: rgba(64, 64, 64, 0.83);
+  backdrop-filter: blur(2px);
+}
+.inp{
+  max-width: 187px;
+  height: 40px;
+  opacity: 1;
+  /** 文本1 */
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  line-height: 39.2px;
+  color: rgba(255, 255, 255, 0.64);
+}
+
+
+
+
+
+.title{
+  width: 182px;
+  height: 42px;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 44.8px;
+  color: rgba(255, 255, 255, 1);
+  text-align: center;
+  top:35px;
+  left:77px;
+  position: absolute;
+}
+
+.paragraphs{
+  width: 286px;
+  
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0px;
+  line-height: 39.2px;
+  color: rgba(255, 255, 255, 0.6);
+  position: absolute;
+  left:19px;
+  top:61px;
+}
+
+.btn {
+  position: absolute;
+  min-height: 100px;
+  min-width: 80px;
+  font-size: 30px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: rgba(59, 59, 59, 0.5);
+  border: 5px solid rgb(104, 104, 104,0.5);
+  border-radius: 20px;
+}
+
+.abo {
+  
+  font-size: 30px;
+  left: 50px;
+  font-weight: bold;
+  color: #646464;
+  background-color: rgb(59, 59, 59);
+}
+
+.slider{
+    position: absolute;
+    width: 230px;
+    top: 125px;
+    left: 53px;
+    color:#b6607dd3;
+}
+
+.scroll1{
+  position: absolute;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+</style>

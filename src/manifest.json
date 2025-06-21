@@ -1,0 +1,33 @@
+{
+  "package": "com.homework.ppyycc.made",
+  "name": "作业统计",
+  "versionName": "1.0.0",
+  "versionCode": 1,
+  "minPlatformVersion": 1000,
+  "icon": "/common/logo.png",
+  "deviceTypeList": [
+    "watch"
+  ],
+  "features": [
+    {"name": "system.router"},
+    {"name": "system.storage"},
+    {"name": "system.prompt"},
+    {"name": "system.file"},
+    { "name": "system.vibrator" }
+  ],
+  "config": {
+    "logLevel": "log",
+    "designWidth": 336
+  },
+  "router": {
+    "entry": "pages/index",
+    "pages": {
+      "pages/index": {
+        "component": "index"
+      },
+      "pages/detail": {
+        "component": "detail"
+      }
+    }
+  }
+}
