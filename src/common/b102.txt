@@ -1,0 +1,879 @@
+[
+{
+  "background": "house1.png",
+  "dialogues": [
+    {
+      "character": "",
+      "text": "我和芦花姐边走边聊，走了大约十五分钟。"
+    },
+    {
+      "character": "将臣",
+      "text": "哎呀，这里真是跟以前一模一样"
+    }
+  ]
+},
+{
+  "background": "house1.png",
+  "Img": "item_human1_10.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "玄十郎先生的旅馆可火了。不仅服务态度好，饭菜也很好吃"
+    }
+  ]
+},
+{
+  "background": "house1.png",
+  "Img": "item_human1_2.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "建筑也是古香古色，外国人都喜欢这种"
+    },
+    {
+      "character": "将臣",
+      "text": "······"
+    }
+  ]
+},
+{
+  "background": "house1.png",
+  "dialogues": [
+    {
+      "character": "",
+      "text": "终于要跟外公打招呼了······"
+    },
+    {
+      "character": "",
+      "text": "我的外公哪怕站在那儿不动，也会让人感到一阵压力。我小时候非常害怕他。"
+    },
+    {
+      "character": "",
+      "text": "也许是因为小时候的记忆吧，我现在也不太敢跟他说话。"
+    },
+    {
+      "character": "将臣",
+      "text": "打扰一下"
+    },
+    {
+      "character": "声音",
+      "text": "您稍等，马上来"
+    }
+  ]
+},
+{
+  "background": "house1.png",
+  "Img": "item_woker1_1.png",
+  "dialogues": [
+    {
+      "character": "工作人员",
+      "text": "让您久等了。请问是预约过的客人吗？"
+    },
+    {
+      "character": "将臣",
+      "text": "抱歉打搅了，我不是客人，请问鞍马玄十郎在吗？"
+    },
+    {
+      "character": "工作人员",
+      "text": "不好意思，请问······"
+    },
+    {
+      "character": "将臣",
+      "text": "我想先给外公打个招呼"
+    },
+    {
+      "character": "工作人员",
+      "text": "您就是大当家的外孙吧，我听他老人家说了。感谢您从大老远来帮忙"
+    },
+    {
+      "character": "工作人员",
+      "text": "大当家现在应该就在建实神社那边，他是执行委员"
+    }
+  ]
+},
+{
+  "background": "house1.png",
+  "Img": "item_human1_1.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "啊，是这样啊。原来玄十郎先生是春日祭的执行委员"
+    },
+    {
+      "character": "工作人员",
+      "text": "如果游行按照计划进行······现在差不多到神社了"
+    }
+  ]
+},
+{
+  "background": "house1.png",
+  "Img": "item_human1_10.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "那他应该暂时没法离开神社"
+    },
+    {
+      "character": "将臣",
+      "text": "是吗"
+    }
+  ]
+},
+{
+  "background": "house1.png",
+  "Img": "item_woker1_1.png",
+  "dialogues": [
+    {
+      "character": "将臣",
+      "text": "请问，现在有什么可以帮忙的吗？"
+    },
+    {
+      "character": "工作人员",
+      "text": "感谢您的好意"
+    },
+    {
+      "character": "工作人员",
+      "text": "不过现在还不那么忙，所以您今天就好好享受春日祭吧"
+    },
+    {
+      "character": "将臣",
+      "text": "那就恭敬不如从命了"
+    },
+    {
+      "character": "工作人员",
+      "text": "需要我帮您的忙把行李那就去吗？"
+    },
+    {
+      "character": "将臣",
+      "text": "好的，麻烦您了。谢谢"
+    }
+  ]
+},
+{
+  "background": "street3.png",
+  "Img": "item_human1_1.png",
+  "dialogues": [
+    {
+      "character": "将臣",
+      "text": "芦花姐，我外公现在精神吗？"
+    }
+  ]
+},
+{
+  "background": "street3.png",
+  "Img": "item_human1_2.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "那当然啦，他从不感冒，背也不弯腰腿也好的很！"
+    },
+    {
+      "character": "芦花",
+      "text": "而且好像坚持每天用木刀练素振"
+    },
+    {
+      "character": "将臣",
+      "text": "是吗······他还是那么精神啊······当然啦，这是好事"
+    }
+  ]
+},
+{
+  "background": "street3.png",
+  "Img": "item_human1_4.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "你呢？你还在练剑道吗？"
+    },
+    {
+      "character": "将臣",
+      "text": "没练了。已经两年没握木刀了"
+    }
+  ]
+},
+{
+  "background": "street3.png",
+  "Img": "item_human1_1.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "为什么呀？？"
+    },
+    {
+      "character": "将臣",
+      "text": "本来就是外公让我练我才练的。他说什么对身体有好处"
+    },
+    {
+      "character": "将臣",
+      "text": "但没人逼我我就不想练了······再加上学习又忙，最后压根都不碰木刀"
+    }
+  ]
+},
+{
+  "background": "street3.png",
+  "Img": "item_human1_3.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "感觉就像是自然分手的情侣一样啊"
+    },
+    {
+      "character": "将臣",
+      "text": "比喻得太形象了"
+    },
+    {
+      "character": "将臣",
+      "text": "所以，我现在都有点没脸见到我外公······"
+    },
+    {
+      "character": "芦花",
+      "text": "他再怎么也不可能把你吃掉的啦"
+    }
+  ]
+},
+{
+  "background": "street3.png",
+  "dialogues": [
+    {
+      "character": "",
+      "text": "我知道自己有点害怕过头了。我知道外公其实人也很好。"
+    },
+    {
+      "character": "",
+      "text": "但年幼时心里埋藏的恐惧心理现在仍然盘踞在心中······"
+    },
+    {
+      "character": "",
+      "text": "就怕他会大发雷霆，冲我大吼到：“你又给我做事半途而废！”"
+    }
+  ]
+},
+{
+  "background": "house2.png",
+  "dialogues": [
+    {
+      "character": "",
+      "text": "神社院子里人山人海。"
+    },
+    {
+      "character": "",
+      "text": "游客们摩肩接踵，一齐望向神乐殿。"
+    },
+    {
+      "character": "",
+      "text": "其中还有人举着相机或是手机。"
+    }
+  ]
+},
+{
+  "background": "house2.png",
+  "Img": "item_human1_2.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "哇！我们好像正赶上巫女大人献舞呢"
+    },
+    {
+      "character": "将臣",
+      "text": "我看看，外公是在里面吗？"
+    }
+  ]
+},
+{
+  "background": "house2.png",
+  "Img": "item_human1_9.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "阿将，阿将。你别这么不感兴趣嘛，去看看神乐舞吧"
+    }
+  ]
+},
+{
+  "background": "house2.png",
+  "Img": "item_human1_2.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "巫女大人跳的神乐舞可好了"
+    },
+    {
+      "character": "芦花",
+      "text": "游客们也喜欢看她跳舞。这也是春日祭的一大看点之一呢"
+    },
+    {
+      "character": "芦花",
+      "text": "来吧来吧，你的身高在这个位置应该就能看见了吧"
+    }
+  ]
+},
+{
+  "background": "house2.png",
+  "dialogues": [
+    {
+      "character": "",
+      "text": "听了芦花姐这么一说，我也顺着大家的视线望去."
+    },
+    {
+      "character": "",
+      "text": "随后——"
+    }
+  ]
+},
+{
+  "background": "item_human2_bg1.png",
+  "dialogues": [
+    {
+      "character": "将臣",
+      "text": "······."
+    },
+    {
+      "character": "",
+      "text": "我不由得看呆了。"
+    },
+    {
+      "character": "",
+      "text": "正在献舞的巫女，大概跟我同岁。"
+    },
+    {
+      "character": "",
+      "text": "她舞姿绮丽，动作优雅。长发轻拂，衣袖翩翩。"
+    },
+    {
+      "character": "",
+      "text": "这一切，都传递着一种美感。"
+    },
+    {
+      "character": "",
+      "text": "看入迷的似乎不只有我。四周的嘈杂声也渐渐消失。"
+    },
+    {
+      "character": "",
+      "text": "不仅观众的声音，甚至连鞋底摩擦砂子的声音也被寂静所淹没。"
+    },
+    {
+      "character": "",
+      "text": "只剩下神乐玲那清脆的声音在舞台回响，余音绕梁久久不能散去。"
+    },
+    {
+      "character": "",
+      "text": "她的舞姿是那么美丽，美得让人不忍心错过任何一瞬。"
+    },
+    {
+      "character": "",
+      "text": "这感觉如同身体被控制一样。"
+    },
+    {
+      "character": "",
+      "text": "舞步之中，仿佛透露着一种不可思议的力量······"
+    },
+    {
+      "character": "将臣",
+      "text": "（这······确实值得一看）"
+    },
+    {
+      "character": "",
+      "text": "那优雅的舞姿，看上去就像仙女——"
+    }
+  ]
+},
+{
+  "background": "item_human2_bg2.png",
+  "dialogues": [
+    {
+      "character": "将臣",
+      "text": "！？！？"
+    },
+    {
+      "character": "",
+      "text": "什、什么情况······？仙、仙女头上，长出了耳朵······？"
+    }
+  ]
+},
+{
+  "background": "item_human2_bg1.png",
+  "dialogues": [
+    {
+      "character": "将臣",
+      "text": "······咦？"
+    },
+    {
+      "character": "",
+      "text": "刚才我明明看到了类似兽耳一样的东西长了出来呀······现在却看不见。"
+    },
+    {
+      "character": "",
+      "text": "我擦了擦眼睛，再次确认一遍。"
+    },
+    {
+      "character": "",
+      "text": "还是没有看到什么兽耳。"
+    },
+    {
+      "character": "将臣",
+      "text": "······？······？？？"
+    },
+    {
+      "character": "芦花",
+      "text": "阿将?"
+    },
+    {
+      "character": "将臣",
+      "text": "没······没什么"
+    },
+    {
+      "character": "",
+      "text": "是我看错了吗，难道是太累了？"
+    },
+    {
+      "character": "",
+      "text": "也、也是。今天算上换乘，一共坐了两个小时的电车。"
+    },
+    {
+      "character": "",
+      "text": "肯定是太累了。"
+    },
+    {
+      "character": "",
+      "text": "而且其他游客都表现正常。"
+    },
+    {
+      "character": "将臣",
+      "text": "应该······是我看错了吧？"
+    },
+    {
+      "character": "",
+      "text": "人的头顶上怎么可能长出耳朵呢。"
+    }
+  ]
+},
+{
+  "background": "house2.png",
+  "Img": "item_human1_4.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "怎么样？巫女大人的神乐舞跳得好吧"
+    },
+    {
+      "character": "将臣",
+      "text": "非常优美，我都有点后悔没有从开头看了"
+    }
+  ]
+},
+{
+  "background": "house2.png",
+  "Img": "item_human1_3.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "不止春日祭，半祭祀活动的时候也能看到巫女大人献舞，以后机会还多着呢"
+    },
+    {
+      "character": "芦花",
+      "text": "那现在我们就去玄十郎先生那里？"
+    },
+    {
+      "character": "将臣",
+      "text": "对哦······我是来跟外公打招呼的"
+    }
+  ]
+},
+{
+  "background": "house2.png",
+  "Img": "item_human1_1.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "他应该在这里······啊！"
+    }
+  ]
+},
+{
+  "background": "house2.png",
+  "Img": "item_human1_2.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "廉太郎！小春！"
+    }
+  ]
+},
+{
+  "background": "house2.png",
+  "Img": "item_human3_1.png",
+  "dialogues": [
+    {
+      "character": "廉太郎？",
+      "text": "嗯？怎么了，芦花姐？"
+    }
+  ]
+},
+{
+  "background": "house2.png",
+  "Img": "item_human4_1.png",
+  "dialogues": [
+    {
+      "character": "小春？",
+      "text": "怎么了？姐姐"
+    }
+  ]
+},
+{
+  "background": "house2.png",
+  "dialogues": [
+    {
+      "character": "",
+      "text": "听到芦花姐的声音后，两人转过身来。"
+    }
+  ]
+},
+{
+  "background": "house2.png",
+  "Img": "item_human3_2.png",
+  "dialogues": [
+    {
+      "character": "廉太郎？",
+      "text": "等等······哎？你是将臣？"
+    }
+  ]
+},
+{
+  "background": "house2.png",
+  "Img": "item_human4_2.png",
+  "dialogues": [
+    {
+      "character": "小春？",
+      "text": "啊,真的耶！哥哥！"
+    }
+  ]
+}
+,
+{
+  "background": "house2.png",
+  "Img": "item_human4_2.png",
+  "dialogues": [
+    {
+      "character": "",
+      "text": "看到我感到很惊讶的人，是鞍马廉太郎。还有他的妹妹鞍马小春。"
+    },
+    {
+      "character": "",
+      "text": "他们两人都是外公的孙子，也就是我的表兄妹。"
+    },
+    {
+      "character": "",
+      "text": "他们的父亲是我那嫁到外地的妈妈的哥哥，也就是我的舅舅。"
+    },
+    {
+      "character": "",
+      "text": "顺带一提，舅舅虽然是长男，但没有继承旅馆，而是在做其他工作。"
+    },
+    {
+      "character": "将臣",
+      "text": "「好久没见你们俩了啊」"
+    }
+  ]
+},
+{
+  "background": "house2.png",
+  "Img": "item_human3_1.png",
+  "dialogues": [
+    {
+      "character": "廉太郎",
+      "text": "「真的是很久没见了呢！　好稀奇啊，最近完全都没有见到你呢。怎么了？」"
+    },
+    {
+      "character": "将臣",
+      "text": "「外公的旅馆人手不足，我来帮忙的」"
+    }
+  ]
+},
+{
+  "background": "house2.png",
+  "Img": "item_human4_3.png",
+  "dialogues": [
+    {
+      "character": "小春",
+      "text": "「哥哥你吗？　还以为会像往常那样让姑姑来呢」"
+    },
+    {
+      "character": "将臣",
+      "text": "「因为我好久都没来了。所以她硬是让我过来露个面」"
+    }
+  ]
+},
+{
+  "background": "house2.png",
+  "Img": "item_human4_4.png",
+  "dialogues": [
+    {
+      "character": "小春",
+      "text": "「毕竟真的是好久都没见过你了。完全没见你回来过嘛」"
+    }
+  ]
+},
+{
+  "background": "house2.png",
+  "Img": "item_human4_5.png",
+  "dialogues": [
+    {
+      "character": "小春",
+      "text": "「看你个子长得这么高，刚开始还没认出来呢」"
+    },
+    {
+      "character": "将臣",
+      "text": "「小春不也是，跟以前比起来，成长了不少啊」"
+    }
+  ]
+},
+{
+  "background": "house2.png",
+  "Img": "item_human4_6.png",
+  "dialogues": [
+    {
+      "character": "小春",
+      "text": "「真、真的吗？　哎嘿……哎嘿……你这么说，我真高兴」"
+    }
+  ]
+},
+{
+  "background": "house2.png",
+  "Img": "item_human3_2.png",
+  "dialogues": [
+    {
+      "character": "廉太郎",
+      "text": "「这不明摆着是客套话吗。你的胸部哪里有成长啊」"
+    }
+  ]
+},
+{
+  "background": "house2.png",
+  "Img": "item_human4_7.png",
+  "dialogues": [
+    {
+      "character": "小春",
+      "text": "「有、有成长啦！　跟、跟去年比起来，增大了0.2毫米呢！」"
+    }
+  ]
+},
+{
+  "background": "house2.png",
+  "Img": "item_human3_2.png",
+  "dialogues": [
+    {
+      "character": "廉太郎",
+      "text": "「那种只是一般情况下的误差啦、误差」"
+    }
+  ]
+},
+{
+  "background": "house2.png",
+  "Img": "item_human4_7.png",
+  "dialogues": [
+    {
+      "character": "小春",
+      "text": "「廉哥哥，你好烦啊！　别胡说了」"
+    },
+    {
+      "character": "将臣",
+      "text": "「因为廉太郎每天都跟你打照面，所以才没发现吧」"
+    }
+  ]
+},
+{
+  "background": "house2.png",
+  "Img": "item_human4_4.png",
+  "dialogues": [
+    {
+      "character": "小春",
+      "text": "「哥哥，好温柔……多好的一个人啊……！」"
+    }
+  ]
+},
+{
+  "background": "house2.png",
+  "Img": "item_human4_7.png",
+  "dialogues": [
+    {
+      "character": "小春",
+      "text": "「如果我的哥哥不是这边的笨蛋，而是你的话，那该有多好啊」"
+    }
+  ]
+},
+{
+  "background": "house2.png",
+  "Img": "item_human3_3.png",
+  "dialogues": [
+    {
+      "character": "廉太郎",
+      "text": "「如果我的妹妹不是这样的小鬼，而是更加可爱又漂亮的妹妹，那该有多好啊」"
+    }
+  ]
+},
+{
+  "background": "house2.png",
+  "Img": "item_human4_8.png",
+  "dialogues": [
+    {
+      "character": "小春",
+      "text": "「什么啊！」"
+    }
+  ]
+},
+{
+  "background": "house2.png",
+  "Img": "item_human3_3.png",
+  "dialogues": [
+    {
+      "character": "廉太郎",
+      "text": "「怎样？」"
+    }
+  ]
+},
+{
+  "background": "house2.png",
+  "Img": "item_human4_9.png",
+  "dialogues": [
+    {
+      "character": "小春",
+      "text": "「笨蛋！笨蛋！」"
+    }
+  ]
+},
+{
+  "background": "house2.png",
+  "Img": "item_human3_3.png",
+  "dialogues": [
+    {
+      "character": "廉太郎",
+      "text": "「丑女！丑女！」"
+    }
+  ]
+},
+{
+  "background": "house2.png",
+  "Img": "item_human1_9.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "「好了，打住打住!。兄妹吵架就先到此为止吧」"
+    },
+    {
+      "character": "将臣",
+      "text": "「你们在这点上倒是没变啊……」"
+    },
+    {
+      "character": "",
+      "text": "还是这么要好。"
+    }
+  ]
+},
+{
+  "background": "house2.png",
+  "Img": "item_human1_8.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "「不说这个了，玄十郎先生在哪里？」"
+    }
+  ]
+},
+{
+  "background": "house2.png",
+  "Img": "item_human3_1.png",
+  "dialogues": [
+    {
+      "character": "廉太郎",
+      "text": "「爷爷现在在里面哦」"
+    }
+  ]
+},
+{
+  "background": "house2.png",
+  "Img": "item_human4_5.png",
+  "dialogues": [
+    {
+      "character": "小春",
+      "text": "「瞧，正在搞那个活动呢」"
+    }
+  ]
+},
+{
+  "background": "house2.png",
+  "Img": "item_human1_10.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "「啊！，那个啊！」"
+    },
+    {
+      "character": "将臣",
+      "text": "「？？？　哪个活动？」"
+    }
+  ]
+},
+{
+  "background": "house2.png",
+  "Img": "item_human4_6.png",
+  "dialogues": [
+    {
+      "character": "小春",
+      "text": "「传说中的勇者活动」"
+    },
+    {
+      "character": "将臣",
+      "text": "「那是什么？」"
+    }
+  ]
+},
+{
+  "background": "house2.png",
+  "Img": "item_human1_6.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "「是说建实神社的御神刀啦。你应该多少有听说过吧？」"
+    },
+    {
+      "character": "将臣",
+      "text": "「御神刀……啊！，是那个啊……虽然听说过，但没有见过实物呢」"
+    }
+  ]
+},
+{
+  "background": "house2.png",
+  "dialogues": [
+    {
+      "character": "",
+      "text": "建实神社供奉着一把有些特别的刀。"
+    },
+    {
+      "character": "",
+      "text": "因为在其他地方都看不见，所以现在正利用这一点来搞活动。"
+    },
+    {
+      "character": "将臣",
+      "text": "「好像只有经过抽选抽中了的人才能进去吧？」"
+    }
+  ]
+},
+{
+  "background": "house2.png",
+  "Img": "item_human1_6.png",
+  "dialogues": [
+    {
+      "character": "廉太郎",
+      "text": "「那是指普通观光客的情况」"
+    },
+    {
+      "character": "廉太郎",
+      "text": "「你也不是来看活动的，只是跟爷爷打个招呼而已，应该没关系吧」"
+    },
+    {
+      "character": "将臣",
+      "text": "「那我就去看看吧」"
+    }
+  ]
+}
+]

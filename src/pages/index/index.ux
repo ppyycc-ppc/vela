@@ -1,0 +1,798 @@
+<template>
+  <div class="page" style="background-color: black;">
+
+    <!-- 这里是进行优化（图片代替真实渲染） -->
+    <image src="/common/page/main.png" class="page" if="{{!showMain}}" style="left:{{pagesLeft}}"></image>
+    <div class="page" style="left:{{pagesLeft}}" if="{{mainPage && showMain}}">
+
+      <image src="/common/bg.png"></image>
+
+      
+      <text class="btn" style="top: 30px;left:25px" @click="showPage(0)">·--关 于--·</text>
+      <text class="btn" style="top: 70px;left:25px" @click="toPage('detail')">·--开 始--·</text>
+      <text class="btn" style="top: 110px;left:25px;" @click="toRecovery()">·--加 载--·</text>
+      <text class="btn" style="top: 150px;left:25px" @click="showPage(1)">·--设 置--·</text>
+      <text class="btn" style="top: 190px;left:25px" @click="exit">·--退 出--·</text>
+      <text class="btn" style="top: 230px;left:25px" @click="back('ej')">·--鉴 赏--·</text>
+      
+    </div>
+
+
+    <div class="page" style="position: absolute;background-color: #ffffff;" if="{{recovery}}" @swipe="back()">
+      <image src="/common/bg_set.png"></image>
+      <scroll scroll-y="true" bounces="true" class="scroll1 page">
+        <text class="menu-btn">点击读取你的记忆存档</text>
+        <text class="menu-btn" for="{{recoveryData}}" style="font-size: 30px;" @click="loadRecoveryData($idx)">保存的存档{{$idx+1}}</text>
+      </scroll>
+    </div> 
+
+    
+    <div class="page" style="position: absolute;background-color: #ffffff;" if="{{showEnjoy}}">
+      <image src="/common/bg_set.png"></image>
+      <scroll scroll-y="true" bounces="true" class="scroll1 page">
+        <text class="menu-btn">点击查看心爱的老婆！</text>
+        <text class="menu-btn" for="{{cgList}}" style="font-size: 30px;" @click="lookCg(cgList[$idx])">· CG{{$idx+1}} ·</text>
+        <text class="menu-btn" @click="input">我也是有底线的！</text>
+        <text class="menu-btn" for="{{ssList}}" style="font-size: 30px;" @click="lookCg(ssList[$idx])" if="{{showSS}}">· CG{{$idx+1000}} ·</text>
+        <text class="menu-btn" @click="back('ej')">流连忘返地到主页</text>
+      
+      </scroll>
+    </div>
+
+    <image src="/common/page/2.png" class="page" if="{{!showPages && pages[2]}}" style="left:{{pagesLeft + 336}}"></image>
+    <div class="page" if="{{pages[2] && showPages}}" style="background-color: black;left:{{pagesLeft+336}}">
+      <image src="/common/cg/{{willShow}}.png" style="top:{{showX}};object-fit:none;position: absolute;"></image>
+      <image src="/common/Back_B.png" style="left: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="showPage(2)"></image>
+      <slider class="slider" style="top:450px;block-color:rgb(226, 39, 154);selected-color:rgb(146, 26, 92)" min="-80" max="0" step="5" onchange="showXChange()"></slider>
+    </div>
+
+    <image src="/common/page/1.png"  @swipe="ban" class="page" if="{{!showPages && pages[1]}}" style="left:{{pagesLeft + 336}}"></image>
+    <div class="page" style="left:{{pagesLeft+336}}" if="{{pages[1] && showPages}}">
+      <image src="/common/bg_set.png" style="page"></image>
+      
+      <scroll scroll-y="true" bounces="true" class="scroll">
+        <text style="box-shadow: 6px 6px 8px 5px rgba(0, 0, 0, 0.2);color: rgb({{settings.color[0]}},{{settings.color[1]}},{{settings.color[2]}});font-weight: 700;width: 100%;text-align: left;font-size: {{settings.textSize}}px;">{{showText}}</text>
+      </scroll>
+
+      <scroll scroll-y="true" bounces="true" class="scroll1 page inside" style="top:40px">
+        <div class="blackBtn" style="top:0px;background-color: rgba(38, 38, 38, 0);">
+        </div>
+
+        <div class="blackBtn" style="top:180px;background-color: rgba(202, 66, 150, 0.836);" if="{{!changing}}">
+          <text class="tex">调整字体大小</text>
+          <text class="paragraphs">{{settings.textSize}}px  (像素)</text>
+        </div>
+
+        <slider class="slider" style="top: 320px;selected-color:rgba(102, 102, 102, 0.829);color:rgba(148, 148, 148, 0.432);block-color:rgb(190, 63, 133)" min="10" max="40" step="1" onchange="changeTextSize() " @touchmove="()=>{changing=true;nowChange=0}" @touchend="()=>{changing=false;nowChange=-1}" if="{{!changing || nowChange==0}}"></slider>
+        
+        <div class="blackBtn" style="top:360px;background-color: rgba(202, 66, 150, 0.836);" if="{{!changing}}">
+          <text class="tex">调整显示延迟</text>
+          <text class="paragraphs">{{settings.textSpeed}}ms  (毫秒)</text>
+        </div>
+
+        <slider class="slider" style="top: 500px;selected-color:rgba(102, 102, 102, 0.829);color:rgba(148, 148, 148, 0.432);block-color:rgb(190, 63, 133)" min="5" max="100" step="5" onchange="changeTextSpeed()" @touchmove="()=>{changing=true;nowChange=1}" @touchend="()=>{changing=false;nowChange=-1}" if="{{!changing || nowChange==1}}"></slider>
+        
+        
+        <div class="blackBtn" style="top:540px;background-color: rgba(202, 66, 150, 0.836);" if="{{!changing}}">
+          <text class="tex">振动</text>
+          <text class="paragraphs">Buzzz~</text>
+          <switch style="
+            top:63px;
+            left:177px;
+            width:72px;
+            height:36px;
+            thumb-color:rgba(255, 152, 216, 0.911);
+            track-color:rgba(145, 45, 106, 0.911);
+          " checked="{{settings.bzz}}"
+          @change="buzz()"></switch>
+        </div>
+
+        <div class="blackBtn" style="top:720px;background-color: rgba(202, 66, 150, 0.836);" if="{{!changing}}" @click="()=>{
+        if(choise<colorList.length-1)choise++;
+        else choise=0;
+        settings.color=colorList[choise].list
+        }">
+          <text class="tex">调整显示颜色</text>
+          <text class="paragraphs">{{colorList[choise].name}} 色</text>
+        </div>
+
+        <div class="blackBtn" style="top:900px;background-color: rgba(0, 0, 0, 0);">
+        </div>
+
+      </scroll>
+      
+      <image src="/common/top.png" style="position: absolute;bottom:378px" if="{{!changing}}"></image>
+      <text class="title" if="{{!changing}}">设置</text>
+      <image src="/common/Check_B.png" style="left: 258px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="saveSettings" if="{{!changing}}"></image>
+      <image src="/common/Back_B.png" style="left: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="showPage(1)" if="{{!changing}}"></image>
+      <image src="/common/bt.png" style="position: absolute;top:378px" if="{{!changing}}"></image>
+      <image src="/common/Sync_A.png" style="left: 258px;top: 402px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="()=>{
+      settings.
+        textSpeed=1;
+      settings.
+        textSize=24;
+      settings.
+        bzz=true;
+      settings.
+        color=[255,255,255];
+      }" if="{{!changing}}"></image>
+    </div>
+
+    <image src="/common/page/0.png" class="page" if="{{!showPages && pages[0]}}" style="left:{{pagesLeft + 336}}"></image>
+    <div class="page" if="{{pages[0] && showPages}}" style="background-color: black;left:{{pagesLeft+336}}">
+
+      <scroll scroll-y="true" bounces="true" class="scroll" style="top:0px;height:480px;">
+      <div class="inside">
+        <!-- <image class="blackGround" src="/common/bg2.png" style=""></image>
+        <text class="btn"  style="position: absolute;top:10px;left:90px"  @click="show('a')" >· ·返回· ·</text>
+
+        <text class="btn"  style="position: absolute;top:70px;left:36px;width:280px"  >{{"  环间赛车\n CarRacing\n\n\n"}}</text>
+        <text class="abo"  style="position: absolute;top:170px;left:36px;width:280px"  >{{"   ver1.0.0"}}</text>
+        <image class="blackGround" src="/common/logo.png" style="top:120px;left:200px"></image>
+
+        <text class="abo"  style="position: absolute;top:250px;left:36px;width:280px;background-color:black"  >{{"   开发人员"}}</text>
+        <text class="abo"  style="position: absolute;top:300px;left:36px;width:280px;background-color:black;color:white"  >{{"   @ppyycc"}}</text>
+
+        <text class="abo"  style="position: absolute;top:350px;left:36px;width:280px;background-color:black"  >{{"   感谢您的支持！"}}</text>
+        <text class="abo"  style="position: absolute;top:400px;left:36px;width:280px;background-color:black"  >{{"   捐赠一下？"}}</text>
+
+        <image class="blackGround" src="/common/jz.jpg" style="top:500px;left:3px"></image> -->
+
+        <div style="left: 0px;
+        top: 0px;
+        width: 324px;
+        height: 194px;
+        opacity: 1;
+        border-radius: 36px;
+        background-color: rgba(38, 38, 38, 1);
+
+        border: 3px;
+        border-color:rgba(255, 255, 255, 0.06);
+
+        ">
+          <text style="font-size: 36px;
+            font-weight: 500;
+            line-height: 50.4px;
+            color: rgba(255, 255, 255, 1);
+            text-align: left;left: 19px;
+            top: 16px;
+            width: 144px;
+            height: 51px;
+            position: absolute;">
+            千恋万花
+          </text>
+
+          <text style="font-size: 36px;
+            font-weight: 500;
+            line-height: 50.4px;
+            color: rgba(255, 255, 255, 0.6);
+            left: 19px;
+            top: 68px;
+            width: 97px;
+            height: 48px;
+            position: absolute;">
+            1.2.5
+          </text>
+
+          <image src="/common/logo.png" style="
+          width:70px;
+          left: 228px;
+          top: 98px;
+          opacity: 1;
+          background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.6) 100%);
+          position: absolute;"></image>
+        </div>
+
+        
+
+      </div>
+      <text style="font-size: 32px;
+          font-weight: 500;
+          line-height: 44.8px;
+          color: rgba(255, 255, 255, 0.6);
+          text-align: left;
+          left: 11px;
+          top: 292px;
+          width: 226px;
+          height: 42px;
+          position: absolute;">
+        参与的开发人员
+      </text>
+
+      <text style="font-size: 32px;
+          font-weight: 500;
+          line-height: 44.8px;
+          color: rgba(255, 255, 255, 1);
+          text-align: left;
+          position: absolute;
+          left: 11px;
+          top: 338px;
+          height: 45px;
+          ">
+        @liuyuze61
+      </text>
+
+      <image src="/common/about/2.png" style="
+          position: absolute;
+          left: 201px;
+          top: 334px;">
+        </image>
+
+      <text style="font-size: 32px;
+          font-weight: 500;
+          line-height: 44.8px;
+          color: rgba(255, 255, 255, 1);
+          text-align: left;
+          position: absolute;
+          left: 11px;
+          top: 384px;
+          height: 45px;
+          ">
+        @ppyycc
+      </text>
+
+      <image src="/common/about/1.png" style="
+          position: absolute;
+          left: 159px;
+          top: 380px;">
+        </image>
+
+        <text style="font-size: 32px;
+        font-weight: 500;
+        line-height: 44.8px;
+        color: rgba(255, 255, 255, 1);
+        text-align: left;
+        position: absolute;
+        left: 11px;
+        top: 430px;
+        height: 45px;
+        ">
+      @无源流沙
+      </text>
+
+      <image src="/common/about/4.png" style="
+        position: absolute;
+        left: 173px;
+        top: 426px;">
+      </image>
+
+      <text style="font-size: 32px;
+          font-weight: 500;
+          line-height: 44.8px;
+          color: rgba(255, 255, 255, 0.6);
+          text-align: left;
+          left: 11px;
+          top: 476px;
+          height: 42px;
+          position: absolute;">
+        改编好，捐赠一下？
+      </text>
+      <image src="/common/jz.jpg" style="position: absolute;top:570px;left:3px"></image>
+    </scroll>
+
+    <image src="/common/top.png" style="position: absolute;bottom:378px"></image>  
+    <text class="title">关于</text>
+    <image src="/common/Back_B.png" style="left: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="showPage(0)"></image>
+    
+  </div>
+
+    <div class="page" style="position: absolute;background-color: #ffffff;flex-wrap: nowrap;flex-direction: column;align-items: center;justify-content: center;" if="{{tips}}" @swipe="ban()">
+      <text class="font24">在"SYSTEM"中调整显示速度和文字大小</text>
+      <text class="font24">游戏中右滑进入菜单，左滑返回</text>
+      <text class="font24" style="color: #ff0000;">请勿反复点击START！耐心等待加载</text>
+      <text class="font24">制作：@liuyuze61的开源代码和@ppyycc的改编</text>
+      <text class="font24">感谢：@Wxz226，@TLE，@liuyuze61开源</text>
+      <text class="font24" style="color:#ff0000">注意！本软件仅供学习参考用，切勿过度传播，并在使用之后于24小时内删除！</text>
+      <text class="font24">---------------</text>
+
+
+      <text class="font24" style="
+      color: #c31781;background-color: rgba(100, 223, 0, 0.856);
+      border: 2px solid rgb(187, 200, 188);
+      border-radius: 10px;" 
+      @click="closeTips()">
+      我已知晓
+      </text>
+    </div>
+  </div>
+</template>
+
+<script>
+import router from "@system.router";
+import storage from '@system.storage';
+import prompt from '@system.prompt';
+import vibrator from '@system.vibrator';
+
+
+
+export default {
+  
+  private: {
+    mainPage:true,
+    pages:[false,false,false],
+    pag:false,
+    pagesLeft:0,
+    cnt_load:0,
+    start_flag:false,
+    showMain:false,
+    showPages:false,
+
+    recovery: false,
+    recoveryData: [],
+    settingsPage: false,
+    settings: {
+      textSpeed: 0,
+      textSize: 20,
+      bzz:true,
+      color:[255,255,255]
+    },
+    showText: '',
+    index: 0,
+    tips: false,
+    about:false,
+    enjoy:false,
+    showEnjoy:false,
+    willShow:0,
+    cgList:[1,2,3,4,5,6],
+    ssList:[999,998,997,996,995],
+    
+    colorList:[
+      {
+        name:"黄",
+        list:[112,197,0]
+      },
+      {
+        name:"绿",
+        list:[122,219,43]
+      },
+      {
+        name:"白",
+        list:[255,255,255]
+      },
+      {
+        name:"黑",
+        list:[0,0,0]
+      },
+      {
+        name:"肉",
+        list:[128,179,123]
+      }
+    ],
+    choise:0,
+    showX:0,
+    changing:false,
+    nowChange:3,
+    cnt:0,
+    showSS:false
+  },
+  onInit(){
+    storage.get({
+      key: 'recoveryData',
+      success: (data) => {
+        if(data){
+          this.recoveryData = JSON.parse(data);
+        }
+      },
+      fail:()=>{},
+    });
+    storage.get({
+      key: 'settings',
+      success: (data) => {
+        if(data){
+          this.settings = JSON.parse(data);
+        }
+      },
+      fail:()=>{},
+    });
+    storage.get({
+      key: 'tips',
+      success: (data) => {
+        if(data){
+          if(JSON.parse(data) !== 61){
+            this.tips = true;
+          }
+        }else{
+          this.tips = true;
+        }
+      },
+      fail:()=>{},
+    });
+
+    setInterval(this.mainCounter,20);
+  },
+
+  input(){
+    this.cnt++;
+    if(this.cnt%5==0){
+      prompt.showToast({message:"杰哥不要啦~"})
+    }
+    
+    if(this.cnt>=50){
+      this.showSS=true
+    }
+  },
+
+  mainCounter(){
+    // if(this.settings.bzz)console.log(`Buzzzzz~`)
+    // console.log(`now is${this.cnt_load}`)
+    if(this.pag && this.pagesLeft>-336)
+    {
+      this.pagesLeft-=this.unLine(5,1,-344,this.pagesLeft,0)
+    }
+    if(!this.pag && this.pagesLeft<0)
+    {
+      this.pagesLeft-=this.unLine(5,1,8,this.pagesLeft,0)
+    }
+
+    if(this.pagesLeft==0){
+      this.pages.fill(false);
+      this.showMain=true;
+    }
+    else if(this.pagesLeft==-336){
+      this.mainPage=false;
+      this.showPages=true;
+    }
+    else{
+      this.mainPage=true
+      this.showPages=false;
+      this.showMain=false;
+    }
+    
+  },
+
+  unLine(speed,mode,high,now,tim)//速度 形式 目标 现在高度 时刻
+  {
+    if(mode==1)//反比例
+    {
+      return Math.round((now-high)/speed)
+    }
+    // else if(mode==2)//二次
+    // {
+    //   return Math.round(       (-(Math.sqrt())*())        )
+    // }
+  },
+
+  showPage(sth){
+    if(this.settings.bzz)
+    {
+      vibrator.vibrate({
+        mode: 'short'
+      })
+       
+    }
+    this.pages[sth]=true;
+    this.pag=!this.pag;
+    if(sth==1)this.zhuzi();
+  },
+
+  lookCg(sth){
+    if(this.settings.bzz)
+    {
+      vibrator.vibrate({
+        mode: 'short'
+      })
+       
+    }
+    this.willShow=sth;
+    this.showPage(2);
+  },
+  toPage(page) {
+    if(this.settings.bzz)
+    {
+      vibrator.vibrate({
+        mode: 'short'
+      })
+       
+    }
+    router.push({uri: `pages/${page}`})
+  },
+  exit(){
+    if(this.settings.bzz)
+    {
+      vibrator.vibrate({
+        mode: 'short'
+      })
+       
+    }
+    this.$app.exit()
+  },
+  ban(){
+    console.log('ban')
+  },
+  toRecovery(){
+    if(this.settings.bzz)
+    {
+      vibrator.vibrate({
+        mode: 'short'
+      })
+       
+    }
+    if(this.recoveryData.length>0){this.recovery = true}
+  },
+  toSettings(){
+    if(this.settings.bzz)
+    {
+      vibrator.vibrate({
+        mode: 'short'
+      })
+       
+    }
+    this.settingsPage = true;
+    this.zhuzi();
+  },
+  back(a){
+    if(this.settings.bzz)
+    {
+      vibrator.vibrate({
+        mode: 'short'
+      })
+       
+    }
+    if(a.direction=='right'&&this.recovery){this.recovery = false}
+    else if(this.settingsPage){this.settingsPage = false;}
+    else if(a=='ab'){this.about=!this.about;}
+    else if(a=='ej'){this.showEnjoy=!this.showEnjoy;}
+    else if(a=='sh'){this.enjoy=!this.enjoy;}
+  },
+  loadRecoveryData(idx){
+    if(this.settings.bzz)
+    {
+      vibrator.vibrate({
+        mode: 'short'
+      })
+       
+    }
+    router.push({
+      uri: `pages/detail`,
+      params:{load: idx}
+    })
+  },
+  changeTextSize(e){
+    if(this.settings.bzz)
+    {
+      vibrator.vibrate({
+        mode: 'short'
+      })
+       
+    }
+    this.settings.textSize = e.progress;
+  },
+  changeTextSpeed(e){
+    if(this.settings.bzz)
+    {
+      vibrator.vibrate({
+        mode: 'short'
+      })
+       
+    }
+    this.settings.textSpeed = e.progress;
+  },
+  showXChange(e){
+    if(this.settings.bzz)
+    {
+      vibrator.vibrate({
+        mode: 'short'
+      })
+       
+    }
+    this.showX = e.progress;
+  },
+  zhuzi(){
+    const text = `QLWH好玩不\nABCDEFGHIJ\n您的支持即为今天！`
+    if (this.index < text.length){
+      this.showText += text.charAt(this.index);
+      this.index++;
+      setTimeout(() => {this.zhuzi()}, this.settings.textSpeed)
+    }
+    else{
+      if(this.pages[1]){
+        setTimeout(() => {
+          this.index = 0;
+          this.showText = '';
+          this.zhuzi()
+        }, 2000);
+      }
+    }
+  },
+  saveSettings(){
+    if(this.settings.bzz)
+    {
+      vibrator.vibrate({
+        mode: 'short'
+      })
+       
+    }
+    storage.set({
+      key: 'settings',
+      value: JSON.stringify(this.settings),
+      success: () => {prompt.showToast({message: '·已成功保存·'})},
+      fail:()=>{},
+    })
+  },
+  closeTips(){
+    vibrator.vibrate({
+      mode: 'long'
+    })
+    this.tips = false;
+    storage.set({
+      key: 'tips',
+      value: JSON.stringify(61),
+      success: () => {},
+      fail:()=>{},
+    })
+  },
+  buzz(e){
+    console.log(`now change to${e}`)
+    this.settings.bzz=e.checked;
+    
+  },
+}
+</script>
+
+<style>
+.btn {
+  position: absolute;
+  font-size: 32px;
+  left: 32px;
+  font-weight: bold;
+  color: #7C7041;
+  background-color: rgba(230, 193, 214, 0.671);
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 20px;
+  box-shadow: 6px 6px 8px 5px rgba(0, 0, 0, 0.2);
+}
+.mes {
+  position: absolute;
+  font-size: 25px;
+  left: 32px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: rgba(83, 83, 83, 0.527);
+  border: 4px solid rgba(14, 14, 14, 0.438);
+  border-radius: 10px;
+}
+.scroll1{
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  align-items: center;
+}
+.menu-btn {
+  width: 250px;
+  height: 61px;
+  background-color: rgba(247, 126, 197, 0.651);
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  border: 2px solid rgba(201, 64, 148, 0.5);
+  border-radius: 20px;
+  box-shadow: 6px 6px 8px 5px rgba(0, 0, 0, 0.2);
+}
+.scroll{
+  position: absolute;
+  bottom: 0;
+  top: 325px;
+  left: 8px;
+  right: 0;
+  width: 328px;
+  height: 155px;
+  overflow: hidden;
+}
+.slider{
+  flex: 1;
+  position: absolute;
+  width: 230px;
+  top: 125px;
+  left: 53px;
+  color:#b6607dd3 ;
+  
+}
+.text {
+  position: absolute;
+  font-size: 25px;
+  color: #FFFFFF;
+  top: 71px;
+  left: 18px;
+  font-weight: bold;
+  background-color: rgba(247, 126, 197, 0.671);
+  border: 2px solid rgb(201, 64, 148);
+  border-radius: 20px;
+}
+.font24{
+  font-size: 24px;
+  color: #9b1441b7;
+  font-weight: bold;
+  text-align: center;
+}
+
+.btn2 {
+  
+  font-size: 30px;
+  left: 50px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: rgb(59, 59, 59);
+  border: 5px solid rgba(104, 104, 104, 0.226);
+  border-radius: 20px;
+}
+
+.abo {
+  
+  font-size: 30px;
+  left: 50px;
+  font-weight: bold;
+  color: #646464;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.page {
+  width: 336px;
+  height: 480px;
+  position: absolute;
+}
+
+.inside{
+  margin-bottom: 8px;
+  left: 3px;
+  top: 86px;
+  width: 324px;
+  height: 440px;
+  opacity: 1;
+}
+
+.tex{
+  left: 19px;
+  top: 14px;
+  height: 45px;
+  opacity: 1;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 44.8px;
+  color: rgba(255, 255, 255, 1);
+  text-align: left;
+}
+
+.blackBtn{
+  position: absolute;
+  left:0px;
+  width: 324px;
+  min-height: 112px;
+  opacity: 1;
+  border-radius: 36px;
+  background-color: rgba(38, 38, 38, 1);
+  box-shadow: 6px 6px 8px 5px rgba(0, 0, 0, 0.2);
+}
+
+.title{
+  width: 182px;
+  height: 42px;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 44.8px;
+  color: rgba(255, 255, 255, 1);
+  text-align: center;
+  top:35px;
+  left:77px;
+  position: absolute;
+}
+
+.paragraphs{
+  width: 286px;
+  
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  line-height: 39.2px;
+  color: rgba(255, 255, 255, 0.6);
+  position: absolute;
+  left:19px;
+  top:61px;
+}
+</style>

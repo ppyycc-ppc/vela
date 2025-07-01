@@ -1,0 +1,33 @@
+{
+  "package": "com.bandpro.sianlianwanfa.remade.offirele",
+  "name": "千恋万花",
+  "versionName": "1.2.513",
+  "versionCode": 7,
+  "minPlatformVersion": 1000,
+  "icon": "/common/logo.png",
+  "deviceTypeList": [
+    "watch"
+  ],
+  "features": [
+    {"name": "system.router"},
+    {"name": "system.storage"},
+    {"name": "system.prompt"},
+    {"name": "system.file"},
+    { "name": "system.vibrator" }
+  ],
+  "config": {
+    "logLevel": "log",
+    "designWidth": 336
+  },
+  "router": {
+    "entry": "pages/index",
+    "pages": {
+      "pages/index": {
+        "component": "index"
+      },
+      "pages/detail": {
+        "component": "detail"
+      }
+    }
+  }
+}

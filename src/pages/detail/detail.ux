@@ -1,0 +1,548 @@
+<template>
+  <div class="page" @swipe="back">
+    <div class="page" style="background-color: #000000;" @click="nextDialogue">
+      <image src="/common/{{Img}}"></image>
+      <image src="/common/{{gameData.scenes[currentScene].Img}}" style="top:{{gameData.scenes[currentScene].ImgTop}}px;left:{{gameData.scenes[currentScene].ImgLeft}}px;position: absolute;" if="{{gameData.scenes[currentScene].Img !== undefined}}"></image>
+      <image style="position: absolute;top: 315px;left: 0;" src="/common/text_bg.png" if="{{gameData.scenes[currentScene].choices == undefined && Img !== 'bg.png'}}"></image>
+      <text style="position: absolute;top: 278px;left: 8px;font-size: 28px;color: rgb({{settings.color[0]}},{{settings.color[1]}},{{settings.color[2]}});font-weight: bold" if="{{gameData.scenes[currentScene].choices == undefined && Img !== 'bg.png'}}">{{character}}</text>
+      <scroll scroll-y="true" bounces="true" class="scroll" id="scroll" if="{{gameData.scenes[currentScene].choices == undefined && Img !== 'bg.png'}}">
+        <text style="color: rgb({{settings.color[0]}},{{settings.color[1]}},{{settings.color[2]}});font-weight: 700;width: 100%;text-align: left;font-size: {{settings.textSize}}px;">{{showText}}</text>
+      </scroll>
+    </div>
+    <!--选项页-->
+    <div class="page" style="position: absolute;" if="{{gameData.scenes[currentScene].choices !== undefined}}">
+      <!--选项1-->
+      <text class="choice" @click="selectChoice(0)">{{gameData.scenes[currentScene].choices[0].text}}</text>
+      <!--选项2-->
+      <text class="choice" style="top: 210px;" @click="selectChoice(1)">{{gameData.scenes[currentScene].choices[1].text}}</text>
+    </div>
+    <!--菜单页-->
+    <div class="page" style="position: absolute;flex-wrap: nowrap;flex-direction: column;justify-content: center;align-items: center;background-color: #ffffff;" if="{{menu}}">
+      <image src="/common/bg_set.png"></image>
+      <scroll scroll-y="true" bounces="true" class="scroll1 page">
+        <text class="menu-btn" @click="quickSave()">快速存档</text>
+        <text class="menu-btn" @click="quickRecoveryPage()">快速读档</text>
+        
+        <text class="menu-btn" @click="lastScene(1)">上个场景</text>
+        <text class="menu-btn" @click="skipScene(1)">下个场景</text>
+        <text class="menu-btn" @click="skipChapter()">下个章节</text>
+
+
+        <text class="menu-btn" @click="toRecoveryPage(1)">保存存档</text>
+        <text class="menu-btn" @click="toRecoveryPage(2)">加载存档</text>
+        
+        <text class="menu-btn" @click="back('c')">返回游戏</text>
+        <text class="menu-btn" @click="back('e')">返回主页</text>
+        
+      </scroll>
+      
+    </div>
+    <div class="page" style="position: absolute;background-color: #ffffff;" if="{{recovery===1}}" @swipe="back()">
+      <image src="/common/bg_set.png"></image>
+      <scroll scroll-y="true" bounces="true" class="scroll1 page">
+        <text class="menu-btn" style="font-size: 20px;">长按丢掉！点击篡位！</text>
+        <text class="menu-btn" for="{{recoveryData}}" style="font-size: 30px;" @click="saveRecoveryData($idx)" @longpress="deleteRecoveryData($idx)">保存的存档{{$idx+1}}</text>
+        <text class="menu-btn" style="font-size: 30px;" @click="saveRecoveryData('new')">新创建一个存档</text>
+      </scroll>
+    </div>
+    
+    <div class="page" style="position: absolute;background-color: #ffffff;" if="{{recovery===2}}" @swipe="back()">
+      <image src="/common/bg_set.png"></image>
+      <scroll scroll-y="true" bounces="true" class="scroll1 page">
+        <text class="menu-btn" style="font-size: 20px;">点击享受记忆瞬间！</text>
+        <text class="menu-btn" for="{{recoveryData}}" style="font-size: 30px;" @click="loadRecoveryData($idx)" @longpress="consoleData($idx)">保存的存档{{$idx+1}}</text>
+      </scroll>
+    </div>
+  </div>
+</template>
+
+<script>
+import router from '@system.router'
+import storage from '@system.storage';
+import prompt from '@system.prompt';
+import file from '@system.file';
+import vibrator from '@system.vibrator';
+
+export default {
+  private: {
+    gameData: {
+      scenes: [
+
+      ]
+    },
+    index: 0,
+    canContinue: true,
+    currentScene: 0,
+    currentDialogue: 0,
+    Img: 'bg.png',
+    showText: '',
+    character: '',
+    settings: {
+      textSpeed: 40,
+      textSize: 22,
+      bzz:true,
+      color:[255,255,255]
+    },
+    chapter: 0,
+    menu: false,
+    recovery: 0,
+    choice: [],
+    recoveryData: [],
+    load: null,
+    END: '',
+    chapterList:['b101','b102','b103','jz'],
+    quick:'none'
+  },
+  onInit(){
+    storage.get({
+      key: 'recoveryData',
+      success: (data) => {
+        if(data){
+          this.recoveryData = JSON.parse(data);
+          if(this.load){
+            this.loadRecoveryData(this.load);
+          }
+          else{
+            this.loadData(this.chapter);
+          }
+        }else{
+          this.loadData(this.chapter);
+        }
+      },
+      fail:()=>{},
+    });
+    storage.get({
+      key: 'settings',
+      success: (data) => {
+        if(data){
+          this.settings = JSON.parse(data);
+        }
+      },
+      fail:()=>{},
+    });
+    storage.get({
+      key: 'qS',
+      success: (data) => {
+        if(data){
+          this.quick = JSON.parse(data);
+        }
+      },
+      fail:()=>{},
+    });
+  },
+  loadData(chapter){
+    if(this.settings.bzz)
+    {
+      vibrator.vibrate({
+        mode: 'short'
+      })
+       
+    }
+    console.log('加载章节', this.chapterList[chapter])
+    file.readText({
+      uri: `/common/${this.chapterList[chapter]}.txt`,
+      success: (data)=> {
+        if(data){
+          this.gameData.scenes = JSON.parse(data.text);
+          this.loadScene(this.currentScene);
+
+        }
+      },
+      fail: (code)=> {
+        console.log(`handling fail, code = ${code}`);
+      }
+    });
+  },
+  // 显示背景图
+  showBackground(image) {
+    this.Img = image;
+  },
+  // 显示对话
+  showDialogue(dialogue) {
+    this.showText = '';
+    this.character = dialogue.character;
+    this.canContinue = false;
+    this.index = 0;
+    this.zhuzi(dialogue.text);
+  },
+  zhuzi(text){
+    if (this.index < text.length){
+      this.showText += text.charAt(this.index);
+      this.index++;
+      setTimeout(() => {this.zhuzi(text);}, this.settings.textSpeed);
+    }
+    else{this.canContinue=true;}
+  },
+  // 加载场景
+  loadScene(sceneIndex) {
+    const scene = this.gameData.scenes[sceneIndex];
+    this.showBackground(scene.background);
+    this.currentDialogue = 0;
+    if(scene.choices){return}
+    this.showDialogue(scene.dialogues[this.currentDialogue]);
+  },
+  // 下一段对话
+  nextDialogue() {
+    if(this.settings.bzz)
+    {
+      vibrator.vibrate({
+        mode: 'short'
+      })
+      // console.log(`bzzzzz~~~~`)
+       
+    }
+    if (this.canContinue) {
+      this.scrollToTop();//避免显示bug
+      this.canContinue = false;
+      const scene = this.gameData.scenes[this.currentScene];
+      if (this.currentDialogue < scene.dialogues.length - 1) {
+          this.currentDialogue++;
+          this.showDialogue(scene.dialogues[this.currentDialogue]);
+      } else if (this.currentScene < this.gameData.scenes.length - 1) {
+        if(scene.dialogues[this.currentDialogue].toScenes !== undefined){
+          console.log('跳转场景[选项]')
+          this.currentScene += scene.dialogues[this.currentDialogue].toScenes;
+          this.loadScene(this.currentScene);
+        }else{
+          console.log('跳转场景')
+          this.currentScene++;
+          this.loadScene(this.currentScene);
+        }
+      } else {
+        if(scene.dialogues[this.currentDialogue].END !== undefined){
+          this.END = scene.dialogues[this.currentDialogue].END;
+          this.getFin(this.END);
+        // 分支
+        }else if(scene.dialogues[this.currentDialogue].branch !== undefined){
+          console.log(this.choice)
+          console.log(scene.dialogues[this.currentDialogue].branch.choices)
+        }else{
+          this.Img = 'bg_set.png';
+          setTimeout(() => {
+            this.chapter++;
+            this.loadData(this.chapter);
+            this.currentScene = 0;
+            this.currentDialogue = 0;
+          }, 2000);
+        }
+      }
+    }
+  },
+  back(a){
+    if(this.settings.bzz)
+    {
+      vibrator.vibrate({
+        mode: 'short'
+      })
+       
+    }
+    if(a.direction=='right'||a=='c'){
+      if(this.recovery!==0){this.recovery = 0}
+      else if(this.menu){this.menu = false}
+      else{this.menu = true}
+    }
+    else if(a=='e'){global.runGC();router.replace({uri: "/pages/index"})}
+  },
+  // 选择选项
+  selectChoice(choiceIndex) {
+    if(this.settings.bzz)
+    {
+      vibrator.vibrate({
+        mode: 'short'
+      })
+       
+    }
+    console.log('选择选项', choiceIndex)
+    this.choice.push(choiceIndex);
+    console.log(this.choice)
+    const nextSceneIndex = this.gameData.scenes[this.currentScene].choices[choiceIndex].nextScene;
+    this.currentScene += nextSceneIndex;
+    this.loadScene(this.currentScene);
+  },
+  toRecoveryPage(a){
+    if(this.settings.bzz)
+    {
+      vibrator.vibrate({
+        mode: 'short'
+      })
+       
+    }
+    this.recovery = a;
+  },
+  saveRecoveryData(idx){
+    if(this.settings.bzz)
+    {
+      vibrator.vibrate({
+        mode: 'short'
+      })
+       
+    }
+    const data = {
+      chapter: this.chapter,
+      currentScene: this.currentScene,
+      currentDialogue: this.currentDialogue,
+      choice: this.choice,
+    }
+    if(idx === 'new'){
+      this.recoveryData.push(data);
+      prompt.showToast({message: '成功保存存档'})
+    }else{
+      this.recoveryData[idx] = data;
+      prompt.showToast({message: '成功覆盖存档'})
+    }
+    this.saveData()
+  },
+  deleteRecoveryData(idx){
+    vibrator.vibrate({
+      mode: 'long'
+    })
+    this.recoveryData.splice(idx, 1);
+    this.saveData()
+    prompt.showToast({message: '成功删除存档'})
+  },
+  quickRecoveryPage(){
+    if(this.settings.bzz)
+    {
+      vibrator.vibrate({
+        mode: 'short'
+      })
+       
+    }
+    storage.get({
+      key: 'qS',
+      success: (data) => {
+        if(data){
+          this.quick = JSON.parse(data);
+        }
+      },
+      fail:()=>{},
+    });
+    
+    //防止出现读取前一段内容
+    const data = this.quick;
+
+    
+    this.chapter = data.chapter;
+    this.currentScene = data.currentScene;
+    this.currentDialogue = data.currentDialogue;
+    this.choice = data.choice;
+    this.recovery = 0;
+    this.menu = false;
+    this.loadData(this.chapter);
+
+  },
+  loadRecoveryData(idx){
+    if(this.settings.bzz)
+    {
+      vibrator.vibrate({
+        mode: 'short'
+      })
+       
+    }
+    const data = this.recoveryData[idx];
+    console.log('加载存档', data)
+    this.chapter = data.chapter;
+    this.currentScene = data.currentScene;
+    this.currentDialogue = data.currentDialogue;
+    this.choice = data.choice;
+    this.recovery = 0;
+    this.menu = false;
+    this.loadData(this.chapter);
+  },
+
+  lastScene(a){
+    if(this.settings.bzz)
+    {
+      vibrator.vibrate({
+        mode: 'short'
+      })
+       
+    }
+    if(this.currentScene>0)
+    {
+      this.currentScene-=a;
+      this.loadScene(this.currentScene);
+      this.menu = false;
+    }
+    else
+    {
+      this.menu = false;
+      prompt.showToast({message: '·已经到开头了无法往前·'})
+    }
+  },
+
+  skipScene(a){
+    if(this.settings.bzz)
+    {
+      vibrator.vibrate({
+        mode: 'short'
+      })
+       
+    }
+    if(
+      this.gameData.scenes[this.currentScene].dialogues[this.gameData.scenes[this.currentScene].dialogues.length-1].toScenes ==undefined && 
+      this.gameData.scenes[this.currentScene].choices==undefined && 
+      this.gameData.scenes[this.currentScene].dialogues[this.gameData.scenes[this.currentScene].dialogues.length-1].END==undefined && 
+      this.gameData.scenes[this.currentScene].dialogues[this.gameData.scenes[this.currentScene].dialogues.length-1].branch==undefined&&
+      this.currentScene+a<this.gameData.scenes.length
+    )
+    {
+      this.currentScene+=a;
+      this.loadScene(this.currentScene);
+      this.menu = false;
+    }else{
+      this.menu = false;
+      prompt.showToast({message: '重要剧情或结尾，无法跳过'})
+    }
+  },
+  skipChapter(){
+    if(this.settings.bzz)
+    {
+      vibrator.vibrate({
+        mode: 'short'
+      })
+       
+    }
+    this.Img = '..\..\common\bg_set.png';
+    this.menu = false;
+    this.chapter++;
+    this.loadData(this.chapter);
+    this.currentScene = 0;
+    this.currentDialogue = 0;
+  },
+  saveData(){
+    if(this.settings.bzz)
+    {
+      vibrator.vibrate({
+        mode: 'short'
+      })
+       
+    }
+    storage.set({
+      key: 'recoveryData',
+      value: JSON.stringify(this.recoveryData),
+      success: () => {},
+      fail:()=>{},
+    })
+  },
+  quickSave()
+  {
+    if(this.settings.bzz)
+    {
+      vibrator.vibrate({
+        mode: 'short'
+      })
+       
+    }
+    const data = {
+      chapter: this.chapter,
+      currentScene: this.currentScene,
+      currentDialogue: this.currentDialogue,
+      choice: this.choice,
+    };
+    
+    storage.set({
+      key: 'qS',
+      value: JSON.stringify(data),
+
+      success: () => {prompt.showToast({message:'已快速存档'})},
+      fail:()=>{},
+    })
+  },
+  getFin(a){
+    let fin = {};
+    storage.get({
+      key: 'fin',
+      success: (data) => {
+        if(data){
+          fin = JSON.parse(data);
+        }else{
+          fin = {"HE": false, "BE": false}
+        }
+        if(a=="Happy Ending"){
+          fin.HE = true;
+        }else if(a=="Bad Ending"){
+          fin.BE = true;
+        }
+        this.saveFin(fin);
+      },
+      fail:()=>{},
+    });
+  },
+  saveFin(a){
+    storage.set({
+      key: 'fin',
+      value: JSON.stringify(a),
+      success: () => {},
+      fail:()=>{},
+    })
+  },
+  consoleData(idx){
+    console.log('存档数据', this.recoveryData[idx])
+  },
+  scrollToTop() {
+    this.$element('scroll').scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'instant'
+    })
+  },
+}
+</script>
+
+<style>
+.page {
+  width: 336px;
+  height: 480px;
+}
+.scroll{
+  position: absolute;
+  bottom: 0;
+  top: 325px;
+  left: 8px;
+  right: 0;
+  width: 328px;
+  height: 155px;
+  overflow: hidden;
+  flex-wrap: wrap;
+}
+.scroll1{
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  align-items: center;
+}
+.choice {
+  position: absolute;
+  width: 250px;
+  height: 61px;
+  left: 43px;
+  top: 100px;
+  background-color: rgba(53, 53, 53, 0.856);
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 20px;
+  box-shadow: 6px 6px 8px 5px rgba(0, 0, 0, 0.2);
+}
+.menu-btn {
+  width: 250px;
+  height: 61px;
+  background-color: rgba(247, 126, 197, 0.651);
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  border: 2px solid rgba(201, 64, 148, 0.5);
+  border-radius: 20px;
+  box-shadow: 6px 6px 8px 5px rgba(0, 0, 0, 0.2);
+}
+</style>

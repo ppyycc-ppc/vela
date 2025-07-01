@@ -1,0 +1,2166 @@
+[
+{
+  "background": "hall1.png",
+  "dialogues": [
+    {
+      "character": "",
+      "text": "首先映入眼帘的，是排着队的观光客。"
+    },
+    {
+      "character": "",
+      "text": "差不多有三十个人的队伍里，有一半以上都是男性，\n其中有七八位女性。"
+    },
+    {
+      "character": "",
+      "text": "在列队的观光客前面，摆着一把刀。"
+    },
+    {
+      "character": "将臣",
+      "text": "「真的是插在那里的啊……」"
+    },
+    {
+      "character": "",
+      "text": "明明是室内，却有一块大大的石头镇座其中，其中心则插着一把日本刀。"
+    },
+    {
+      "character": "",
+      "text": "从岩石当中刺出的刀身十分美丽，散发着夺目的银色光芒。"
+    },
+    {
+      "character": "",
+      "text": "这把犹如再现了亚瑟王传说的刀，正是这个神社的御神刀。"
+    },
+    {
+      "character": "",
+      "text": "现在搞的活动，就是『有人能拔出这把刀吗！？』。"
+    }
+  ]
+},
+{
+  "background": "hall1.png",
+  "Img":"item_human3_2.png",
+  "dialogues": [
+    {
+      "character": "廉太郎",
+      "text": "「你是第一次来神社吗？」"
+    },
+    {
+      "character": "将臣",
+      "text": "「记得正月的时候有去参拜过……但就仅仅如此了」"
+    },
+    {
+      "character": "将臣",
+      "text": "「还是第一次走到里面来」"
+    }
+  ]
+},
+{
+  "background": "hall1.png",
+  "Img":"item_human1_2.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "「那把御神刀，就是传说中击退了妖怪的刀，『丛雨丸』哦」"
+    },
+    {
+      "character": "将臣",
+      "text": "「那把刀真的拔不出来吗？」"
+    }
+  ]
+},
+{
+  "background": "hall1.png",
+  "Img":"item_human4_7.png",
+  "dialogues": [
+    {
+      "character": "小春",
+      "text": "「不行不行。不管怎么用力，那把刀连一毫米都不会动的」"
+    }
+  ]
+},
+{
+  "background": "hall1.png",
+  "Img":"item_human3_3.png",
+  "dialogues": [
+    {
+      "character": "廉太郎",
+      "text": "「我也尝试过，确实不行。不管是推还是拉，都纹丝不动」"
+    },
+    {
+      "character": "廉太郎",
+      "text": "「搞得我有些火大，干脆横着用力，还是一动都不动」"
+    },
+    {
+      "character": "将臣",
+      "text": "「别乱来啊，要是断掉了怎么办」"
+    },
+    {
+      "character": "廉太郎",
+      "text": "「要是那种程度就断掉的话，那早该在之前被人挑战的时候断掉了」"
+    },
+    {
+      "character": "将臣",
+      "text": "「话是这么说没错……」"
+    }
+  ]
+},
+{
+  "background": "hall1.png",
+  "dialogues": [
+    {
+      "character": "",
+      "text": "这样的挑战活动似乎从很久以前就有在举行了，而且一开始的时候也是没有设什么限制的。"
+    },
+    {
+      "character": "",
+      "text": "但现在观光客增加了，接待不过来，所以就通过事先抽选来决定挑战者了。"
+    },
+    {
+      "character": "",
+      "text": "这个活动在外国游客中……特别是在欧美国家的游客之中很受欢迎。"
+    },
+    {
+      "character": "",
+      "text": "由挂着一脸天真无邪的笑容的粗鲁男人们开始，一个接一个地使出了吃奶的劲儿，憋得满脸通红。"
+    }
+  ]
+},
+{
+  "background": "hall1.png",
+  "dialogues": [
+    {
+      "character": "外国观光客Ａ",
+      "text": "「哼、嗯嗯嗯嗯嗯嗯嗯————————！」"
+    },
+    {
+      "character": "外国观光客Ｂ",
+      "text": "「嗯咿咿咿咿咿——————！　呼嗯嘎呼呼！」"
+    },
+    {
+      "character": "外国观光客Ｃ",
+      "text": "「呼，嗯嗯嗯————！　哇咻咿咿咿咿咿咿咿咿咿咿！」"
+    },
+    {
+      "character": "",
+      "text": "即便是手腕都有我的大腿粗的猛男上去挑战，那把刀也纹丝不动。"
+    }
+  ]
+},
+{
+  "background": "hall1.png",
+  "Img":"item_human3_3.png",
+  "dialogues": [
+    {
+      "character": "廉太郎",
+      "text": "「虽然明白你怀疑的心情，但你觉得那些拼命的肌肉男有在使诈吗？」"
+    }
+  ]
+},
+{
+  "background": "hall1.png",
+  "Img":"item_human1_2.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "「我们也没有听说过使诈之类的传言。而且要是说这些傻话，也会被父母训斥的呢」"
+    }
+  ]
+},
+{
+  "background": "hall1.png",
+  "Img":"item_human4_5.png",
+  "dialogues": [
+    {
+      "character": "小春",
+      "text": "「还有，我觉得外公也不喜欢搞那些手段」"
+    },
+    {
+      "character": "将臣",
+      "text": "「那也是」"
+    }
+  ]
+},
+{
+  "background": "hall1.png",
+  "dialogues": [
+    {
+      "character": "",
+      "text": "就算是为了小镇而对真相闭口不言，也不会直接地协助这种活动吧。"
+    },
+    {
+      "character": "",
+      "text": "这么一来……这活动真的………………"
+    },
+    {
+      "character": "将臣",
+      "text": "「算了，不管了」"
+    },
+    {
+      "character": "",
+      "text": "不管怎么说，都跟我没有关系。"
+    },
+    {
+      "character": "",
+      "text": "比起这个——"
+    },
+    {
+      "character": "将臣",
+      "text": "「——啊，找到了」"
+    }
+  ]
+},
+{
+  "background": "hall1.png",
+  "Img":"item_human5_1.png",
+  "dialogues": [
+    {
+      "character": "祖父・玄十郎",
+      "text": "「………」"
+    },
+    {
+      "character": "",
+      "text": "外公用一如既往的严厉视线眺望着挑战活动。"
+    },
+    {
+      "character": "",
+      "text": "我慢慢向他走了过去。"
+    }
+  ]
+},
+{
+  "background": "hall1.png",
+  "dialogues": [
+    {
+      "character": "将臣",
+      "text": "「好久不见了。我是将臣」"
+    }
+  ]
+},
+{
+  "background": "hall1.png",
+  "Img":"item_human5_1.png",
+  "dialogues": [
+    {
+      "character": "玄十郎",
+      "text": "「嗯？」"
+    },
+    {
+      "character": "将臣",
+      "text": "「………」"
+    },
+    {
+      "character": "",
+      "text": "果然很有震慑力啊……"
+    },
+    {
+      "character": "将臣",
+      "text": "「我是来给旅馆帮忙的。虽然会给您添麻烦，但这段时间就拜托您关照了」"
+    }
+  ]
+},
+{
+  "background": "hall1.png",
+  "Img":"item_human5_3.png",
+  "dialogues": [
+    {
+      "character": "玄十郎",
+      "text": "「你还好吗？」"
+    },
+    {
+      "character": "玄十郎",
+      "text": "「身体怎么样？　没有搞坏吧？」"
+    },
+    {
+      "character": "将臣",
+      "text": "「嗯，我没事」"
+    },
+    {
+      "character": "玄十郎",
+      "text": "「听说你不练剑道了啊」"
+    },
+    {
+      "character": "将臣",
+      "text": "「那个……是的」"
+    },
+    {
+      "character": "玄十郎",
+      "text": "「身体好就行了。那本来就是为了强身健体才让你练的」"
+    },
+    {
+      "character": "玄十郎",
+      "text": "「总而言之，这段时间就拜托你了。有什么事就别客气，尽管说。记得别勉强自己」"
+    },
+    {
+      "character": "将臣",
+      "text": "「谢谢您」"
+    },
+    {
+      "character": "",
+      "text": "……呼。这样就算是打过招呼了吧。"
+    },
+    {
+      "character": "",
+      "text": "都已经过了古稀之年了，这种气势还没有衰弱……真是恐怖啊。"
+    },
+    {
+      "character": "玄十郎",
+      "text": "「………」"
+    },
+    {
+      "character": "将臣",
+      "text": "「那个，我换个问题……那把刀是真的插在岩石里面的吗？」"
+    },
+    {
+      "character": "玄十郎",
+      "text": "「你不知道传说吗？」"
+    },
+    {
+      "character": "将臣",
+      "text": "「知道是知道……是日本刀吧？」"
+    },
+    {
+      "character": "玄十郎",
+      "text": "「因为那是被神明托付的、特别的日本刀啊」"
+    },
+    {
+      "character": "将臣",
+      "text": "「………」"
+    },
+    {
+      "character": "玄十郎",
+      "text": "「也不是不明白你的怀疑，但那并没有什么机关」"
+    },
+    {
+      "character": "将臣",
+      "text": "「那真的是可以拔出来的吗？　看起来完全一动不动啊」"
+    },
+    {
+      "character": "玄十郎",
+      "text": "「单纯用力量是没办法拔出来的」"
+    },
+    {
+      "character": "将臣",
+      "text": "「那是要用技巧？」"
+    },
+    {
+      "character": "玄十郎",
+      "text": "「……不是技巧……应该是资格吧」"
+    }
+  ]
+},
+{
+  "background": "hall1.png",
+  "Img":"item_human5_2.png",
+  "dialogues": [
+    {
+      "character": "将臣",
+      "text": "「………？」"
+    },
+    {
+      "character": "",
+      "text": "那是什么意思呢？"
+    }
+  ]
+},
+{
+  "background": "hall1.png",
+  "Img":"item_human5_1.png",
+  "dialogues": [
+    {
+      "character": "玄十郎",
+      "text": "「说起来……将臣你有参加过吗？」"
+    },
+    {
+      "character": "将臣",
+      "text": "「我还是第一次看见这个」"
+    }
+  ]
+},
+{
+  "background": "hall1.png",
+  "Img":"item_human5_2.png",
+  "dialogues": [
+    {
+      "character": "玄十郎",
+      "text": "「是吗……」"
+    },
+    {
+      "character": "玄十郎",
+      "text": "「那正好有机会。将臣你也试一次看看吧」"
+    },
+    {
+      "character": "将臣",
+      "text": "「咦？　我吗？　我又没有事先参加过抽选」"
+    },
+    {
+      "character": "玄十郎",
+      "text": "「没问题。我去说说。你等一下」"
+    },
+    {
+      "character": "",
+      "text": "在我答应之前，外公就走到了看上去像神主的人面前，说了些什么。"
+    },
+    {
+      "character": "",
+      "text": "真的要让我也去试试吗？"
+    }
+  ]
+},
+{
+  "background": "hall1.png",
+  "Img":"item_human3_2.png",
+  "dialogues": [
+    {
+      "character": "廉太郎",
+      "text": "「嗯？　怎么了吗？」"
+    },
+    {
+      "character": "将臣",
+      "text": "「他突然说让我上去挑战一下什么的」"
+    },
+    {
+      "character": "将臣",
+      "text": "「究竟是怎么一回事……要是我没拔出来的话，他会生气吗……？」"
+    }
+  ]
+},
+{
+  "background": "hall1.png",
+  "Img":"item_human1_2.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "「不会的啦。放轻松去挑战一下不就好了？」"
+    }
+  ]
+},
+{
+  "background": "hall1.png",
+  "Img":"item_human4_3.png",
+  "dialogues": [
+    {
+      "character": "小春",
+      "text": "「我和廉哥也被他怂恿过，应该没什么深意吧？」"
+    }
+  ]
+},
+{
+  "background": "hall1.png",
+  "Img":"item_human3_1.png",
+  "dialogues": [
+    {
+      "character": "廉太郎",
+      "text": "「说起来确实有过呢」"
+    },
+    {
+      "character": "廉太郎",
+      "text": "「我也觉得你不需要介意哦。我和小春失败的时候，他也没说什么」"
+    }
+  ]
+},
+{
+  "background": "hall1.png",
+  "Img":"item_human4_2.png",
+  "dialogues": [
+    {
+      "character": "小春",
+      "text": "「你太害怕爷爷啦，哥哥」"
+    },
+    {
+      "character": "将臣",
+      "text": "「像这样偶尔才见一面，以前的印象一直没有更新啊」"
+    }
+  ]
+},
+{
+  "background": "hall1.png",
+  "Img":"item_human3_3.png",
+  "dialogues": [
+    {
+      "character": "廉太郎",
+      "text": "「嗯ー，也不是不能理解。毕竟我也被他训过好多次……」"
+    }
+  ]
+},
+{
+  "background": "hall1.png",
+  "Img":"item_human4_9.png",
+  "dialogues": [
+    {
+      "character": "小春",
+      "text": "「不都是因为你做的那些傻事吗。我可没怎么被爷爷训过哦」"
+    }
+  ]
+},
+{
+  "background": "hall1.png",
+  "Img":"item_human1_7.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "「是ー啊ー……廉太郎可是很淘气的。不仅是小时候，连现在也是……呵呵呵」"
+    }
+  ]
+},
+{
+  "background": "hall1.png",
+  "Img":"item_human4_8.png",
+  "dialogues": [
+    {
+      "character": "小春",
+      "text": "「反正你今天也是打算跟来看祭典的客人们搭讪的吧？」"
+    }
+  ]
+},
+{
+  "background": "hall1.png",
+  "Img":"item_human3_3.png",
+  "dialogues": [
+    {
+      "character": "廉太郎",
+      "text": "「——呜！？」"
+    }
+  ]
+},
+{
+  "background": "hall1.png",
+  "Img":"item_human1_7.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "「啊，说中啦ー。然后呢？　结果怎么样了？」"
+    }
+  ]
+},
+{
+  "background": "hall1.png",
+  "Img":"item_human3_3.png",
+  "dialogues": [
+    {
+      "character": "廉太郎",
+      "text": "「……全都白费力气了」"
+    }
+  ]
+},
+{
+  "background": "hall1.png",
+  "Img":"item_human1_7.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "「搭讪了几次？」"
+    }
+  ]
+},
+{
+  "background": "hall1.png",
+  "Img":"item_human3_2.png",
+  "dialogues": [
+    {
+      "character": "廉太郎",
+      "text": "「１３次左右？」"
+    },
+    {
+      "character": "将臣",
+      "text": "「也太多了吧！　而且还全都落空了啊！」"
+    }
+  ]
+},
+{
+  "background": "hall1.png",
+  "Img":"item_human4_7.png",
+  "dialogues": [
+    {
+      "character": "小春",
+      "text": "「那就是廉哥哥的实力啊」"
+    }
+  ]
+},
+{
+  "background": "hall1.png",
+  "Img":"item_human3_2.png",
+  "dialogues": [
+    {
+      "character": "廉太郎",
+      "text": "「别小看我！　别小看我啊！　虽然不是经常击中，但也有打到本垒打的时候！」"
+    },
+    {
+      "character": "将臣",
+      "text": "「廉太郎去搭讪啊……以前明明还那么胆小的」"
+    }
+  ]
+},
+{
+  "background": "hall1.png",
+  "Img":"item_human3_3.png",
+  "dialogues": [
+    {
+      "character": "廉太郎",
+      "text": "「或许是当时的反作用吧」"
+    }
+  ]
+},
+{
+  "background": "hall1.png",
+  "Img":"item_human1_6.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "「玄十郎先生都已经骂过你好多遍了，就是不长记性ー」"
+    }
+  ]
+},
+{
+  "background": "hall1.png",
+  "Img":"item_human3_3.png",
+  "dialogues": [
+    {
+      "character": "廉太郎",
+      "text": "「是爷爷太严格啦。现在搭个讪什么的很平常吧」"
+    },
+    {
+      "character": "廉太郎",
+      "text": "「他总是一副臭脸地说什么“邂逅是不应该强求的”」"
+    },
+    {
+      "character": "将臣",
+      "text": "「………」"
+    },
+    {
+      "character": "",
+      "text": "听他刚才的说法……像是经常玩女人的感觉？"
+    },
+    {
+      "character": "",
+      "text": "这种败北感……是怎么回事呢。"
+    },
+    {
+      "character": "将臣",
+      "text": "「不过啊，廉太郎竟然会搭讪……」"
+    },
+    {
+      "character": "",
+      "text": "他明明以前是认真地跟我一起练剑道的呢……"
+    },
+    {
+      "character": "",
+      "text": "时间过得真快啊。"
+    }
+  ]
+},
+{
+  "background": "hall1.png",
+  "Img":"item_human5_1.png",
+  "dialogues": [
+    {
+      "character": "玄十郎",
+      "text": "「将臣！」"
+    },
+    {
+      "character": "将臣",
+      "text": "「啊，我在」"
+    },
+    {
+      "character": "玄十郎",
+      "text": "「可以了哦，过来这边」"
+    }
+  ]
+},
+{
+  "background": "hall1.png",
+  "dialogues": [
+    {
+      "character": "",
+      "text": "不知什么时候，排着队等着挑战的人都挑战完了。"
+    },
+    {
+      "character": "",
+      "text": "房间里就只有我们和外公。还有看着像神主的男性而已。"
+    },
+    {
+      "character": "",
+      "text": "所有人的视线都集中到了我身上。被这样盯着看，我会紧张的……"
+    },
+    {
+      "character": "",
+      "text": "快点搞定吧。"
+    },
+    {
+      "character": "",
+      "text": "那才是能够最快地从他们的注目礼下逃出来的方法。"
+    }
+  ]
+},
+{
+  "background": "hall1.png",
+  "Img":"item_human5_1.png",
+  "dialogues": [
+    {
+      "character": "将臣",
+      "text": "「有什么特别的礼法吗？」"
+    },
+    {
+      "character": "玄十郎",
+      "text": "「这个嘛……虽然没什么正式的礼法，但姑且还是打个招呼吧」"
+    }
+  ]
+},
+{
+  "background": "hall1.png",
+  "dialogues": [
+    {
+      "character": "",
+      "text": "我站在插在岩石里的日本刀前面，稍微行了个礼。"
+    },
+    {
+      "character": "",
+      "text": "之后伸出双手，牢牢握住了刀柄的瞬间——"
+    }
+  ]
+},
+{
+  "background": "none.png",
+  "dialogues": [
+    {
+      "character": "",
+      "text": "..."
+    }
+  ]
+},
+{
+  "background": "hall1.png",
+  "dialogues": [
+    {
+      "character": "",
+      "text": "有种电流似的感觉从指尖扩散到了全身。"
+    },
+    {
+      "character": "",
+      "text": "是静电吗……？　日本刀上面有静电？　明明碰到的地方是刀柄哦……？"
+    }
+  ]
+},
+{
+  "background": "hall1.png",
+  "Img":"item_human5_1.png",
+  "dialogues": [
+    {
+      "character": "玄十郎",
+      "text": "「怎么了？」"
+    },
+    {
+      "character": "将臣",
+      "text": "「啊，不，没事」"
+    }
+  ]
+},
+{
+  "background": "hall1.png",
+  "Img":"cg1.png",
+  "dialogues": [
+    {
+      "character": "将臣",
+      "text": "「那么，呃……」"
+    },
+    {
+      "character": "",
+      "text": "快点结束吧。"
+    },
+    {
+      "character": "",
+      "text": "为了不手滑，我牢牢地握住了刀柄。"
+    },
+    {
+      "character": "",
+      "text": "哦……比预想中的还要硬。"
+    },
+    {
+      "character": "",
+      "text": "也是，要是不稍微认真一点地用点力的话，外公或许会生气呢。"
+    },
+    {
+      "character": "将臣",
+      "text": "「——混」"
+    }
+  ]
+},
+{
+  "background": "hall1.png",
+  "Img":"cg2.png",
+  "dialogues": [
+    {
+      "character": "小春·芦花",
+      "text": "『哇』"
+    },
+    {
+      "character": "廉太郎",
+      "text": "「不是吧」"
+    },
+    {
+      "character": "将臣",
+      "text": "「……啊……？」"
+    },
+    {
+      "character": "",
+      "text": "刚刚不是还很硬实的吗。"
+    },
+    {
+      "character": "",
+      "text": "没想到日本刀出乎意料地，轻易就离开了岩石。"
+    },
+    {
+      "character": "",
+      "text": "可刀尖却还是刺在岩石里面。"
+    },
+    {
+      "character": "将臣",
+      "text": "「………………」"
+    },
+    {
+      "character": "将臣",
+      "text": "「……哈？」"
+    },
+    {
+      "character": "",
+      "text": "……折断了吗？"
+    },
+    {
+      "character": "",
+      "text": "我姑且尝试着把它推回到原来的位置，而它……也确实摆不回原位。"
+    },
+    {
+      "character": "将臣",
+      "text": "「啊、啊、啊、啊、啊……哈哈哈哈哈」"
+    },
+    {
+      "character": "将臣",
+      "text": "「啊哈哈哈哈哈哈，笑死了，这算什么啊，啊哈哈哈哈哈，好搞笑ー」"
+    },
+    {
+      "character": "将臣",
+      "text": "「喂，廉太郎，你看看。瞧啊，来拿着看看！」"
+    },
+    {
+      "character": "廉太郎",
+      "text": "「等等，你干嘛推给我啊！　别过来！　跟我没关系！」"
+    },
+    {
+      "character": "将臣",
+      "text": "「不不不！　你不是说过的吗！　说它牢牢地固定住了不是吗！」"
+    },
+    {
+      "character": "廉太郎",
+      "text": "「我是说过啦！　\n但你也不用折断它吧！？　一般人会把它折断吗！？」"
+    },
+    {
+      "character": "将臣",
+      "text": "「我可没打算折断它，话说，我原本就没使劲啊！」"
+    },
+    {
+      "character": "廉太郎",
+      "text": "「不管怎么说，现实是断刀就在你手中了。放弃吧」"
+    },
+    {
+      "character": "将臣",
+      "text": "「这是整人吧？　这是在整人吗？　我被整了吧！？」"
+    },
+    {
+      "character": "廉太郎",
+      "text": "「不知道不知道。我什么都不知道！」"
+    },
+    {
+      "character": "将臣",
+      "text": "「拜托你就说是吧啊啊啊」"
+    },
+    {
+      "character": "廉太郎",
+      "text": "「都说不知道了！　别把我卷进来啊啊啊啊！」"
+    },
+    {
+      "character": "将臣",
+      "text": "这把刀的刀身漂亮地折断变短了。"
+    },
+    {
+      "character": "将臣",
+      "text": "可手上的分量却是切实的……这是现实……不是做梦或是幻想。"
+    },
+    {
+      "character": "廉太郎",
+      "text": "「啊ー……差不多是时候吃晚饭了呢ー」"
+    },
+    {
+      "character": "芦花",
+      "text": "「啊ー……我差不多要回去了ー……得工作才行呢ー」"
+    },
+    {
+      "character": "小春",
+      "text": "「啊ー……我也还有作业没做……」"
+    },
+    {
+      "character": "将臣",
+      "text": "「等等，别丢下我！　别留下我一个人啊！」"
+    }
+  ]
+},
+{
+  "background": "hall1.png",
+  "Img":"item_human5_1.png",
+  "dialogues": [
+    {
+      "character": "玄十郎",
+      "text": "「………」"
+    },
+    {
+      "character": "将臣",
+      "text": "「噫」"
+    },
+    {
+      "character": "玄十郎",
+      "text": "「………………」"
+    },
+    {
+      "character": "将臣",
+      "text": "「唏咿咿咿咿咿咿！！！」"
+    }
+  ]
+},
+{
+  "background": "sky2.png",
+  "dialogues": [
+    {
+      "character": "将臣",
+      "text": "「………」"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":null,
+  "dialogues": [
+    {
+      "character": "将臣",
+      "text": "「我……今后会被怎样啊……？」"
+    },
+    {
+      "character": "",
+      "text": "外公让东跑西窜的我等在这里，自己不知道跑哪儿去了。"
+    },
+    {
+      "character": "",
+      "text": "芦花姐他们已经回去了……应该说，是外公让他们回去的，现在在场的就只有我一个人了。"
+    },
+    {
+      "character": "将臣",
+      "text": "「………」"
+    },
+    {
+      "character": "将臣",
+      "text": "「真是不安啊……超级不安啊……」"
+    },
+    {
+      "character": "",
+      "text": "之后又听到了『没想到会发生这样的事情……』之类的、『没想到真的出现了……』这种喃喃似的声音。"
+    },
+    {
+      "character": "",
+      "text": "看来他们也完全没想到会发生这种事。"
+    },
+    {
+      "character": "",
+      "text": "也对。毕竟这是吸引游客到穂织来的重要活动之一……"
+    },
+    {
+      "character": "",
+      "text": "都让我给搅和了。"
+    },
+    {
+      "character": "将臣",
+      "text": "「啊啊啊啊啊啊啊！　不妙！　这下非常不妙！」"
+    },
+    {
+      "character": "",
+      "text": "是要让折断了日本刀的我负起责任来吗！？"
+    },
+    {
+      "character": "",
+      "text": "既然这样，是要让我赔偿损失？　不仅是要赔偿损坏的日本刀，还要算上我搅和了这一活动……应该会让我赔很多钱吧。"
+    },
+    {
+      "character": "",
+      "text": "几千万？　不，搞不好要几个亿？　或许还要更多……"
+    },
+    {
+      "character": "将臣",
+      "text": "「我……怎么赔得起啊」"
+    },
+    {
+      "character": "",
+      "text": "之后……"
+    }
+  ]
+},
+{
+  "background": "sky2.png",
+  "Img":null,
+  "dialogues": [
+    {
+      "character": "黑衣人Ａ",
+      "text": "「小哥，你不还钱，我们很难做的啊」"
+    },
+    {
+      "character": "黑衣人Ｂ",
+      "text": "「因为太多了所以还不起？　那可不关我们的事啊」"
+    },
+    {
+      "character": "黑衣人Ａ",
+      "text": "「而且会变成这样，都要怪你自己吧？」"
+    },
+    {
+      "character": "黑衣人Ｂ",
+      "text": "「那你就要给钱了。责任不就是这么回事吗？」"
+    },
+    {
+      "character": "黑衣人Ａ",
+      "text": "「但是……俗话说巧妇难为无米之炊嘛」"
+    },
+    {
+      "character": "黑衣人Ｂ",
+      "text": "「为了这样的你，为了这样的你呢！　我们就给你介绍一份工作吧！」"
+    },
+    {
+      "character": "黑衣人Ａ",
+      "text": "「那是在地下的某个设施里面，只要你在那里工作，就不用付利息了！」"
+    },
+    {
+      "character": "黑衣人Ｂ",
+      "text": "「而且包吃包住，没有必要外出，能够集中精神工作！　还有赌博这种娱乐哦！」"
+    },
+    {
+      "character": "黑衣人Ａ",
+      "text": "「来，我们走吧，有地将臣先生！」"
+    },
+    {
+      "character": "黑衣人Ｂ",
+      "text": "「来吧！　走吧走吧！」"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":null,
+  "dialogues": [
+    {
+      "character": "将臣",
+      "text": "「我不要打黑工啊———！」"
+    },
+    {
+      "character": "",
+      "text": "干脆逃走吧……？"
+    },
+    {
+      "character": "",
+      "text": "不，有外公在，我逃也没有用。还是老实地等候发落吧。"
+    },
+    {
+      "character": "",
+      "text": "因为太过意不去了，我自然而然就端正地跪坐着等了起来。"
+    },
+    {
+      "character": "将臣",
+      "text": "「……唉……」"
+    },
+    {
+      "character": "将臣",
+      "text": "「会被骂也是没办法的。希望至少快点搞定吧」"
+    },
+    {
+      "character": "",
+      "text": "我在这安静的房间里面，静静地等着外公回来。"
+    },
+    {
+      "character": "",
+      "text": "就在这时，我听到了一个声音。"
+    },
+    {
+      "character": "？？？",
+      "text": "「唔。你就是吾辈的主人吗？」"
+    },
+    {
+      "character": "将臣",
+      "text": "「……嗯？」"
+    },
+    {
+      "character": "",
+      "text": "我听到了……一个声音。"
+    },
+    {
+      "character": "",
+      "text": "但这个房间里……应该只有我一个人吧？"
+    },
+    {
+      "character": "？？？",
+      "text": "「我在这边，这边」"
+    },
+    {
+      "character": "",
+      "text": "那声音是从头上传来的——"
+    }
+  ]
+},
+{
+  "background": "item_human6_cg_1.png",
+  "Img":null,
+  "dialogues": [
+    {
+      "character": "将臣",
+      "text": "「呜、呜哦！？」"
+    },
+    {
+      "character": "？？？",
+      "text": "「哦？　看你这么惊讶的样子，应该是能看见我的样子，听见我的声音的吧」"
+    },
+    {
+      "character": "",
+      "text": "在我的视线前方，有一个少女。"
+    },
+    {
+      "character": "",
+      "text": "双脚完全浮在空中……轻飘飘的，像是游荡着一样地俯视着我。"
+    },
+    {
+      "character": "将臣",
+      "text": "「浮、浮在半空……唏！　幽、幽灵……！？」"
+    },
+    {
+      "character": "？？？",
+      "text": "「才不是！　吾辈才不是什么幽灵呢！」"
+    },
+    {
+      "character": "将臣",
+      "text": "「但你……为什么浮在半空啊……」"
+    }
+  ]
+},
+{
+  "background": "item_human6_cg_2.png",
+  "Img":null,
+  "dialogues": [
+    {
+      "character": "丛雨",
+      "text": "「吾辈名为丛雨。是『丛雨丸』的管理者……嗯，就像是『丛雨丸』的灵魂一样的东西」"
+    },
+    {
+      "character": "将臣",
+      "text": "「难不成，要、要对折断了这把刀的我复仇……？」"
+    },
+    {
+      "character": "丛雨",
+      "text": "「都说吾辈不是幽灵了好吧！」"
+    },
+    {
+      "character": "丛雨",
+      "text": "「再说了，只是折断这种程度而已，没必要对你复仇。这点小事，丛雨丸马上就会恢复原状的」"
+    },
+    {
+      "character": "将臣",
+      "text": "「不，可是……它都已经这么干脆地断掉了哦？」"
+    }
+  ]
+},
+{
+  "background": "item_human6_cg_1.png",
+  "Img":null,
+  "dialogues": [
+    {
+      "character": "丛雨",
+      "text": "「所谓百闻不如一见。还是证明一下比较好吧」"
+    }
+  ]
+},
+{
+  "background": "item_human6_cg_3.png",
+  "Img":null,
+  "dialogues": [
+    {
+      "character": "",
+      "text": "少女说着闭上了眼睛。"
+    }
+  ]
+},
+{
+  "background": "item_human6_cg_4.png",
+  "Img":null,
+  "dialogues": [
+    {
+      "character": "",
+      "text": "这时候，折断的丛雨丸发出了淡淡的光芒，慢慢地抬了起来。"
+    },
+    {
+      "character": "",
+      "text": "从脚边升到了胸前。再超过了头部，浮到了跟半空中的少女相同的高度。"
+    },
+    {
+      "character": "",
+      "text": "被那幅光景的气势所压倒的我，只能无言地目瞪口呆，看着少女，而下个瞬间——"
+    }
+  ]
+},
+{
+  "background": "none.png",
+  "Img":null,
+  "dialogues": [
+    {
+      "character": "将臣",
+      "text": "「呜哇……！？」"
+    },
+    {
+      "character": "",
+      "text": "强烈的光芒几乎都要把眼睛弄瞎了。一片全白，什么都看不见。"
+    },
+    {
+      "character": "",
+      "text": "可是却并不感到刺眼。柔柔的，有种温暖的感觉……"
+    },
+    {
+      "character": "",
+      "text": "等到白光退去，视野也恢复了。"
+    }
+  ]
+},
+{
+  "background": "item_human6_cg_5.png",
+  "Img":null,
+  "dialogues": [
+    {
+      "character": "丛雨",
+      "text": "「瞧，就是这样了」"
+    },
+    {
+      "character": "将臣",
+      "text": "「不会吧……真的……？」"
+    },
+    {
+      "character": "",
+      "text": "直到刚才为止都确实折断了的刀身，已经完全恢复原状了。"
+    },
+    {
+      "character": "",
+      "text": "这并不是我看错了。"
+    },
+    {
+      "character": "将臣",
+      "text": "「………」"
+    },
+    {
+      "character": "",
+      "text": "是浮在半空的少女将刀身复原的。"
+    },
+    {
+      "character": "",
+      "text": "因为惊讶过度，反倒让我冷静了下来。"
+    },
+    {
+      "character": "将臣",
+      "text": "「真、真的恢复了……」"
+    },
+    {
+      "character": "丛雨",
+      "text": "「这样你能稍微冷静点听我说了吗？」"
+    },
+    {
+      "character": "",
+      "text": "说着，少女就慢慢地从上方落了下来。"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":"item_human6_1.png",
+  "dialogues": [
+    {
+      "character": "丛雨",
+      "text": "「——嘿咻」"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":"item_human6_2.png",
+  "dialogues": [
+    {
+      "character": "丛雨",
+      "text": "「吾辈名为丛雨。是这把『丛雨丸』的管理者，也是掌控神力者」"
+    },
+    {
+      "character": "丛雨",
+      "text": "「请多关照了哦，主人」"
+    },
+    {
+      "character": "将臣",
+      "text": "「不，就算你叫我主人……」"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":"item_human6_3.png",
+  "dialogues": [
+    {
+      "character": "丛雨",
+      "text": "「怎么了？　一脸家贼难防的表情」"
+    },
+    {
+      "character": "将臣",
+      "text": "「我脑子很乱，不知道该怎么接受这种事态」"
+    },
+    {
+      "character": "将臣",
+      "text": "「总而言之……那个『主人』是什意思？」"
+    },
+    {
+      "character": "丛雨",
+      "text": "「主人就是主人。你不是把丛雨丸拔出来了吗？」"
+    },
+    {
+      "character": "将臣",
+      "text": "「与其说是拔出来，倒不如说是折断了」"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":"item_human6_4.png",
+  "dialogues": [
+    {
+      "character": "丛雨",
+      "text": "「无论哪边都无所谓。总之，主人是让刀身离开了那块岩石吧？」"
+    },
+    {
+      "character": "将臣",
+      "text": "「啊、啊啊，没错」"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":"item_human6_2.png",
+  "dialogues": [
+    {
+      "character": "丛雨",
+      "text": "「那并不是谁都能做到的」"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":"item_human6_4.png",
+  "dialogues": [
+    {
+      "character": "丛雨",
+      "text": "「没有资质的人不管怎么用力，都是没办法拿丛雨丸怎么样的」"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":"item_human6_1.png",
+  "dialogues": [
+    {
+      "character": "丛雨",
+      "text": "「但主人你的情况呢？　有很用力吗？」"
+    },
+    {
+      "character": "将臣",
+      "text": "「不，完全没有。只是轻轻拉了一下，就噗嗤一声断掉了」"
+    },
+    {
+      "character": "",
+      "text": "感觉就像是掰开了泡沫板一样。"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":"item_human6_2.png",
+  "dialogues": [
+    {
+      "character": "丛雨",
+      "text": "「那就是能够使用丛雨丸的人的证明」"
+    },
+    {
+      "character": "将臣",
+      "text": "「就算你这么说……」"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":"item_human6_4.png",
+  "dialogues": [
+    {
+      "character": "丛雨",
+      "text": "「你有什么在意的吗，主人？」"
+    },
+    {
+      "character": "将臣",
+      "text": "「你说在意………………」"
+    },
+    {
+      "character": "将臣",
+      "text": "「好，我知道了」"
+    },
+    {
+      "character": "",
+      "text": "不，那些细节我还是没有理解的。"
+    },
+    {
+      "character": "将臣",
+      "text": "「总之，我可以理解成自己是被选上了吧？」"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":"item_human6_1.png",
+  "dialogues": [
+    {
+      "character": "丛雨",
+      "text": "「你现在这么想就可以了」"
+    },
+    {
+      "character": "将臣",
+      "text": "「那下一个问题。为什么折断的刀身能够一瞬间复原？」"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":"item_human6_2.png",
+  "dialogues": [
+    {
+      "character": "丛雨",
+      "text": "「丛雨丸是神刀，是穂织的土地神授予的、特别的刀」"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":"item_human6_2.png",
+  "dialogues": [
+    {
+      "character": "丛雨",
+      "text": "「丛雨丸是神刀，是穂织的土地神授予的、特别的刀」"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":"item_human6_5.png",
+  "dialogues": [
+    {
+      "character": "丛雨",
+      "text": "「不管是生锈还是卷刃或是折断，只要借助神力，就能恢复到万全的状态」"
+    },
+    {
+      "character": "将臣",
+      "text": "「嗯……能够做到这种事的，就是身为这把刀的管理者的你了？」"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":"item_human6_3.png",
+  "dialogues": [
+    {
+      "character": "丛雨",
+      "text": "「不是“你”，吾辈叫丛雨。不是都已经做过两次自我介绍了吗」"
+    },
+    {
+      "character": "将臣",
+      "text": "「丛雨啊……」"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":"item_human6_6.png",
+  "dialogues": [
+    {
+      "character": "丛雨",
+      "text": "「突然就直呼其名吗，主人」"
+    },
+    {
+      "character": "将臣",
+      "text": "「那么……小丛雨？」"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":"item_human6_4.png",
+  "dialogues": [
+    {
+      "character": "丛雨",
+      "text": "「感觉没什么威严啊……算了。你毕竟是吾辈的主人啊。之后呢，又怎么了？」"
+    },
+    {
+      "character": "将臣",
+      "text": "「你刚才说自己掌管着神力、灵魂之类的，我想详细听听这部分的事情」"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":"item_human6_1.png",
+  "dialogues": [
+    {
+      "character": "丛雨",
+      "text": "「嗯，听好了哦？　丛雨丸是寄宿着神力的，跟妖力对抗的刀」"
+    },
+    {
+      "character": "丛雨",
+      "text": "「但仅仅只是铁的话，是很难容纳神力的。这里必须要有“人的魂魄”」"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":"item_human6_5.png",
+  "dialogues": [
+    {
+      "character": "丛雨",
+      "text": "「神力寄宿在灵魂上，灵魂寄宿于刀上，成为了神刀的便是丛雨丸。而吾辈便是那一缕魂魄是～也」"
+    },
+    {
+      "character": "将臣",
+      "text": "「什么是～也啊……等等」"
+    },
+    {
+      "character": "将臣",
+      "text": "「也就是说，小丛雨你是贡献给丛雨丸的人柱了？」"
+    },
+    {
+      "character": "丛雨",
+      "text": "「嗯。你这种想法一点都没错」"
+    },
+    {
+      "character": "将臣",
+      "text": "「那小丛雨你果然是……幽、幽灵……！？」"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":"item_human6_8.png",
+  "dialogues": [
+    {
+      "character": "丛雨",
+      "text": "「才不是幽灵呢！　完全不是！　别跟幽灵相提并论啊！」"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":"item_human6_7.png",
+  "dialogues": [
+    {
+      "character": "丛雨",
+      "text": "「吾辈是丛雨丸的管理者！　是神的使者，简而言之就是神使！」"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":"item_human6_8.png",
+  "dialogues": [
+    {
+      "character": "丛雨",
+      "text": "「别把吾辈跟幽灵那种，没、没没没没没没根据的东西混为一谈啊」"
+    },
+    {
+      "character": "将臣",
+      "text": "「我还是第一次看见这么完美的迂回吐槽呢！」"
+    },
+    {
+      "character": "将臣",
+      "text": "「虽然从刚刚开始就像是在说梦话一样……但总而言之，你作为神使，是只存在着灵魂了？」"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":"item_human6_6.png",
+  "dialogues": [
+    {
+      "character": "丛雨",
+      "text": "「嗯，你可以这么认为」"
+    },
+    {
+      "character": "",
+      "text": "不管怎么想都是幽灵啊……"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":"item_human6_9.png",
+  "dialogues": [
+    {
+      "character": "丛雨",
+      "text": "「因为这个缘故，吾辈无法干涉现世。吾辈也没法出手」"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":"item_human6_2.png",
+  "dialogues": [
+    {
+      "character": "丛雨",
+      "text": "「所以这就需要有个使用丛雨丸的人，也就是吾辈的主人了」"
+    },
+    {
+      "character": "将臣",
+      "text": "「也就是我吗」"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":"item_human6_1.png",
+  "dialogues": [
+    {
+      "character": "丛雨",
+      "text": "「只有丛雨丸选定的人才能使用它」"
+    },
+    {
+      "character": "丛雨",
+      "text": "「之后就可以看见吾辈，也可以跟吾辈说话了」"
+    },
+    {
+      "character": "将臣",
+      "text": "「其他人看不见小丛雨你，也听不见你的声音吗？」"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":"item_human6_2.png",
+  "dialogues": [
+    {
+      "character": "丛雨",
+      "text": "「嗯。不过还是有个例外的啦」"
+    },
+    {
+      "character": "丛雨",
+      "text": "「顺带一提，就算你是主人，也没办法碰到吾辈的」"
+    },
+    {
+      "character": "将臣",
+      "text": "「是吗？　明明都能看得这么清楚了？」"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":"item_human6_1.png",
+  "dialogues": [
+    {
+      "character": "丛雨",
+      "text": "「就算想要碰吾辈，也只会穿过去而已。就像这样」"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":null,
+  "dialogues": [
+    {
+      "character": "",
+      "text": "小丛雨向着丛雨丸的刀柄伸出了手。"
+    },
+    {
+      "character": "",
+      "text": "但那小手别说是抓住什么了，真的就那样直接穿透了过去。"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":"cg3.png",
+  "dialogues": [
+    {
+      "character": "丛雨",
+      "text": "「要不主人你也来试试？　来，从哪边过来都行」"
+    },
+    {
+      "character": "",
+      "text": "小丛雨说着挺起了胸膛。"
+    },
+    {
+      "character": "将臣",
+      "text": "「可以吗？　真的可以？　我真的要试了哦？」"
+    },
+    {
+      "character": "丛雨",
+      "text": "「都说可以了」"
+    },
+    {
+      "character": "",
+      "text": "明明看得这么清楚，穿过去究竟会是什么感觉啊？"
+    },
+    {
+      "character": "",
+      "text": "是什么都感觉不到吗……还是说，会像刚才那道光一样，有种温暖的感觉呢……？"
+    },
+    {
+      "character": "",
+      "text": "我伸出了手。"
+    },
+    {
+      "character": "",
+      "text": "而当我以为自己的手会穿透小丛雨的身体时——"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":"cg4.png",
+  "dialogues": [
+    {
+      "character": "将臣",
+      "text": "「………」"
+    },
+    {
+      "character": "丛雨",
+      "text": "「………」"
+    },
+    {
+      "character": "将臣",
+      "text": "「……咦？」"
+    },
+    {
+      "character": "",
+      "text": "感觉……捏到了什么？"
+    },
+    {
+      "character": "",
+      "text": "我的手掌上确实传来了温暖的感触。"
+    },
+    {
+      "character": "",
+      "text": "那绝不是幻影。"
+    },
+    {
+      "character": "将臣",
+      "text": "「……这、这是……」"
+    },
+    {
+      "character": "",
+      "text": "这种感触——"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":"cg5.png",
+  "dialogues": [
+    {
+      "character": "将臣",
+      "text": "「好硬……！？」"
+    },
+    {
+      "character": "",
+      "text": "没错，好硬！"
+    },
+    {
+      "character": "",
+      "text": "感觉碰到了什么硬硬的东西，完全没有穿透的手感。"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":"cg6.png",
+  "dialogues": [
+    {
+      "character": "丛雨",
+      "text": "「唏……唏……唏啊……主、主人、主主主主」"
+    },
+    {
+      "character": "将臣",
+      "text": "「这究竟是怎么回事——」"
+    },
+    {
+      "character": "丛雨",
+      "text": "「呀啊啊啊啊啊啊啊啊——————！！」"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":null,
+  "dialogues": [
+    {
+      "character": "",
+      "text": "「——呜哇！　好疼！」"
+    },
+    {
+      "character": "",
+      "text": "我突然被推了开来，屁股狠狠着地。"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":"item_human6_7.png",
+  "dialogues": [
+    {
+      "character": "丛雨",
+      "text": "「哎、哎呀……推出去了。果、果然，没有穿透……？」"
+    },
+    {
+      "character": "将臣",
+      "text": "「你突然做什么呢！？」"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":"item_human6_8.png",
+  "dialogues": [
+    {
+      "character": "丛雨",
+      "text": "「不不不不不不不都是因为主人摸了吾辈的胸吗！」"
+    },
+    {
+      "character": "将臣",
+      "text": "「——什么！？　胸！？　刚才的是胸部！？　我、我还是第一次摸到女孩子的胸……」"
+    },
+    {
+      "character": "将臣",
+      "text": "「感觉跟想象的有点不一样……挺硬的……」"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":"item_human6_9.png",
+  "dialogues": [
+    {
+      "character": "丛雨",
+      "text": "「唔，你说什么！？　你你你你你你你是在愚弄吾辈吗」"
+    },
+    {
+      "character": "将臣",
+      "text": "「啊，不是，刚刚说漏嘴把真心话给说出来了——」"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":"item_human6_10.png",
+  "dialogues": [
+    {
+      "character": "丛雨",
+      "text": "「呀啊————！！」"
+    },
+    {
+      "character": "将臣",
+      "text": "「呜哇！？　对不起！　是我不好！」"
+    },
+    {
+      "character": "将臣",
+      "text": "「萝莉万岁！　平胸最棒了ー！　飞机场yes！」"
+    },
+    {
+      "character": "丛雨",
+      "text": "「你别装出一副要道歉的样子找茬啊！　要出去练练吗，主人！」"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":"item_human6_6.png",
+  "dialogues": [
+    {
+      "character": "丛雨",
+      "text": "「再、再说了，硬硬的是骨头啊！　主、主人是在我的胸脯上按到骨头了！」"
+    },
+    {
+      "character": "",
+      "text": "是、是这样的吗……？"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":"item_human6_7.png",
+  "dialogues": [
+    {
+      "character": "丛雨",
+      "text": "「被碰到了……被碰到了啊……咕……咕呜呜呜呜」"
+    },
+    {
+      "character": "将臣",
+      "text": "「对不起。真的很抱歉。摸了少女的胸部，是我不好」"
+    },
+    {
+      "character": "将臣",
+      "text": "「但别怪我找借口，这可跟你说的不一样啊。不是应该穿过去的吗？」"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":"item_human6_9.png",
+  "dialogues": [
+    {
+      "character": "丛雨",
+      "text": "「当、当然了！　所以吾辈才说让你试试看的……」"
+    },
+    {
+      "character": "丛雨",
+      "text": "「而且吾辈能把你推开，这也很奇怪」"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":null,
+  "dialogues": [
+    {
+      "character": "",
+      "text": "说着，她再次把手伸向了丛雨丸，果然一下子就穿过去了。"
+    },
+    {
+      "character": "将臣",
+      "text": "「这也是被丛雨丸选中的影响吗？」"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":"item_human6_9.png",
+  "dialogues": [
+    {
+      "character": "丛雨",
+      "text": "「不，不可能吧……嗯ー唔……」"
+    },
+    {
+      "character": "丛雨",
+      "text": "「不行了。因因因为被人摸了胸部，都没办法冷静想事情了」"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":null,
+  "dialogues": [
+    {
+      "character": "",
+      "text": "老实说，那感觉确实不像是能揉的啊……"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":"item_human6_10.png",
+  "dialogues": [
+    {
+      "character": "丛雨",
+      "text": "「主人！！」"
+    },
+    {
+      "character": "将臣",
+      "text": "「——嗯！？　什、什么啊，我什么都没说吧」"
+    },
+    {
+      "character": "丛雨",
+      "text": "「你说了ー你的眼神在说话ー顶着一脸『没有揉过的感觉』的表情ー」"
+    },
+    {
+      "character": "将臣",
+      "text": "「……我有这么表现在脸上吗？」"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":"item_human6_8.png",
+  "dialogues": [
+    {
+      "character": "丛雨",
+      "text": "「果然吗ー！」"
+    },
+    {
+      "character": "将臣",
+      "text": "「啊，可恶，你在套我的话！？」"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":"item_human5_1.png",
+  "dialogues": [
+    {
+      "character": "玄十郎",
+      "text": "「闹腾什么呢」"
+    },
+    {
+      "character": "将臣",
+      "text": "「外、外公！」"
+    },
+    {
+      "character": "玄十郎",
+      "text": "「………？　还以为你在跟谁说话呢……\n就你一个人吗？」"
+    },
+    {
+      "character": "将臣",
+      "text": "「………」"
+    },
+    {
+      "character": "",
+      "text": "那个外公在认真地问我。"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":"item_human6_9.png",
+  "dialogues": [
+    {
+      "character": "丛雨",
+      "text": "「瞧，正如吾辈所说的那样吧？　可是主人你却……」"
+    },
+    {
+      "character": "",
+      "text": "小丛雨碎碎念着开始胡思乱想了。"
+    },
+    {
+      "character": "",
+      "text": "因为实在是不像整蛊什么的……那么刚才的果然是突发事件吗。"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":"item_human5_1.png",
+  "dialogues": [
+    {
+      "character": "玄十郎",
+      "text": "「将臣？」"
+    },
+    {
+      "character": "将臣",
+      "text": "「啊，不是，那个……没什么事。请不要在意」"
+    },
+    {
+      "character": "将臣",
+      "text": "「以及，那个，关于我折断的那把刀……」"
+    },
+    {
+      "character": "玄十郎",
+      "text": "「啊啊，是这件事啊……嗯！？　刀身……」"
+    },
+    {
+      "character": "",
+      "text": "看到本该被折断的丛雨丸的刀尖，外公睁大了眼睛。"
+    },
+    {
+      "character": "玄十郎",
+      "text": "「这是怎么了？」"
+    },
+    {
+      "character": "将臣",
+      "text": "「呃，那个，该怎么说明才好呢……」"
+    },
+    {
+      "character": "将臣",
+      "text": "「是刀的精灵，把、把它恢复原状的……要是听到我说这种胡闹似的话，您不会骂我吧？」"
+    },
+    {
+      "character": "玄十郎",
+      "text": "「那是指丛雨大人吗？」"
+    },
+    {
+      "character": "将臣",
+      "text": "「咦？　您知道？」"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":"item_human5_2.png",
+  "dialogues": [
+    {
+      "character": "玄十郎",
+      "text": "「我只是听说过。是能看见的人告诉我的」"
+    },
+    {
+      "character": "将臣",
+      "text": "「……还有其他人能看见啊？」"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":"item_human6_3.png",
+  "dialogues": [
+    {
+      "character": "丛雨",
+      "text": "「吾辈不是说了有例外的吗」"
+    },
+    {
+      "character": "",
+      "text": "是说过没错。"
+    }
+  ]
+},
+{
+  "background": "hall2.png",
+  "Img":"item_human5_2.png",
+  "dialogues": [
+    {
+      "character": "玄十郎",
+      "text": "「好了，关于丛雨丸这件事……既然你把它拔了出来，就要对此负责」"
+    },
+    {
+      "character": "将臣",
+      "text": "「负……责……」"
+    },
+    {
+      "character": "",
+      "text": "尽管把刀身恢复了原状，但再这么下去，就没法办活动了。"
+    },
+    {
+      "character": "",
+      "text": "虽然稍微加工一下还是能继续的……"
+    },
+    {
+      "character": "玄十郎",
+      "text": "「你不能留在我那里了」"
+    },
+    {
+      "character": "将臣",
+      "text": "「难不成，要、要坐牢！？」"
+    },
+    {
+      "character": "玄十郎",
+      "text": "「不是指这个负责」"
+    },
+    {
+      "character": "将臣",
+      "text": "「那、那果然是让我赔偿损失？　强制性让我到地下去劳动！？」"
+    },
+    {
+      "character": "玄十郎",
+      "text": "「冷静点。先听我说」"
+    },
+    {
+      "character": "玄十郎",
+      "text": "「我想把你介绍给一个人」"
+    }
+  ]
+}
+]

@@ -1,0 +1,56 @@
+[
+{
+  "background": "sky1_black.png",
+  "dialogues": [
+    {
+      "character": "",
+      "text": "敬请期待"
+    },
+    {
+      "character": "",
+      "text": "敬请期待"
+    },
+    {
+      "character": "",
+      "text": "下面没了"
+    },
+    {
+      "character": "",
+      "text": "哎点啥呢"
+    },
+    {
+      "character": "",
+      "text": "都说“敬请期待”不懂吗！！！"
+    },
+    {
+      "character": "",
+      "text": "别看了没有的！！！"
+    },
+    {
+      "character": "",
+      "text": "这么倔强！"
+    },
+    {
+      "character": "",
+      "text": "真的没有的！！！！！！！"
+    },
+    {
+      "character": "",
+      "text": "哎哎哎！！！"
+    }
+  ]
+},
+{
+  "background": "none1.png",
+  "dialogues": [
+    {
+      "character": "作者",
+      "text": "由于本作品为开源代码改编而成，禁止商业使用，所以作者贴不了付款码了······"
+    },
+    {
+      "character": "",
+      "text": "不过别来无恙啊！去看看本作者的其他程序吧！顺便······来五毛钱？"
+    }
+  ]
+}
+]

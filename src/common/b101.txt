@@ -1,0 +1,1261 @@
+[
+{
+  "background": "none1.png",
+  "dialogues": [
+    {
+      "character": "",
+      "text": "“先生”"
+    },
+    {
+      "character": "将臣",
+      "text": "......"
+    },
+    {
+      "character": "",
+      "text": "“先生”"
+    },
+    {
+      "character": "将臣",
+      "text": "呃......？"
+    }
+  ]
+},
+{
+  "background": "sky1.png",
+  "dialogues": [
+    {
+      "character": "司机",
+      "text": "先生您醒醒"
+    },
+    {
+      "character": "将臣",
+      "text": "啊，不好意思。怎么了？"
+    },
+    {
+      "character": "",
+      "text": "我猛地坐了起来连忙应了一声"
+    },
+    {
+      "character": "司机",
+      "text": "马上就快到了，请问咱们在哪停车？"
+    },
+    {
+      "character": "将臣",
+      "text": "啊？哦，已经快到了啊"
+    },
+    {
+      "character": "",
+      "text": "在车站附近找到出租车后，我竟然一路睡到现在"
+    },
+    {
+      "character": "",
+      "text": "而且上车的时候，我似乎只对司机说了个大概的位置"
+    },
+    {
+      "character": "将臣",
+      "text": "能麻烦您把我送到志那都庄吗？"
+    },
+    {
+      "character": "司机",
+      "text": "啊......抱歉，这一带我不是很熟来着"
+    },
+    {
+      "character": "司机",
+      "text": "所以......可不可以不进里面"
+    },
+    {
+      "character": "将臣",
+      "text": "（这什么服务态度啊）"
+    },
+    {
+      "character": "",
+      "text": "看到我一脸不满的表情，司机露出了一副营业式的微笑"
+    },
+    {
+      "character": "司机",
+      "text": "真的很抱歉"
+    },
+    {
+      "character": "将臣",
+      "text": "好吧，那就在这儿停吧"
+    },
+    {
+      "character": "司机",
+      "text": "感谢您的理解"
+    },
+    {
+      "character": "",
+      "text": "出租车停在路边，我结完账准备下车"
+    },
+    {
+      "character": "司机",
+      "text": "竟然专程跑到这犬魂作祟的地方来看庆典，最近不怕死的人也是越来越多了......"
+    },
+    {
+      "character": "将臣",
+      "text": "......"
+    },
+    {
+      "character": "",
+      "text": "正要下车时听见了这么一句话"
+    },
+    {
+      "character": "",
+      "text": "我懒得搭理他，直接下了车"
+    }
+  ]
+},
+{
+  "background": "street1.png",
+  "dialogues": [
+    {
+      "character": "将臣",
+      "text": "这还真远啊......也罢，反正好久都没来了，边走边逛吧"
+    },
+    {
+      "character": "",
+      "text": "我长吁一口气，双手叉腰，使劲地伸了一下后背。"
+    },
+    {
+      "character": "",
+      "text": "腰部发出咯吱咯吱的响声，看来是坐太久了。"
+    },
+    {
+      "character": "将臣",
+      "text": "嗯——————！累死了——————！"
+    },
+    {
+      "character": "将臣",
+      "text": "出家门后，算上换乘我一共坐了两个小时的电车"
+    },
+    {
+      "character": "",
+      "text": "然后又在出租车上颠簸了30分钟"
+    },
+    {
+      "character": "",
+      "text": "一路上坡道连连，四周都是绿的流油的树木，毫无看头。过了坡道，我才终于抵达穗织镇。"
+    },
+    {
+      "character": "将臣",
+      "text": "这地方还是那么不方便啊。"
+    },
+    {
+      "character": "",
+      "text": "这里不仅没有电车，唯一的公共交通工具————公交车，也只是一个小时才有一班。"
+    },
+    {
+      "character": "",
+      "text": "要是坐公交来，得花上一个多小时，而且公交运营时间不含清晨和晚上。"
+    },
+    {
+      "character": "",
+      "text": "除了打的和公交车外，就只能自己开车来了。"
+    },
+    {
+      "character": "",
+      "text": "毕竟这是偏僻的山区。在这里，只靠两条腿永远别想走出大自然的怀抱。"
+    },
+    {
+      "character": "",
+      "text": "————不过，偏僻是偏僻，镇上还挺热闹的。"
+    },
+    {
+      "character": "",
+      "text": "原因之一便是在于这城镇的风貌。"
+    },
+    {
+      "character": "",
+      "text": "小镇的街道精致而简洁，房舍之间洋溢着一种浓郁的“和风”，也难怪这里会被称为“小京都”了。"
+    },
+    {
+      "character": "",
+      "text": "跟路上那些无聊的山间风景来看，这里的街道真是处处透露着美感。"
+    },
+    {
+      "character": "",
+      "text": "而且最重要的是，穗织镇以温泉闻名全国。闻名的理由则在于其功效。"
+    },
+    {
+      "character": "",
+      "text": "传说中，只要在温泉里泡一会，腰也不酸了，腿也不痛了，肌肤还会变得光滑细腻。甚至有人说，这里的温泉就是万能药"
+    },
+    {
+      "character": "",
+      "text": "因此，从很久以前就有不少外地人会过来泡温泉养疗。"
+    },
+    {
+      "character": "",
+      "text": "近些年网络普及，口碑越传越好，还吸引了许多外国游客。现在，我就能听到周边有不少人用外语讲话。"
+    },
+    {
+      "character": "将臣",
+      "text": "......该赶路了"
+    },
+    {
+      "character": "",
+      "text": "我可不是来旅游的，老在原地站着也不是个办法。"
+    }
+  ]
+},
+{
+  "background": "street1.png",
+  "Img": "item_human1.png",
+  "dialogues": [
+    {
+      "character": "女性",
+      "text": "......"
+    }
+  ]
+},
+{
+  "background": "street1.png",
+  "Img": "item_human1_1.png",
+  "dialogues": [
+    {
+      "character": "女性",
+      "text": "......呃......不好意思"
+    },
+    {
+      "character": "将臣",
+      "text": "啊？怎么了？"
+    },
+    {
+      "character": "女性",
+      "text": "你是阿将吗？我不确定我有没有认错......"
+    },
+    {
+      "character": "将臣",
+      "text": "芦花姐？？？"
+    }
+    
+  ]
+},
+{
+  "background": "street1.png",
+  "Img": "item_human1_2.png",
+  "dialogues": [
+    {
+      "character": "芦花姐",
+      "text": "果然是阿将啊！太好了,没有认错"
+    }
+  ]
+},
+{
+  "background": "street1.png",
+  "Img": "item_human1_3.png",
+  "dialogues": [
+    {
+      "character": "芦花姐",
+      "text": "哎呀，真的是好久没见了"
+    },
+    {
+      "character": "将臣",
+      "text": "眼前这位笑容爽朗，正冲着我挥手的女性叫做马庭芦花。"
+    },
+    {
+      "character": "将臣",
+      "text": "没记错的话......她应该是比我大两三岁。"
+    },
+    {
+      "character": "将臣",
+      "text": "小时候我妈带我回穗织的时候，芦花姐经常陪我玩。"
+    }
+  ]
+},
+{
+  "background": "street1.png",
+  "Img": "item_human1_4.png",
+  "dialogues": [
+    {
+      "character": "将臣",
+      "text": "最近过得怎么样"
+    }
+  ]
+},
+{
+  "background": "street1.png",
+  "Img": "item_human1_1.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "过的很好啦。你那边过得怎么样？对了，我们是多少年没见来着？"
+    },
+    {
+      "character": "将臣",
+      "text": "我记得是四年了吧"
+    }
+  ]
+},
+{
+  "background": "street1.png",
+  "Img": "item_human1_2.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "是吗，都四年了......你长好高了啊，阿将"
+    },
+    {
+      "character": "芦花",
+      "text": "真是没想到，现在我都要仰视你了。你小子竟然偷偷背着我长那么高，姐姐我好气啊。"
+    },
+    {
+      "character": "将臣",
+      "text": "应该是去年了，从那时起我就疯狂长个子了，有时候膝盖都会疼起来。"
+    },
+    {
+      "character": "芦花",
+      "text": "也是......都四年了，大学都能毕业了。长那么高也是理所当然的......"
+    },
+    {
+      "character": "将臣",
+      "text": "芦花姐，你也有所成长吧......缩水应该也算成长？"
+    }
+  ]
+},
+{
+  "background": "street1.png",
+  "Img": "item_human1_5.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "哟嗬。越夸你还越来劲了啊，来，头伸过来"
+    },
+    {
+      "character": "",
+      "text": "芦花姐敲了敲我的脑袋"
+    }
+  ]
+},
+{
+  "background": "street1.png",
+  "Img": "item_human1_4.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "你再长我就够不到你的脑袋了......而且身体也那么壮实，真是越来越象个大男人了"
+    },
+    {
+      "character": "将臣",
+      "text": "托你的福啦"
+    }
+  ]
+},
+{
+  "background": "street1.png",
+  "Img": "item_human1_1.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "话说，你是一个人来的？"
+    },
+    {
+      "character": "将臣",
+      "text": "嗯，这次就我一个，而且是来给旅馆帮忙的"
+    }
+  ]
+},
+{
+  "background": "sky1_black.png",
+  "dialogues": [
+    {
+      "character": "母亲·都子",
+      "text": "将臣，你去趟外公家吧"
+    },
+    {
+      "character": "将臣",
+      "text": "啊，怎么这么突然？"
+    },
+    {
+      "character": "母亲·都子",
+      "text": "外公开的旅馆，春夏季和过年期间都很忙，你应该是知道的吧？"
+    },
+    {
+      "character": "将臣",
+      "text": "嗯......是叫志那都庄来着？"
+    },
+    {
+      "character": "母亲·都子",
+      "text": "外公说需要有人去帮忙"
+    },
+    {
+      "character": "将臣",
+      "text": "那你去吧，特产就不用帮我带了"
+    },
+    {
+      "character": "母亲·都子",
+      "text": "我怎么就生了你这个蠢儿子......"
+    },
+    {
+      "character": "将臣",
+      "text": "凭什么让我去啊？以前每次不都是你去的吗？"
+    },
+    {
+      "character": "母亲·都子",
+      "text": "今年我没空嘛......"
+    },
+    {
+      "character": "母亲·都子",
+      "text": "我跟你爸已经定好机票了，要去欧洲玩一个多星期。"
+    },
+    {
+      "character": "母亲·都子",
+      "text": "而且你已经好几年没见过你外公了吧？这次去见见他老人家"
+    },
+    {
+      "character": "将臣",
+      "text": "......"
+    },
+    {
+      "character": "母亲·都子",
+      "text": "你去的话还有工资可以拿。路费我给你报销"
+    },
+    {
+      "character": "母亲·都子",
+      "text": "但是你要是不去，我们旅行期间伙食费你自己想办法"
+    },
+    {
+      "character": "将臣",
+      "text": "卑鄙！这也太卑鄙了吧！！！"
+    },
+    {
+      "character": "母亲·都子",
+      "text": "世上哪有不卑鄙的大人啊？"
+    },
+    {
+      "character": "将臣",
+      "text": "你还好意思一本正经地说出来？"
+    },
+    {
+      "character": "母亲·都子",
+      "text": "因为我是你妈，我才会告诉你真相啊。世界就是这么残酷"
+    },
+    {
+      "character": "母亲·都子",
+      "text": "少废话了，赶紧去吧。也不想想你都几年没看过外公了"
+    },
+    {
+      "character": "母亲·都子",
+      "text": "你小时候外公那么照顾你，好歹也过去帮一次忙啊"
+    },
+    {
+      "character": "将臣",
+      "text": "我这种外行，过去帮忙也只会添乱吧"
+    },
+    {
+      "character": "母亲·都子",
+      "text": "怎么能让你这种外行去招待客人啊"
+    },
+    {
+      "character": "母亲·都子",
+      "text": "除草、打扫浴室、倒垃圾、洗盘子......杂活多了去了"
+    },
+    {
+      "character": "母亲·都子",
+      "text": "你整个春假都游手好闲，你觉得像话吗。行了赶紧过去！！！"
+    }
+  ]
+},
+{
+  "background": "street1.png",
+  "Img": "item_human1_1.png",
+  "dialogues": [
+    {
+      "character": "将臣",
+      "text": "就是这么回事，你不觉得她这样威胁自己儿子很卑鄙吗？"
+    }
+  ]
+},
+{
+  "background": "street1.png",
+  "Img": "item_human1_2.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "确实有点"
+    }
+  ]
+},
+{
+  "background": "street1.png",
+  "Img": "item_human1_6.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "但谁让你这么多年一直不过来的，这是你自找的嘛"
+    },
+    {
+      "character": "将臣",
+      "text": "好吧......确实是太久没来了"
+    }
+  ]
+},
+{
+  "background": "street1.png",
+  "Img": "item_human1_2.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "你现在就去志那都庄吗？"
+    },
+    {
+      "character": "将臣",
+      "text": "是的"
+    }
+  ]
+},
+{
+  "background": "street1.png",
+  "Img": "item_human1_3.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "我跟你一起去吧，这么久没见了，边走边聊会吧"
+    },
+    {
+      "character": "将臣",
+      "text": "我没问题呀。不过，你那边时间不要紧吗？"
+    }
+  ]
+},
+{
+  "background": "street1.png",
+  "Img": "item_human1_2.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "没事没事。咱们走吧"
+    }
+  ]
+}
+,
+{
+  "background": "sky1.png",
+  "dialogues": [
+    {
+      "character": "",
+      "text": "......"
+    }
+  ]
+},
+{
+  "background": "street2.png",
+  "Img": "item_human1_1.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "......阿将，为什么我总感觉你在一直盯着我看？"
+    }
+  ]
+},
+{
+  "background": "street2.png",
+  "Img": "item_human1_7.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "你这样盯着姐姐看，姐姐会害羞的。怎么，难道是迷上人家了吗？"
+    }
+  ]
+},
+{
+  "background": "street2.png",
+  "Img": "item_human1_3.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "还是说我脸上沾了什么东西？"
+    }
+  ]
+},
+{
+  "background": "street2.png",
+  "Img": "item_human1_3.png",
+  "choices": [
+    {"text": "说实话","nextScene": 1},
+    {"text": "敷衍过去","nextScene": 5}
+  ]
+},
+
+
+
+
+
+
+
+{
+  "background": "street2.png",
+  "Img": "item_human1_3.png",
+  "dialogues": [
+    {
+      "character": "将臣",
+      "text": "说实话，我确实是看入迷了"
+    }
+  ]
+},
+{
+  "background": "street2.png",
+  "Img": "item_human1_8.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "————！！！？"
+    }
+  ]
+},
+{
+  "background": "street2.png",
+  "Img": "item_human1_3_nervous.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "呃......那什么......啊哈哈，谢谢"
+    }
+  ]
+},
+{
+  "background": "street2.png",
+  "Img": "item_human1_4.png",
+  "dialogues": [
+    {
+      "character": "",
+      "text": "芦花姐可能觉得我在开玩笑......但我说的是真心话。"
+    },
+    {
+      "character": "",
+      "text": "她的确出露得十分漂亮",
+      "toScenes": 5
+    }
+  ]
+},
+
+
+
+
+
+
+
+{
+  "background": "street2.png",
+  "Img": "item_human1_3.png",
+  "dialogues": [
+    {
+      "character": "将臣",
+      "text": "你眼睛下面沾了沙子"
+    }
+  ]
+},
+{
+  "background": "street2.png",
+  "Img": "item_human1_8.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "这是泪痣好吗！！！！"
+    },
+    {
+      "character": "将臣",
+      "text": "开玩笑啦，开玩笑"
+    }
+  ]
+},
+{
+  "background": "street2.png",
+  "Img": "item_human1_6.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "拿别人身体体征开玩笑可不是什么好事"
+    },
+    {
+      "character": "将臣",
+      "text": "你不喜欢泪痣吗？抱歉，太久没见没把握好分寸"
+    },
+    {
+      "character": "将臣",
+      "text": "我就是有点害羞。放心吧，我觉得你的泪痣很可爱"
+    }
+  ]
+},
+{
+  "background": "street2.png",
+  "Img": "item_human1_4.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "真是的......都这么多年交情了，现在有什么害羞的嘛"
+    },
+    {
+      "character": "",
+      "text": "芦花姐的笑容还是跟以前一样和蔼可亲，但我难免觉得有些害羞。"
+    },
+    {
+      "character": "",
+      "text": "毕竟......芦花姐真的非常漂亮。"
+    }
+  ]
+},
+
+
+
+
+
+
+
+
+
+
+{
+  "background": "street2.png",
+  "Img": "item_human1_4.png",
+  "dialogues": [
+    {
+      "character": "",
+      "text": "尽管小时候没有把她特地当成异性来看待，可到了这个年纪......多少还是会有点心跳加速。"
+    },
+    {
+      "character": "",
+      "text": "虽然这话我不会说出来。"
+    }
+  ]
+},
+{
+  "background": "street2.png",
+  "Img": "item_human1_1.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "行了，跟我说实话吧，是有什么在意的地方吗？"
+    },
+    {
+      "character": "将臣",
+      "text": "也不是什么大不了的事"
+    },
+    {
+      "character": "将臣",
+      "text": "就是想起来，以前你穿的好像也是这种类型的衣服"
+    },
+    {
+      "character": "芦花",
+      "text": "嗯？有什么奇怪的吗？虽然跟人家穿的那种时髦又可爱的衣服不一样......"
+    }
+  ]
+},
+{
+  "background": "street2.png",
+  "Img": "item_human1_4.png",
+  "dialogues": [
+    {
+      "character": "",
+      "text": "芦花姐一脸疑惑，似乎不觉得自己的衣服有什么问题。"
+    },
+    {
+      "character": "",
+      "text": "当然了，这类衣服并不是她的个人爱好，在穗织长大的人都穿着这类衣服。"
+    },
+    {
+      "character": "",
+      "text": "就像民族服饰一样。"
+    },
+    {
+      "character": "",
+      "text": "虽然，这年头把这种衣服当常服穿的地区已经很少了。"
+    },
+    {
+      "character": "",
+      "text": "据说，这独特的服装也是小镇出名的原因之一，它给人一种世外桃源的感觉。"
+    },
+    {
+      "character": "将臣",
+      "text": "我只是单纯的觉得你穿的好看，没有别的意思"
+    }
+  ]
+},
+{
+  "background": "street2.png",
+  "Img": "item_human1_5.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "好吧，主要是我不太了解外面的世界，心里还是有点没底"
+    },
+    {
+      "character": "将臣",
+      "text": "你已经不是学生了吧？没考虑过去外面找工作吗？"
+    },
+    {
+      "character": "芦花",
+      "text": "这年头工作哪有那么好找"
+    },
+    {
+      "character": "将臣",
+      "text": "那你现在在干什么呢？"
+    }
+  ]
+},
+{
+  "background": "street2.png",
+  "Img": "item_human1_2.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "我不是开了个店吗？你还记得吗？"
+    },
+    {
+      "character": "将臣",
+      "text": "好像是咖啡屋来着？"
+    }
+  ]
+},
+{
+  "background": "street2.png",
+  "Img": "item_human1_6.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "是和式甜品屋，虽然也差不多就是啦。我现在在给家里帮忙......也不是帮忙吧，现在主要是我在负责经营"
+    },
+    {
+      "character": "将臣",
+      "text": "呃，难不成叔叔阿姨他们......"
+    }
+  ]
+},
+{
+  "background": "street2.png",
+  "Img": "item_human1_1.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "啊，不是不是，他们身体可好了。后场工作他们都在干"
+    }
+  ]
+},
+{
+  "background": "street2.png",
+  "Img": "item_human1_6.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "只是最近外国游客越来越多，所以甜品屋的营业没法像以前那样了"
+    }
+  ]
+},
+{
+  "background": "street2.png",
+  "Img": "item_human1_9.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "我爸妈不懂的问题也是越来越多，后来干脆把店全权交给我负责了"
+    },
+    {
+      "character": "将臣",
+      "text": "喔......这么说的话，你现在岂不是没工夫跟我在这里闲聊？"
+    }
+  ]
+},
+{
+  "background": "street2.png",
+  "Img": "item_human1_2.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "微服私访来街上逛一逛，顺带调查一下客户需求。这也是工作之一"
+    },
+    {
+      "character": "芦花",
+      "text": "这就是所谓的硬性营销！！！"
+    },
+    {
+      "character": "将臣",
+      "text": "是隐性营销吧"
+    },
+    {
+      "character": "将臣",
+      "text": "好吧，有个人陪我说话也挺好的"
+    }
+  ]
+},
+{
+  "background": "street2.png",
+  "Img": "item_human1_1.png",
+  "dialogues": [
+    {
+      "character": "将臣",
+      "text": "话说芦花姐，这里的游客也太多了吧？虽然现在是在春假期间"
+    },
+    {
+      "character": "",
+      "text": "路上到处都是行人，还有人拖着大件行李，我们根本没法随意走动。"
+    },
+    {
+      "character": "将臣",
+      "text": "以前也是这么多人吗？我记得以前没有这么多吧······"
+    },
+    {
+      "character": "",
+      "text": "跟我小时候比起来，感觉现在游客多了不少。"
+    },
+    {
+      "character": "",
+      "text": "照常理，在这附近长大的人一般都不愿意来这个地方，就像刚才那位司机一样······"
+    }
+  ]
+},
+{
+  "background": "street2.png",
+  "Img": "item_human1_2.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "整体来说游客确实变多了。毕竟现在网上信息传播得太快了"
+    }
+  ]
+},
+{
+  "background": "street2.png",
+  "Img": "item_human1_4.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "据说咱们这还登上了外国的网站，被介绍成“不为人知的温泉旅游胜地”，所以就越来越出名了"
+    }
+  ]
+},
+{
+  "background": "street2.png",
+  "Img": "item_human1_3.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "而且今天是“春祭日”，应该有不少人是冲着这个来的"
+    },
+    {
+      "character": "将臣",
+      "text": "啊，春祭日！原来今天是春祭日啊······我好像从来没逛过"
+    }
+  ]
+},
+{
+  "background": "street2.png",
+  "Img": "item_human1_1.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "啊？没逛过吗？"
+    },
+    {
+      "character": "将臣",
+      "text": "以前都是错开了旅游高峰过来的"
+    },
+    {
+      "character": "将臣",
+      "text": "逛春祭日的人很多吗？"
+    }
+  ]
+},
+{
+  "background": "street2.png",
+  "Img": "item_human1_6.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "呃······还好吧？单看流量的话，欧美的比例正在逐渐增加"
+    }
+  ]
+},
+{
+  "background": "street2.png",
+  "Img": "item_human1_1.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "春祭日上，会有男人穿着甲胄骑着马，在街道上游行"
+    },
+    {
+      "character": "将臣",
+      "text": "我记得······这里的春祭日好像是起源于战国时期的一场战争吧？"
+    }
+  ]
+},
+{
+  "background": "street2.png",
+  "Img": "item_human1_6.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "咳咳，距今数百年前，天下大乱，战火纷飞，各路枭雄盘据一方。就在当时，不知从何冒出一位女子"
+    },
+    {
+      "character": "",
+      "text": "芦花姐突然开始讲故事了。"
+    },
+    {
+      "character": "芦花",
+      "text": "这女子依附权势，集万千爱宠于一身，还蛊惑男人，引起纷争。她的真面目，乃是一只妖怪"
+    }
+  ]
+},
+{
+  "background": "street2.png",
+  "Img": "item_human1_1.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "也不知道邻国的大名被妖怪灌了什么汤什么药，他竟然野心膨胀，要来攻打穗织！！！"
+    },
+    {
+      "character": "芦花",
+      "text": "对方精通妖术，我方自然陷入劣势。但在沦陷前的那一刻，人们绝望之际的祈祷突然显灵了"
+    }
+  ]
+},
+{
+  "background": "street2.png",
+  "Img": "item_human1_2.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "老天爷赐予了穗织一把对抗妖力的神刀"
+    },
+    {
+      "character": "芦花",
+      "text": "————丛雨丸"
+    },
+    {
+      "character": "芦花",
+      "text": "人们利用神刀的力量打败了妖怪，战胜了邻国大军。就这样，穗织的土地又重新迎来了和平"
+    },
+    {
+      "character": "芦花",
+      "text": "锵~锵~"
+    }
+  ]
+},
+{
+  "background": "street2.png",
+  "Img": "item_human1_3.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "穗织镇的春祭日，就是为了纪念这场战争的胜利。之所以要穿着甲胄游行，也是模仿当年凯旋的士兵们"
+    }
+  ]
+},
+{
+  "background": "street2.png",
+  "Img": "item_human1_4.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "最后，巫女大人还会在神社献舞"
+    }
+  ]
+},
+{
+  "background": "street2.png",
+  "Img": "item_human1_1.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "啊，对了对了。有传言说，跟妖怪大战之后，地面被撕裂，于是涌出了温泉"
+    },
+    {
+      "character": "将臣",
+      "text": "这传的也太玄乎了吧？"
+    }
+  ]
+},
+{
+  "background": "street2.png",
+  "Img": "item_human1_2.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "哈哈，确实。应该也没几个人真的相信这些"
+    },
+    {
+      "character": "芦花",
+      "text": "不过，这种简单的传说可是很重要的哦。尤其是对于外国人"
+    }
+  ]
+},
+{
+  "background": "street2.png",
+  "Img": "item_human1_4.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "这里可是神秘的东方国度————日本"
+    },
+    {
+      "character": "将臣",
+      "text": "是这样吗？"
+    }
+  ]
+},
+{
+  "background": "street2.png",
+  "Img": "item_human1_1.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "毕竟这世上，有名的地方多了去了"
+    },
+    {
+      "character": "芦花",
+      "text": "就算武器再怎么寒酸，也总比没有好吧？"
+    },
+    {
+      "character": "将臣",
+      "text": "话是这么说，但是你是本地人啊，说寒酸什么的不太好吧······"
+    }
+  ]
+},
+{
+  "background": "street2.png",
+  "Img": "item_human1_2.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "重要的是怎么把传说利用好。要用好的点子来支撑"
+    },
+    {
+      "character": "芦花",
+      "text": "过去还有伟人说过，“性能的差异并不是战力差别的决定因素”"
+    },
+    {
+      "character": "将臣",
+      "text": "那是某个机器人动画片里的伟人吧······"
+    },
+    {
+      "character": "芦花",
+      "text": "反正，从外地招揽游客也是非常重要的啦"
+    },
+    {
+      "character": "将臣",
+      "text": "是不是因为······这附近的人们不愿意来？"
+    }
+  ]
+},
+{
+  "background": "street2.png",
+  "Img": "item_human1_10.png",
+  "dialogues": [
+    {
+      "character": "",
+      "text": "听了我的疑问，芦花姐面露苦笑，摇了摇头。"
+    },
+    {
+      "character": "芦花",
+      "text": "何止是不愿意来？打的时只要一说目的地是穗织，司机肯定不会给你好脸色，很多客人都抱怨这个"
+    },
+    {
+      "character": "芦花",
+      "text": "而且也不給增加新的公交路线"
+    },
+    {
+      "character": "芦花",
+      "text": "我们都申请过很多次了······但人家就是不愿意搭理"
+    },
+    {
+      "character": "将臣",
+      "text": "······"
+    }
+  ]
+},
+{
+  "background": "street1_black.png",
+  "dialogues": [
+    {
+      "character": "司机",
+      "text": "竟然专程跑到这犬魂作祟的地方来看庆典，最近不怕死的人也是越来越多了······"
+    },
+    {
+      "character": "",
+      "text": "那句话又浮现在脑海里。"
+    },
+    {
+      "character": "",
+      "text": "周围的人们依然对穗织抱有不少偏见，对这片土地也是敬而远之。"
+    }
+  ]
+},
+{
+  "background": "sky1_black.png",
+  "dialogues": [
+    {
+      "character": "",
+      "text": "在封建迷信盛行的过去，这里甚至遭到了周边地区的排斥。"
+    },
+    {
+      "character": "",
+      "text": "这主要都是因为芦花姐刚才所说的妖怪传说。"
+    },
+    {
+      "character": "",
+      "text": "人们都说这里还残留着妖怪的怨念，要是随意靠近，就会被卷入灾厄之中，甚至丢掉性命。于是这样的迷信就被一代代的传了下来。"
+    },
+    {
+      "character": "",
+      "text": "不过到了今天，穗织的人们反倒开始利用这些传言来招揽游客。"
+    },
+    {
+      "character": "",
+      "text": "那位司机说的“犬魂作祟”就是指这里的诅咒，也是对这里的蔑称。"
+    },
+    {
+      "character": "",
+      "text": "为什么交通一直不方便呢？"
+    },
+    {
+      "character": "",
+      "text": "为什么会被时代的大潮甩在身后？"
+    },
+    {
+      "character": "",
+      "text": "想必是因为这里不仅无法借助外力，甚至连地区交流都很少，于是只能自给自足的生活下去了。"
+    },
+    {
+      "character": "",
+      "text": "多亏了温泉的功效，前来温泉养疗的游客络绎不绝。但据说，以前的客人都是遮着脸来泡温泉的。"
+    },
+    {
+      "character": "",
+      "text": "对于当时的人来说，要是被发现自己泡着犬魂作祟之地的温泉，还是会有麻烦的。"
+    },
+    {
+      "character": "",
+      "text": "虽然那些负面的印象渐渐消退······但对于在附近长大的本地人来说，成见还是难以消除。"
+    }
+  ]
+},
+{
+  "background": "street2.png",
+  "Img": "item_human1_2.png",
+  "dialogues": [
+    {
+      "character": "芦花",
+      "text": "行啦，难得见一次，就别聊这些垂头丧气的话了"
+    },
+    {
+      "character": "芦花",
+      "text": "机会难得，要不要一起去看看游行？"
+    },
+    {
+      "character": "将臣",
+      "text": "嗯······算了吧。我先去外公那里打个招呼"
+    },
+    {
+      "character": "",
+      "text": "而且，我有可能今天就该过去帮忙了。"
+    },
+    {
+      "character": "",
+      "text": "我应该先去露个面才对。"
+    }
+  ]
+}
+
+]
