@@ -1,0 +1,611 @@
+<import name="input-method" src="../../components/InputMethod/InputMethod.ux"></import>
+<template>
+  <div class="page">
+    <div class="page" if="{{pages[0]}}">
+      <scroll class="inside page scroll1" scroll-y="true" bounces="true">
+        <div class="blackBtn" for="{{showList[nowPage]}}" @click="()=>{nowDoc=wangyi.data[($idx+nowPage*cutlen)].docid;nowID=($idx+nowPage*cutlen);getDoc();pages=[0,1];}">
+          <text class="tex">{{wangyi.data[($idx+nowPage*cutlen)].title}}</text>
+          <text class="paragraphs">{{wangyi.data[($idx+nowPage*cutlen)].digest}}</text>
+        </div>
+
+        <div style="width:324px;height:80px;display: flex;justify-content: center;align-items: center;">
+          
+          <image src="/common/UI/return.png" style="position: absolute;left:0px" @click="()=>{if(nowPage==0)send('已经最前面啦~');else nowPage--;}"></image>
+          <text style="height:45px;font-size:32px;font-weight:700;line-height:44.8px;color:#fff;text-align:left;">{{nowPage+1}} / {{showList.length}}</text>
+          <image src="/common/UI/right.png" style="position: absolute;right:0px" @click="()=>{if(nowPage==showList.length-1)send('已经最后面啦~');else nowPage++;}"></image>
+        </div>
+
+        <div class="blackBtn" style="background-color: #ffffff00;"></div>
+      </scroll>
+      
+      
+      <image src="/common/UI/top.png" style="position: absolute;bottom:378px"></image>
+      <image src="/common/UI/sea.png" style="right: 6px;bottom: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="()=>{pages=[0];pages[10]=1;read()}"></image>
+      <image src="/common/UI/more.png" style="right: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="()=>{pages=[0,0,1]}"></image>
+      <image src="/common/UI/re.png" style="left: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="get"></image>
+      <text class="title">主页要闻</text>
+
+    </div>
+    <div class="page" if="{{pages[1]}}">
+      <scroll class="inside page scroll1" scroll-y="true" bounces="true" >
+        <div class="blackBtn" if="{{wangyi.data[nowID].picInfo.length}}">
+          <image src="{{wangyi.data[nowID].picInfo[0].url}}" style="position: absolute;left: 12px;top: 12px;width: 92px;border-radius: 24px;height: 92px;"></image>
+          <text style="position: absolute;font-size: 32px;font-weight: 700;letter-spacing: 0px;color: rgba(255, 255, 255, 1);text-align: left;;left: 119px;top: 16px;width: 186px;height: 84px;">{{wangyi.data[nowID].title}}</text>
+        </div>
+        <div class="blackBtn" if="{{!wangyi.data[nowID].picInfo.length}}">
+          <text style="position: absolute;font-size: 32px;font-weight: 700;letter-spacing: 0px;color: rgba(255, 255, 255, 1);text-align: left;left: 12px;top: 16px;width: 300px;height: 84px;">{{wangyi.data[nowID].title}}</text>
+        </div>
+
+        <text style="border-radius:36px;border: 20px rgb(26, 26, 26);background-color:rgb(26, 26, 26);position: fixed;left:0px;width:316px;font-size:28px;font-weight:700;line-height:39.2px;color:rgba(255,255,255,0.6);">{{showData}}</text>
+      </scroll>
+      
+      <image src="/common/UI/top.png" style="position: absolute;bottom:378px"></image>
+      <text class="title">详情查看</text>
+      <image src="/common/UI/return.png" style="left: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="()=>{pages=[1,0];showData='Loading~'}"></image>
+      <image src="/common/UI/save.png" style="right: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="()=>{save();send(`已完成`);read()}"></image>
+      <image src="/common/UI/sw.png" style="right: 6px;bottom: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="()=>{pages=[0];pages[9]=1}"></image>
+    </div>
+    <div class="page" if="{{pages[2]}}">
+      <scroll class="inside page scroll1" scroll-y="true" bounces="true">
+        <!-- <div class="blackBtn" @click="()=>{pages=[0,0,0,1]}">
+          <text class="tex">链接</text>
+          <text class="paragraphs">新闻请求API(开发中)</text>
+        </div> -->
+
+        <div class="blackBtn" @click="()=>{wangyi={};doc={};send('已完成')}">
+          <text class="tex">缓存</text>
+          <text class="paragraphs">清空缓存</text>
+        </div>
+
+        <div class="blackBtn" @click="()=>{pages=[0,0,0,0,1]}">
+          <text class="tex">日志</text>
+          <text class="paragraphs">取出小程序运行日志</text>
+        </div>
+
+        <div class="blackBtn" @click="()=>{if(len<=68)len+=2;else len=10}">
+          <text class="tex">长度</text>
+          <text class="paragraphs">主页获取长度为{{len}}个</text>
+        </div>
+
+        <div class="blackBtn" @click="()=>{if(cutlen<=18)cutlen+=2;else cutlen=2}">
+          <text class="tex">长度</text>
+          <text class="paragraphs">主页分割长度为{{cutlen}}个</text>
+        </div>
+
+        <div class="blackBtn" @click="()=>{pages=[0,0,0,0,0,1]}">
+          <text class="tex">关于</text>
+          <text class="paragraphs">关于此小程序</text>
+        </div>
+      </scroll>
+      
+      <image src="/common/UI/top.png" style="position: absolute;bottom:378px"></image>
+      <text class="title">设置</text>
+      <image src="/common/UI/return.png" style="left: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="()=>{pages=[1,0]}"></image>
+      
+    </div>
+    <!-- <div class="page" if="{{pages[3]}}">
+      <scroll class="inside page scroll1" scroll-y="true" bounces="true">
+        <div class="blackBtn" @click="()=>{send('开发中')}">
+          <text class="tex">主推API</text>
+          <text class="paragraphs">{{url}}</text>
+        </div>
+        <div class="blackBtn" @click="()=>{send('开发中')}">
+          <text class="tex">编号路径</text>
+          <text class="paragraphs">{{JSON.stringify(urn)}}</text>
+        </div>
+        <div class="blackBtn" @click="()=>{send('开发中')}">
+          <text class="tex">查看API</text>
+          <text class="paragraphs">{{urc}}</text>
+        </div>
+        <div class="blackBtn" @click="()=>{send('开发中')}">
+          <text class="tex">查看路径</text>
+          <text class="paragraphs">{{JSON.stringify(urd)}}</text>
+        </div>
+        <div class="blackBtn" @click="()=>{send('开发中')}">
+          <text class="tex">图片路径</text>
+          <text class="paragraphs">{{JSON.stringify(urp)}}</text>
+        </div>
+        <div class="blackBtn" @click="()=>{send('开发中')}">
+          <text class="tex">搜索API</text>
+          <text class="paragraphs">{{urs}}</text>
+        </div>
+        
+      </scroll>
+      
+      <image src="/common/UI/top.png" style="position: absolute;bottom:378px"></image>
+      <text class="title">设置</text>
+      <image src="/common/UI/return.png" style="left: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="()=>{pages=[0,0,1]}"></image>
+      
+    </div> -->
+    <div class="page" if="{{pages[4]}}">
+      <scroll class="inside page scroll1" scroll-y="true" bounces="true">
+        <div class="blackBtn" @click="()=>{send(log[$idx])}" for="{{log}}">
+          <text class="paragraphs" style="text-overflow:unset;top:3px;font-size:24px;height:100px">{{log[$idx]}} ...</text>
+        </div>
+      </scroll>
+      
+      <image src="/common/UI/top.png" style="position: absolute;bottom:378px"></image>
+      <text class="title">设置</text>
+      <image src="/common/UI/return.png" style="left: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="()=>{pages=[0,0,1]}"></image>
+      
+    </div>
+
+    <div class="page" if="{{pages[5]}}">
+      <scroll scroll-y="true" bounces="true" class="scroll1 inside" style="top:0px;height:480px;">
+        <div style="left: 0px;top: 80px;width: 324px;height: 194px;opacity: 1;border-radius: 36px;background-color: rgba(64, 64, 64, 0.486);border: 3px;border-color:rgba(55, 55, 55, 0.301);">
+          <text style="font-size: 36px;font-weight: 500;line-height: 50.4px;color: rgba(255, 255, 255, 1);text-align: left;left: 19px;top: 16px;width: 144px;height: 51px;position: absolute;">
+            环间新闻
+          </text>
+          <text style="font-size: 36px;font-weight: 500;line-height: 50.4px;color: rgba(255, 255, 255, 0.6);left: 19px;top: 68px;height: 48px;position: absolute;">
+            1.0.0
+          </text>
+          <image src="/common/logo.png" style="width:70px;left: 228px;top: 98px;opacity: 1;background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.6) 100%);position: absolute;"></image>
+        </div>
+        <text style="font-size: 32px;font-weight: 500;line-height: 44.8px;color: rgba(255, 255, 255, 0.6);text-align: left;left: 11px;top: 292px;width: 226px;height: 42px;position: absolute;">
+          参与的开发人员
+        </text>
+        <text style="font-size: 32px;font-weight: 500;line-height: 44.8px;color: rgba(255, 255, 255, 1);text-align: left;position: absolute;left: 11px;top: 338px;height: 45px;">
+          @ppyycc
+        </text>
+        <text style="font-size: 32px;font-weight: 500;line-height: 44.8px;color: rgba(255, 255, 255, 1);text-align: left;position: absolute;left: 11px;top: 384px;height: 45px;">
+          @无源流沙
+        </text>
+      </scroll>
+      <image src="/common/UI/top.png" style="position: absolute;bottom:378px"></image>  
+      <image src="/common/UI/return.png" style="left: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="()=>{pages=[0,0,1]}"></image>
+      <text class="title">关于</text>
+      
+    </div>
+    <div class="page" if="{{pages[10]}}">
+      <scroll class="inside page scroll1" scroll-y="true" bounces="true">
+        <div class="blackBtn" for="{{saveList}}" @click="()=>{pages=[0];pages[11]=1;showData=saveList[$idx].para;showTite=saveList[$idx].title;nowID=$idx}" @longpress="del($idx)">
+          <text class="tex" style="text-overflow:unset;top:3px;font-size:24px;height:100px">{{saveList[$idx].title}}</text>
+        </div>
+      </scroll>
+
+      <!-- <div style="left: 0px;top: 166px;width: 336px;height: 60px;position: absolute" if="{{!hide}}">
+        <image src="/common/UI/send.png" style="left: 270px;top: 0px;position: absolute;" @click="search()"></image>
+        <image src="/common/UI/inputBK.png" style="left:0px;top:0px;position: absolute;" ></image>
+
+        <text style="position: absolute;left: 17px;top: 9px;font-size: 32px;font-weight: 800;letter-spacing: 0px;color: rgba(255, 255, 255, 1);">{{input}}</text>
+      </div>
+      <input-method
+        hide="{{hide}}"
+        keyboardtype="{{keyboardtype}}"
+        maxlength="5"
+        vibratemode="{{vibratemode}}"
+        screentype="{{screentype}}"
+        @visibility-change="onVisibilityChange"
+        @key-down="onKeyDown"
+        @delete="onDelete"
+        @complete="onComplete"
+      ></input-method>
+
+
+
+       -->
+      <image src="/common/UI/top.png" style="position: absolute;bottom:378px"></image>
+      <text class="title">缓存内容</text>
+      <image src="/common/UI/return.png" style="left: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="()=>{pages=[1,0]}"></image>
+      <image src="/common/UI/re.png" style="right: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="read()"></image>
+    </div>
+    <div class="page" if="{{pages[11]}}">
+      <scroll class="inside page scroll1" scroll-y="true" bounces="true" >
+        <div class="blackBtn">
+          <text style="position: absolute;font-size: 32px;font-weight: 700;letter-spacing: 0px;color: rgba(255, 255, 255, 1);text-align: left;left: 12px;top: 16px;width: 300px;height: 84px;">{{showTite}}</text>
+        </div>
+
+        <text style="border-radius:36px;border: 20px rgb(26, 26, 26);background-color:rgb(26, 26, 26);position: fixed;left:0px;width:316px;font-size:28px;font-weight:700;line-height:39.2px;color:rgba(255,255,255,0.6);">{{showData}}</text>
+      </scroll>
+      
+      <image src="/common/UI/top.png" style="position: absolute;bottom:378px"></image>
+      <text class="title">详情查看</text>
+      <image src="/common/UI/return.png" style="left: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="()=>{pages=[0];pages[10]=1;showData='Loading~'}"></image>
+      <image src="/common/UI/del.png" style="right: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="()=>{del(nowID);pages=[0];pages[10]=1;send('已完成')}"></image>
+    </div>
+    <div class="page" if="{{pages[9]}}">
+      <scroll class="inside page scroll1" scroll-y="true" bounces="true" >
+        <image for="{{wangyi.data[nowID].picInfo}}" src="{{wangyi.data[nowID].picInfo[$idx].url}}" style="left: 21px;width: 283px;border-radius:36px;position: absolute;"></image>
+      </scroll>
+      
+      <image src="/common/UI/top.png" style="position: absolute;bottom:378px"></image>
+      <text class="title">图组查看</text>
+      <image src="/common/UI/return.png" style="left: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="()=>{pages=[0,1];}"></image>
+    </div>
+  </div>
+</template>
+
+<script>
+import fetch from '@system.fetch' 
+import storage from '@system.storage' 
+import prompt from '@system.prompt' 
+
+
+function rand(minNum,maxNum){ 
+  switch(arguments.length){ 
+      case 1: 
+          return parseInt(Math.random()*minNum+1,10); 
+      break; 
+      case 2: 
+          return parseInt(Math.random()*(maxNum-minNum+1)+minNum,10); 
+      break; 
+          default: 
+              return 0; 
+          break; 
+  } 
+}
+
+// const tpl    = 'https://api.example.com/cat/$/page/$?ts=$';
+// const ranges = [
+//   { min: 0,  max: 10 },   // 第 1 个 $
+//   { min: 1,  max: 50 },   // 第 2 个 $
+//   { min: 1000, max: 9999 } // 第 3 个 $
+// ];
+
+function randomizeUrl(template, ranges) {
+  let i = 0;                                     // 当前占位符序号
+  return template.replace(/\$/g, () => {
+    if (i >= ranges.length) {
+      throw new Error(`占位符数量 (${i + 1}) 超过 ranges 数组长度 (${ranges.length})`);
+    }
+    const { min, max } = ranges[i++];
+    // 生成 [min, max] 闭区间内的随机整数
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  });
+}
+
+//过滤返回结果
+function filterArticles(raw) {
+  if (raw.code !== 0 || !Array.isArray(raw.data?.result)) return [];
+
+  return raw.data.result.filter(item => {
+    // ① 服务端明确标记的文章
+    if (item.skipType === 'doc') return true;
+
+    // ② 兜底：有些文章没写 skipType，但它们的 docid 规则固定为 “16 位字母数字”
+    //      同时排除任何 _video_ 标记
+    return (
+      /^[A-Z0-9]{16}$/.test(item.docid) && !item.docid.includes('_video_')
+    );
+  });
+}
+
+function ptot(html) {
+  return (html.match(/<p[^>]*>[\s\S]*?<\/p>/gi) || [])
+    .map(seg => seg.replace(/<[^>]+>/g, '').trim())  // 去标签
+    .filter(Boolean)
+    .join('\n\n');
+}
+
+// —— demo ——
+// console.log(extractPTextRegex(html));
+function cut(arr, len) {
+  if (len <= 0 || !Number.isInteger(len)) {
+    throw new Error('len 必须是正整数');
+  }
+
+  const result = [];
+  for (let i = 0; i < arr.length; i += len) {
+    // slice 取出一段
+    const chunk = arr.slice(i, i + len);
+    // 不足 len 个时用 null 递补
+    while (chunk.length < len) {
+      chunk.push(null);
+    }
+    result.push(chunk);
+  }
+  return result;
+}
+
+export default {
+  private: {
+      wangyi: {},
+      pages:[true],
+      nowDoc:'',
+      nowID:0,
+      len:30,
+      cutlen:5,
+      showPic:false,
+      picSrc:"",
+
+      wait:[],
+
+
+      input:"键入",
+      hide:false,
+      keyboardtype: "T9", //QWERTY, T9
+      vibratemode: "short",
+      screentype: "rect", //pill-shaped, rect, circle
+
+      url:"https://m.163.com/touch/jsonp/article/local/_/0-#.do",
+      urd:['$nowDoc','body'],
+      urc:"https://c.m.163.com/news/a/$.html",
+      urn:['data','$','docid'],
+      urp:['data','$','picInfo','0','url'],
+      urs:"https://gw.m.163.com/nc/api/v1/pc-wap/search?query=$&size=50&from=wap&needPcUrl=true&skipType=doc",
+
+      log:[],
+
+      doc:{},
+      showData:"",
+      showTite:"",
+      showList:[],
+      nowPage:0,
+
+      saveList:[]
+  },
+
+  //INPUTER
+  onVisibilityChange(evt) {
+    console.log("显示状态变更:"+JSON.stringify(evt));
+  },
+  onKeyDown(evt) {
+    // this.textValue += evt.detail.content;
+    console.log("按下按键:"+JSON.stringify(evt));
+  },
+  onDelete() {
+    this.input = this.input.slice(0, -1);
+    console.log("删除字符");
+  },
+  changeState() {
+    this.hide = !this.hide;
+  },
+  onComplete(evt) {
+    this.input += evt.detail.content;
+    console.log("返回字符:"+JSON.stringify(evt));
+  },
+
+  save(){
+    let json={title:this.wangyi.data[this.nowID].title,para:this.showData};
+    storage.get({
+      key: 'save',
+      default:JSON.stringify([]),
+      success: (data) => {
+        let list = JSON.parse(data);
+        list.push(json);
+
+        storage.set({
+          key: 'save',
+          value: JSON.stringify(list),
+          success: (data) => {
+            this.log.push('"set" handling success')
+          },
+          fail: function(data, code) {
+            console.log(`handling fail, code = ${code}`)
+          }
+        })
+
+        this.log.push('"get" handling success')
+      },
+      fail: function(data, code) {
+        console.log(`handling fail, code = ${code}`)
+      }
+    })
+  },
+
+  del(sth){
+    storage.get({
+      key: 'save',
+      default:JSON.stringify([]),
+      success: (data) => {
+        let list = JSON.parse(data);
+        list.splice(sth,1);
+        storage.set({
+          key: 'save',
+          value: JSON.stringify(list),
+          success: (data) => {
+            this.log.push('"delete" handling success')
+            this.read();
+          },
+          fail: function(data, code) {
+            console.log(`handling fail, code = ${code}`)
+          }
+        })
+
+        this.log.push('"get" handling success')
+      },
+      fail: function(data, code) {
+        console.log(`handling fail, code = ${code}`)
+      }
+    })
+  },
+
+  read(){
+    storage.get({
+      key: 'save',
+      default:JSON.stringify([]),
+      success: (data) => {
+        console.log(data);
+        this.saveList=JSON.parse(data);
+
+        this.log.push('"get" handling success')
+      },
+      fail: function(data, code) {
+        console.log(`handling fail, code = ${code}`)
+      }
+    })
+  },
+
+  search(){
+    this.hide=true;
+    fetch.fetch({
+      url: this.rp(this.urs,this.input,'$'),
+      method: 'GET',
+      responseType: 'text',
+      success: res => {
+        this.send('响应请求成功！');
+        this.log.push(`search successed,code: ${res.code}`);
+
+        const json = filterArticles(JSON.parse(res.data));
+        this.wait=json;
+        console.log(JSON.stringify(json))
+      },
+      fail: (err,code) => {
+        prompt.showToast({ message: `网络错误：${code} 代码 ${err}` })
+        this.log.push(`fetch fail,code: ${code} ${err}`)
+      }
+    })
+  },
+
+  rp(sth,tag,str){
+    //替换函数
+    if(str=='$')return sth.replace(/\$/g, () => tag);
+    else if(str=='#')return sth.replace(/\#/g, () => tag);
+    else if(str=='@')return sth.replace(/\@/g, () => tag);
+  },
+
+  // translatePic(){
+  //   this.showPic=true;
+  //   let a=this.wangyi
+  //   for(let i=0;i<this.urp.length;i++){
+  //     if(this.urp[i]=='$'){
+  //       a=a[this.nowID];
+  //       continue;
+  //     }
+  //     a=a[this.urp[i]];
+  //   }
+
+  //   let stop = setTimeout(() => {
+  //     this.showPic=false;
+  //   }, 5000);
+
+  //   request.download({
+  //     url: a,
+  //     success: (data) => {
+  //       clearTimeout(stop);
+  //       this.picSrc=a;
+  //       this.log.push(`handling success${data.token}`);
+  //       return;
+  //     },
+  //     fail: (data, code) => {
+  //       this.showPic=false;
+  //       this.log.push(`handling fail, code = ${code}`)
+  //     }
+  //   })
+
+    
+  // },
+  
+
+  // translateNow(sth){
+    
+
+  //   let now=this.wangyi
+  //   for(let i=0;i<this.urn.length;i++){
+  //     if(this.urn[i]=='$'){
+  //       now=now[sth];
+  //       continue;
+  //     }
+  //     now=now[this.urn[i]];
+  //   }
+  //   return now;
+  // },
+
+  //清除标签
+  // stripHTML(raw) {
+  //   return raw
+  //   // 1) 去掉注释与占位
+  //   .replace(/<!--[\s\S]*?-->/g, '')
+
+  //   // 2) 这些标签视作“段落/换行”，先替换成 \n
+  //   .replace(/<(\/?(p|br|div|li|tr|h[1-6]))[^>]*>/gi, '\n')
+
+  //   // 3) 其余任何标签一律干掉
+  //   .replace(/<[^>]+>/g, '')
+
+  //   // 4) HTML 实体可选解码；这里只处理常见空格
+  //   .replace(/&nbsp;/g, ' ')
+
+  //   // 5) 连续换行压缩（>2 行保留 2 行）
+  //   .replace(/\n{3,}/g, '\n\n')
+
+  //   // 6) 去首尾空白
+  //   .trim();
+  // },
+
+  onInit () {
+    this.read();
+    this.get()
+  },
+  send (msg,time=500) { prompt.showToast({ message: msg,duration :time}) },
+  /** 抓取首页推荐列表 */
+  get () {
+    this.log.push(`start getting ${this.url}`)
+    this.send('开始抓取……');
+    
+
+
+    fetch.fetch({
+      url: this.rp(this.url,this.len,'#'),
+      method: 'GET',
+      responseType: 'text',
+      success: res => {
+        this.send('响应请求成功！');
+        this.log.push(`fetch successed,code: ${res.code}`);
+
+        const json = JSON.parse(res.data);
+        this.wangyi=json;
+        this.showList=cut(json.data,this.cutlen)
+        // const cards = (json.data.cards || []).filter(c => c.mblog)
+        // this.posts = [...this.posts, ...cards.map(c => c.mblog)]
+        // this.sinceId = json.data.cardlistInfo.since_id
+        // console.log(`data res success is${JSON.stringify (res.data)}`);
+        if(json.code==200)this.send(`抓取成功！代码${res.code}`);
+      },
+      fail: (err,code) => {
+        prompt.showToast({ message: `网络错误：${code} 代码 ${err}` })
+        this.log.push(`fetch fail,code: ${code} ${err}`)
+      }
+    })
+    // 根据需要可继续调用 URL2
+  },
+
+
+
+  getDoc(){ 
+    this.send('开始请求……');
+    if(this.nowDoc.length!=16){
+      this.send(`此非文章！！`);
+      this.pages=[1,0];
+      return;
+    }
+
+    //nowDoc:文章编号
+    const API=this.rp(this.urc,this.nowDoc,'$');
+
+    fetch.fetch({
+      url:API,
+      method: 'GET',
+      responseType: 'text',
+      success: res => {
+        const now=ptot(String(res.data));
+        // console.log(now)
+        // console.log(ptot(now));
+        if(now){
+          this.showData=String(now);
+          
+        }
+        else{
+          this.send(`错误，对于html,此文本不可为“read”`)
+        }
+
+        this.log.push("get html and replace successed");
+      },
+      fail: (err,code) => {
+        this.send(`网络错误！代码${code},${err}`);
+      }
+    })
+  },
+}
+</script>
+
+<style>
+.page{width:336px;height:480px;position:absolute;background-color:black}
+.inside{left:6px;top:86px;width:324px;height:394px;overflow:visible}
+.tex{position:absolute;left:19px;top:14px;height:45px;font-size:32px;font-weight:700;line-height:44.8px;color:#fff;text-align:left;width: 300px;}
+.paragraphs{position:absolute;left:19px;top:61px;width:286px;height:45px;font-size:28px;font-weight:700;line-height:39.2px;color:rgba(255,255,255,0.6);text-overflow:ellipsis}
+.title{text-overflow:ellipsis;width:182px;height:42px;font-size:32px;font-weight:700;line-height:44.8px;color:#fff;text-align:center;position:absolute;top:35px;left:77px}
+.blackBtn{margin-bottom:20px;width:324px;height:112px;border-radius:36px;background-color:rgba(38,38,38,1)}
+.scroll1{flex-wrap:nowrap;flex-direction:column;align-items:center}
+/* 其余样式根据 $app_style$ 数组继续补充 */
+</style>

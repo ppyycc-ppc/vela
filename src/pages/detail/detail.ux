@@ -1,0 +1,403 @@
+<template>
+  <div class="page">
+    
+    <image class="blackGround" src="/common/road.jpg"></image>
+    <image class="blackGround" src="/common/n2o_bg.png" style="top:0px" if="{{inNo2}}"></image>
+    <image class="blackGround" src="/common/wei.png" style="top:{{to}}"></image>
+
+    <image class="blackGround" src="/common/no2.png" style="top:{{to_no2}};left:{{lef_no2}}" if="{{to_no2>=-200}}"></image>
+    <image class="blackGround" src="/common/saver.png" style="top:{{to_saver}};left:{{lef_saver+5}}" if="{{to_saver>=-200}}"></image>
+
+
+    <image class="blackGround" src="/common/car_other_left.png" style="top:{{to_other_left}};left:{{lef_other_left}};opacity: {{leftAlive}};" if="{{otherLeftStyle==0 && to_other_left>=-200}}"></image>
+    <image class="blackGround" src="/common/car_other_left1.png" style="top:{{to_other_left}};left:{{lef_other_left}};opacity: {{leftAlive}};" if="{{otherLeftStyle==1 && to_other_left>=-200}}"></image>
+
+    <image class="blackGround" src="/common/car_other_right.png" style="top:{{to_other_right}};left:{{lef_other_right}};opacity: {{rightAlive}};" if="{{otherRightStyle==0 && to_other_right>=-200}}"></image>
+    <image class="blackGround" src="/common/car_other_right1.png" style="top:{{to_other_right}};left:{{lef_other_right}};opacity: {{rightAlive}};" if="{{otherRightStyle==1 && to_other_right>=-200}}"></image>
+
+    <text class="btn"  style="position: absolute;top:150px;left:{{startAdr}}"  @click="me" if="{{ifBtn[0]}}">· ·开始· ·</text>
+    <text class="btn"  style="position: absolute;top:100px;left:{{mesAdr}}"  @click="toIndex" if="{{ifBtn[1]}}">· ·返回· ·</text>
+    <text class="btn"  style="position: absolute;top:50px;left:{{mesAdr}}"  @click="{{$app.exit()}}" if="{{ifBtn[1]}}">· ·退出· ·</text>
+
+    <text class="btn"  style="position: absolute;top:0px;"  >· ·成绩：{{showScroe}}· ·</text>
+
+    <!-- <text class="btn"  style="position: absolute;top:100px;"  >{{to_other_right}}</text> -->
+    <!-- <text class="btn"  style="position: absolute;top:250px;"  >背景top为：{{to}}px</text> -->
+    <!-- <text class="btn"  style="position: absolute;top:100px;"  @click="addSpeed">加速</text> -->
+    <!--<text class="btn"  style="position: absolute;top:20px;left:160px"  >速度:{{speed*3+"\n"}}km/h</text>-->
+    <!-- <text class="btn"  style="position: absolute;top:350px;"  >速度为{{speed}}px</text> -->
+
+    <!--车-->
+    <image class="blackGround" src="/common/no2_car.png" style="top:225px;left:{{lef+5}};" if="{{inNo2}}"></image>
+    <image class="blackGround" src="/common/car1.png" style="top:{{topCar}};left:{{lef}};"></image>
+    
+
+
+    <!--控制车辆左右按键-->
+    <text class="btn"  style="position: absolute;top:{{setThing.topBtn}};left:10px;text-align: right;width:130px;height:{{setThing.highBtn}};background-color: rgb(59, 59, 59 ,{{setThing.apperedBtn}});"  @click="moveCar(0)">←</text>
+    <text class="btn"  style="position: absolute;top:{{setThing.topBtn}};left:200px;width:130px;height:{{setThing.highBtn}};background-color: rgb(59, 59, 59 ,{{setThing.apperedBtn}});"  @click="moveCar(1)">→</text>
+  </div>
+</template>
+
+<script>
+import router from "@system.router"
+import vibrator from '@system.vibrator' 
+import storage from '@system.storage';
+
+export default {
+  // 页面级组件的数据模型，影响传入数据的覆盖机制：private内定义的属性不允许被覆盖
+  private: {
+    to:0,
+    foe:false,
+    timerCode:'',
+    speed:0,          //最多取50
+    carList:[10,80,190,250],
+    lef:20,
+    carCondition:0,
+    maxSpeed:15,
+    carRushFlag:false,
+    gameCondition:true,
+    mainCode:'',
+    scroe:0,
+    showScroe:0,
+    maxScroe:0,
+
+    //界面UI专用变量：
+    startAdr:90,
+    mesAdr:90,
+    ifBtn:[true,true],
+    setThing:
+    {
+      apperedBtn:0.5,
+      highBtn:80,
+      topBtn:400,
+    },
+    topCar:220,
+
+
+    to_no2:-1500,
+    lef_no2:30,
+    inNo2:false,
+    no2Condition:0,
+    no2MaxAdd:30,
+    no2Time:0,
+
+
+    to_saver:-2000,
+    inSaver:true,
+    saverCondition:0,
+    lef_saver:20,
+
+    to_other_left:-2000,
+    lef_other_left:20,
+    otherLeftCondition:0,
+    otherLeftStyle:0,
+    otherLeftSpeed:2,
+    leftAlive:1,
+
+    to_other_right:-500,
+    lef_other_right:190,
+    otherRightCondition:2,
+    otherRightStyle:0,
+    otherRightSpeed:5,
+    rightAlive:1
+  },
+
+  onInit(){
+    storage.get({
+      key: 'settings',
+      success: (data) => {
+        if(data){
+          this.setThing = JSON.parse(data);
+        }
+      },
+      fail:()=>{},
+    });
+    storage.get({
+      key: 'max',
+      success: (data) => {
+        if(data){
+          this.maxScroe = JSON.parse(data);
+        }
+      },
+      fail:()=>{},
+    });
+  },
+
+  toIndex() {
+    vibrator.vibrate({
+      mode: 'short'
+    })
+    // 跳转到应用内的某个页面，router用法详见：文档->接口->页面路由
+    router.push({
+      uri: "/pages/index"
+    })
+  },
+
+  jia(){
+    this.scroe++;
+    if(this.scroe%10==0){this.scroe=0;this.showScroe+=this.speed;}
+    if(this.to>430){this.to=40;}
+    
+    
+
+      
+
+    //处理各种有关车速的运算
+    
+    
+    if(this.inNo2)
+    {
+      this.carRushFlag=!this.carRushFlag;
+      this.lef=this.carList[this.carCondition];
+      if(this.carRushFlag)
+      {
+        this.lef+=this.randomNum(0,3);
+      }
+      else
+      {
+        this.lef-=this.randomNum(0,3);
+      }
+    }
+
+    //其他依赖于计时器的元素
+
+    //非线性动画运动
+    if(this.speed<15 || this.inNo2)this.speed+=Math.ceil((this.maxSpeed-this.speed)/20);
+    else if(this.speed>15 && !this.inNo2)this.speed+=Math.floor((this.maxSpeed-this.speed)/20)
+    
+
+    //OtherLeft
+    this.to_other_left+=(this.speed+this.otherLeftSpeed);//左侧来车运动
+    if(this.to_other_left>=80 && this.to_other_left<=360 && this.otherLeftCondition==this.carCondition)
+    {
+      if(this.inSaver)
+      {
+        this.showScroe+=100;
+        this.otherLeftCondition=4;
+        this.lef_other_left+=80;
+        this.leftAlive=0.5;
+        this.inSaver=false;
+        vibrator.vibrate({
+          mode: 'short'
+        })
+      }
+      else if(this.inNo2)
+      {
+        this.showScroe+=100;
+        this.otherLeftCondition=4;
+        this.lef_other_left+=80;
+        this.leftAlive=0.5;
+        vibrator.vibrate({
+          mode: 'short'
+        })
+      }
+      else
+      {
+        if(this.maxScroe<this.showScroe)this.maxScroe=this.showScroe;
+        storage.set({
+          key: 'max',
+          value: JSON.stringify(this.maxScroe),
+          success: () => {},
+          fail:()=>{},
+        })
+        vibrator.vibrate({
+          mode: 'long'
+        })
+        this.gameCondition=false;
+        clearInterval(this.timerCode);
+      }
+    }
+    else if(this.to_other_left>=600)
+    {
+      this.leftAlive=1;
+      this.to_other_left=this.randomNum(-1000,-2000);
+      this.otherLeftCondition=this.randomNum(0,1);
+      this.otherLeftSpeed=this.randomNum(1,7);
+      this.otherLeftStyle=this.randomNum(0,1);
+      this.lef_other_left=this.carList[this.otherLeftCondition];
+
+    }
+
+    //OtherRight
+
+    this.to_other_right+=(this.speed-this.otherRightSpeed);//右侧来车运动
+    if(this.to_other_right>=80 && this.to_other_right<=360 && this.otherRightCondition==this.carCondition)
+    {
+      if(this.inSaver)
+      {
+        this.showScroe+=100;
+        this.otherRightCondition=4;
+        this.lef_other_right+=80;
+        this.rightAlive=0.5;
+        this.inSaver=false;
+        vibrator.vibrate({
+          mode: 'short'
+        })
+      }
+      else if(this.inNo2)
+      {
+        this.showScroe+=100;
+        this.otherRightCondition=4;
+        this.lef_other_right+=80;
+        this.rightAlive=0.5;
+        vibrator.vibrate({
+          mode: 'short'
+        })
+      }
+      else
+      {
+        if(this.maxScroe<this.showScroe)this.maxScroe=this.showScroe;
+        storage.set({
+          key: 'max',
+          value: JSON.stringify(this.maxScroe),
+          success: () => {},
+          fail:()=>{},
+        })
+        vibrator.vibrate({
+          mode: 'long'
+        })
+        this.gameCondition=false;
+        clearInterval(this.timerCode);
+      }
+    }
+    else if(this.to_other_right>=700)
+    {
+      this.rightAlive=1;
+      this.to_other_right=this.randomNum(-200,-700);
+      this.otherRightCondition=this.randomNum(2,3);
+      this.otherRightSpeed=this.randomNum(1,7);
+      this.otherRightStyle=this.randomNum(0,1);
+      this.lef_other_right=this.carList[this.otherRightCondition];
+
+    }
+
+    //No2
+    this.to+=this.speed;
+    this.to_no2+=this.speed;
+    this.maxSpeed=15;
+    if(this.no2Time<=0)
+    {
+      this.inNo2=false;
+    }
+    else
+    {
+      this.inNo2=true;
+      this.maxSpeed=this.no2MaxAdd;
+      this.no2Time--;
+    }
+    if(this.to_no2>=200 && this.to_no2<=400 && this.no2Condition==this.carCondition)
+    {
+      this.to_no2=600;
+      this.no2Time=50;
+    }
+    else if(this.to_no2>=700)
+    {
+      this.to_no2=this.randomNum(-1000,-3000);
+      this.no2Condition=this.randomNum(0,3);
+      this.lef_no2=this.carList[this.no2Condition]+10;
+    }
+    
+    //Saver
+    this.to_saver+=this.speed;
+    if(this.to_saver>=200 && this.to_saver<=400 && this.saverCondition==this.carCondition)
+    {
+      this.to_saver=600;
+      this.inSaver=true;
+    }
+    else if(this.to_saver>=700)
+    {
+      this.to_saver=this.randomNum(-2000,-4000);
+      this.saverCondition=this.randomNum(0,3);
+      this.lef_saver=this.carList[this.saverCondition];
+    }
+  },
+  mainCounter(){
+    //全局计时器
+    if(this.foe && 400-this.startAdr>5){this.startAdr+=parseInt((400-this.startAdr)/10)+1;}
+    else{
+      this.ifBtn[0]=false;
+    }
+
+    if( 400-this.startAdr>5 && this.gameCondition){this.mesAdr+=parseInt((400-this.startAdr)/10)+1;}
+    else if(!this.gameCondition && 90-this.mesAdr<-5){
+      this.mesAdr+=(90-this.mesAdr)/10;
+    }
+    if(400-this.startAdr<=5 && this.gameCondition){this.ifBtn[1]=false}
+    else
+    {
+      this.ifBtn[1]=true;
+    }
+  },
+  randomNum(minNum,maxNum){ 
+    switch(arguments.length){ 
+        case 1: 
+            return parseInt(Math.random()*minNum+1,10); 
+        break; 
+        case 2: 
+            return parseInt(Math.random()*(maxNum-minNum+1)+minNum,10); 
+        break; 
+            default: 
+                return 0; 
+            break; 
+    } 
+  }, 
+  // addSpeed(){
+  //   this.maxSpeed+=5
+  // },
+  me(){
+    if(this.foe)return;
+    vibrator.vibrate({
+      mode: 'short'
+    })
+    this.foe=true;
+    clearInterval(this.mainCode);
+    this.timerCode=setInterval(this.jia,30);
+    this.mainCode=setInterval(this.mainCounter,30);
+    return;
+  },
+  moveCar(sth){
+    if(!this.gameCondition)return;
+    vibrator.vibrate({
+      mode: 'short'
+    })
+    if(sth && this.carCondition<3)
+    {
+      this.carCondition+=1;
+    }
+    else if(!sth && this.carCondition>0)
+    {
+      this.carCondition-=1;
+    }
+    this.lef=this.carList[this.carCondition];
+    return;
+  },
+}
+</script>
+
+<style>
+
+.page {
+  width: 336px;
+  height: 480px;
+}
+
+
+
+
+.blackGround{
+  position: absolute;
+}
+
+.btn {
+  
+  font-size: 30px;
+  left: 50px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: rgba(59, 59, 59, 0.5);
+  border: 5px solid rgb(104, 104, 104,0.5);
+  border-radius: 20px;
+}
+
+</style>
