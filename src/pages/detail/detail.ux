@@ -1,0 +1,151 @@
+<template >
+  <div class="container">
+    <!-- 顶部标题和进度 -->
+    <div class="header">
+      <marquee  class="title" scrollamount="{{10}}" >{{titl}}</marquee >
+      <text class="progress">{{ currentPage + 1 }} / {{ totalPages }}</text>
+    </div>
+
+    <!-- 核心文本显示区域 -->
+    <div class="content">
+      <text class="text-content">{{ pages[currentPage] }}</text>
+    </div>
+
+    <!-- 底部翻页控制按钮 -->
+    <div class="footer">
+      <input class="btn prev" type="button" value="上一页" @click="prevPage" />
+      <input class="btn next" type="button" value="下一页" @click="nextPage" />
+    </div>
+    <image src="/common/UI/return.png" style="left: 6px;bottom: 36px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="back()"></image>
+      
+  </div>
+</template>
+
+<style>
+.container {
+  flex-direction: column;
+  width: 336px;
+  height: 480px;
+  background-color: #000;
+}
+.header {
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  border-bottom-width: 1px;
+  border-bottom-color: #333;
+}
+.title {
+  position: absolute;
+  width: 230px;
+  color: #FFF;
+  font-size: 20px;
+}
+.progress {
+  position: absolute;
+  right:50px;
+  color: #AAA;
+  font-size: 18px;
+}
+.content {
+  flex: 1;
+  padding: 20px;
+}
+.text-content {
+  color: #EEE;
+  font-size: 22px;
+  line-height: 22px;
+}
+.footer {
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 15px 20px;
+  border-top-width: 1px;
+  border-top-color: #333;
+}
+.btn {
+  width: 120px;
+  height: 40px;
+  border-radius: 8px;
+  background-color: #333;
+  color: #FFF;
+  font-size: 18px;
+}
+</style>
+
+<script>
+import storage from '@system.storage' 
+import prompt from '@system.prompt' 
+import router from '@system.router' 
+
+export default {
+  // 页面数据
+  data: {
+    titl:'',
+    fullText: '',         // 完整的文本
+    pageSize: 182,        // 根据你的屏幕和字体测试调整，约每页字数
+    pages: [],            // 分割后的文本数组
+    currentPage: 0,       // 当前页索引
+    totalPages: 0         // 总页数
+  },
+
+  back(){
+    router.replace({
+          uri: 'pages/index'
+        })
+  },
+
+  // 页面初始化
+  onInit() {
+    // 1. 设置完整文本
+    storage.get({
+      key: 'tmpText',
+      default:JSON.stringify([]),
+      success: (data) => {
+        this.fullText = JSON.parse(data).text;
+        this.titl=JSON.parse(data).title;
+        this.fullText=this.fullText.replace(/\s+/g, '');
+        // 2. 分割文本
+        this.segmentText();
+      }
+    })
+  },
+
+  // 核心方法：将长文本分割成页[citation:1]
+  segmentText() {
+    const text = this.fullText;
+    const size = this.pageSize;
+    this.pages = [];
+    for (let i = 0; i < text.length; i += size) {
+      
+      
+      this.pages.push(text.substring(i, i + size));
+      console.log(this.pages[i]);
+    }
+    this.totalPages = this.pages.length;
+    if (this.currentPage >= this.totalPages) {
+      this.currentPage = 0;
+    }
+  },
+
+  // 翻页：上一页
+  prevPage() {
+    if (this.currentPage > 0) {
+      this.currentPage--;
+    }
+    else{
+      prompt.showToast({message:'已经第一页了~',duration:100})
+    }
+  },
+
+  // 翻页：下一页
+  nextPage() {
+    if (this.currentPage < this.totalPages - 1) {
+      this.currentPage++;
+    }
+    else{
+      prompt.showToast({message:'已经……被~一查到底了~~',duration:100})
+    }
+  }
+}
+</script>

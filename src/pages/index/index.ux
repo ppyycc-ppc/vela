@@ -1,0 +1,1109 @@
+<import name="input-method" src="../../components/InputMethod/InputMethod.ux"></import>
+<template>
+  <div class="page">
+    <div class="page" if="{{pages[0]}}">
+      <scroll class="inside page scroll1" scroll-y="true" bounces="true">
+        <div class="blackBtn" for="{{showList[nowPage]}}" @click="()=>{nowDoc=wangyi.data[($idx+nowPage*cutlen)].docid;nowID=($idx+nowPage*cutlen);getDoc();pages=[0,1];}">
+          <text class="tex">{{wangyi.data[($idx+nowPage*cutlen)].title}}</text>
+          <text class="paragraphs">{{wangyi.data[($idx+nowPage*cutlen)].digest}}</text>
+        </div>
+
+        <div style="width:324px;height:80px;display: flex;justify-content: center;align-items: center;">
+          
+          <image src="/common/UI/return.png" style="position: absolute;left:0px" @click="()=>{if(nowPage==0)send('已经最前面啦~');else nowPage--;}"></image>
+          <text style="height:45px;font-size:32px;font-weight:700;line-height:44.8px;color:#fff;text-align:left;">{{nowPage+1}} / {{showList.length}}</text>
+          <image src="/common/UI/right.png" style="position: absolute;right:0px" @click="()=>{if(nowPage==showList.length-1)send('已经最后面啦~');else nowPage++;}"></image>
+        </div>
+
+        <div class="blackBtn" style="background-color: #ffffff00;"></div>
+      </scroll>
+      
+      
+      <image src="/common/UI/top.png" style="position: absolute;bottom:378px"></image>
+      <image src="/common/UI/sea.png" style="right: 6px;bottom: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="()=>{pages=[0];pages[10]=1;read()}"></image>
+      <image src="/common/UI/search.png" style="left: 6px;bottom: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="()=>{pages=[],pages[200]=1}"></image>
+      <image src="/common/UI/more.png" style="right: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="()=>{pages=[0,0,1]}"></image>
+      <image src="/common/UI/re.png" style="left: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="get"></image>
+      <text class="title">主页要闻</text>
+
+    </div>
+    <div class="page" if="{{pages[1]}}">
+      <scroll class="inside page scroll1" scroll-y="true" bounces="true" >
+        <div class="blackBtn" if="{{wangyi.data[nowID].picInfo.length}}">
+          <image src="{{wangyi.data[nowID].picInfo[0].url}}" style="position: absolute;left: 12px;top: 12px;width: 92px;border-radius: 24px;height: 92px;"></image>
+          <text style="position: absolute;font-size: 32px;font-weight: bold;color: rgba(255, 255, 255, 1);text-align: left;left: 119px;top: 16px;width: 186px;height: 84px;">{{wangyi.data[nowID].title}}</text>
+        </div>
+        <div class="blackBtn" if="{{!wangyi.data[nowID].picInfo.length}}">
+          <text style="position: absolute;font-size: 32px;font-weight: 700;letter-spacing: 0px;color: rgba(255, 255, 255, 1);text-align: left;left: 12px;top: 16px;width: 300px;height: 84px;">{{wangyi.data[nowID].title}}</text>
+        </div>
+
+        <text style="border-radius:36px;border: 20px rgb(26, 26, 26);background-color:rgb(26, 26, 26);position: fixed;left:0px;width:316px;font-size:28px;font-weight:700;line-height:39.2px;color:rgba(255,255,255,0.6);">{{showData.slice(0,500)}}{{showData.length>=500?"······\n字数过长已截取":""}}</text>
+      </scroll>
+      
+      <image src="/common/UI/top.png" style="position: absolute;bottom:378px"></image>
+      <text class="title">详情查看</text>
+      <image src="/common/UI/return.png" style="left: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="()=>{pages=[1,0];showData='Loading~'}"></image>
+      <image src="/common/UI/save.png" style="right: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="()=>{save();send(`已完成`);read()}"></image>
+      <image src="/common/UI/more.png" style="right: 6px;bottom: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="()=>{toMore()}"></image>
+    
+    </div>
+    <div class="page" if="{{pages[2]}}">
+      <scroll class="inside page scroll1" scroll-y="true" bounces="true">
+        <!-- <div class="blackBtn" @click="()=>{pages=[0,0,0,1]}">
+          <text class="tex">链接</text>
+          <text class="paragraphs">新闻请求API(开发中)</text>
+        </div> -->
+
+        <div class="blackBtn" @click="()=>{wangyi={};doc={};clear();send('已完成')}">
+          <text class="tex">缓存</text>
+          <text class="paragraphs">清空缓存</text>
+        </div>
+
+        <div class="blackBtn" @click="()=>{pages=[0,0,0,0,1]}">
+          <text class="tex">日志</text>
+          <text class="paragraphs">取出小程序运行日志</text>
+        </div>
+
+        <div class="blackBtn" @click="()=>{if(len<=68)len+=2;else len=10}">
+          <text class="tex">主页</text>
+          <text class="paragraphs">主页获取长度为{{len}}个</text>
+        </div>
+
+        <div class="blackBtn" @click="()=>{if(cutlen<=18)cutlen+=2;else cutlen=2}">
+          <text class="tex">分割</text>
+          <text class="paragraphs">主页分割长度为{{cutlen}}个</text>
+        </div>
+
+        <div class="blackBtn" @click="()=>{if(searchLen<=18)searchLen+=2;else searchLen=2}">
+          <text class="tex">搜索</text>
+          <text class="paragraphs">搜索长度{{searchLen}}个</text>
+        </div>
+
+        <div class="blackBtn" @click="()=>{pages=[0,0,0,0,0,1]}">
+          <text class="tex">关于</text>
+          <text class="paragraphs">关于此小程序</text>
+        </div>
+
+        <div class="blackBtn" @click="()=>{pages=[0];pages[100]=1}">
+          <text class="tex">选取</text>
+          <text class="paragraphs">选择新闻地区</text>
+        </div>
+        
+        <div class="blackBtn" @click="()=>{showFiles();pages=[0];pages[300]=1}">
+          <text class="tex">文件</text>
+          <text class="paragraphs">列出应用存储的文件</text>
+        </div>
+      </scroll>
+      
+      <image src="/common/UI/top.png" style="position: absolute;bottom:378px"></image>
+      <text class="title">设置</text>
+      <image src="/common/UI/save.png" style="right: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="()=>{saveSet();}"></image>
+      <image src="/common/UI/return.png" style="left: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="()=>{pages=[1,0]}"></image>
+      
+    </div>
+    <!-- <div class="page" if="{{pages[3]}}">
+      <scroll class="inside page scroll1" scroll-y="true" bounces="true">
+        <div class="blackBtn" @click="()=>{send('开发中')}">
+          <text class="tex">主推API</text>
+          <text class="paragraphs">{{url}}</text>
+        </div>
+        <div class="blackBtn" @click="()=>{send('开发中')}">
+          <text class="tex">编号路径</text>
+          <text class="paragraphs">{{JSON.stringify(urn)}}</text>
+        </div>
+        <div class="blackBtn" @click="()=>{send('开发中')}">
+          <text class="tex">查看API</text>
+          <text class="paragraphs">{{urc}}</text>
+        </div>
+        <div class="blackBtn" @click="()=>{send('开发中')}">
+          <text class="tex">查看路径</text>
+          <text class="paragraphs">{{JSON.stringify(urd)}}</text>
+        </div>
+        <div class="blackBtn" @click="()=>{send('开发中')}">
+          <text class="tex">图片路径</text>
+          <text class="paragraphs">{{JSON.stringify(urp)}}</text>
+        </div>
+        <div class="blackBtn" @click="()=>{send('开发中')}">
+          <text class="tex">搜索API</text>
+          <text class="paragraphs">{{urs}}</text>
+        </div>
+        
+      </scroll>
+      
+      <image src="/common/UI/top.png" style="position: absolute;bottom:378px"></image>
+      <text class="title">设置</text>
+      <image src="/common/UI/return.png" style="left: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="()=>{pages=[0,0,1]}"></image>
+      
+    </div> -->
+    <div class="page" if="{{pages[4]}}">
+      <scroll class="inside page scroll1" scroll-y="true" bounces="true">
+        <div class="blackBtn" @click="()=>{send(log[$idx])}" for="{{log}}">
+          <text class="paragraphs" style="text-overflow:unset;top:3px;font-size:24px;height:100px">{{log[$idx]}} ...</text>
+        </div>
+      </scroll>
+      
+      <image src="/common/UI/top.png" style="position: absolute;bottom:378px"></image>
+      <text class="title">设置</text>
+      <image src="/common/UI/return.png" style="left: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="()=>{pages=[0,0,1]}"></image>
+      
+    </div>
+
+    <div class="page" if="{{pages[5]}}">
+      <scroll scroll-y="true" bounces="true" class="scroll1 inside" style="top:0px;height:480px;">
+        <image src="/common/about.png" style="position: absolute;top:0;left:0"/>
+        <div style="left: 0px;top: 80px;width: 324px;height: 194px;opacity: 1;">
+          <text style="font-size: 36px;font-weight: 500;line-height: 50.4px;color: rgba(255, 255, 255, 1);text-align: left;left: 19px;top: 16px;width: 144px;height: 51px;position: absolute;">
+            环间新闻
+          </text>
+          <text style="font-size: 36px;font-weight: 500;line-height: 50.4px;color: rgba(255, 255, 255, 0.6);left: 19px;top: 68px;height: 48px;position: absolute;">
+            1.4.0
+          </text>
+          <image src="/common/logo.png" style="opacity: 0.5;width:70px;left: 228px;top: 98px;background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.6) 100%);position: absolute;"></image>
+        </div>
+      </scroll>
+      <image src="/common/UI/back_w.png" style="left: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="()=>{pages=[0,0,1]}"></image>
+      
+    </div>
+    <div class="page" if="{{pages[10]}}">
+      <scroll class="inside page scroll1" scroll-y="true" bounces="true">
+        <div class="blackBtn" for="{{saveList}}" @click="()=>{pages=[0];pages[11]=1;showData=saveList[$idx].para;showTite=saveList[$idx].title;nowID=$idx;showPng=saveList[$idx].ID}" @longpress="del($idx)">
+          <text class="tex" style="text-overflow:unset;top:3px;font-size:24px;height:100px">{{saveList[$idx].title}}</text>
+        </div>
+      </scroll>
+      <image src="/common/UI/top.png" style="position: absolute;bottom:378px"></image>
+      <text class="title">缓存内容</text>
+      <image src="/common/UI/info.png" style="left: 6px;bottom: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="()=>{pages=[0];pages[400]=1}"></image>
+      <image src="/common/UI/return.png" style="left: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="()=>{pages=[1,0]}"></image>
+      <image src="/common/UI/re.png" style="right: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="read()"></image>
+    </div>
+    <div class="page" if="{{pages[11]}}">
+      <scroll class="inside page scroll1" scroll-y="true" bounces="true" >
+        <div class="blackBtn">
+          <text style="position: absolute;font-size: 32px;font-weight: 700;letter-spacing: 0px;color: rgba(255, 255, 255, 1);text-align: left;left: 12px;top: 16px;width: 300px;height: 84px;">{{showTite}}</text>
+        </div>
+        <image src="internal://files/{{showPng}}.png" style="width: 283px;border-radius:36px;position: fixed;"/>
+        
+        <text style="border-radius:36px;border: 20px rgb(26, 26, 26);background-color:rgb(26, 26, 26);position: fixed;top:20px;left:0px;width:316px;font-size:28px;font-weight:700;line-height:39.2px;color:rgba(255,255,255,0.6);">{{showData.slice(0,500)}}{{showData.length>=500?"······\n字数过长已截取":""}}</text>
+      </scroll>
+      
+      <image src="/common/UI/top.png" style="position: absolute;bottom:378px"></image>
+      <text class="title">详情查看</text>
+      <image src="/common/UI/return.png" style="left: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="()=>{pages=[0];pages[10]=1;showData='Loading~'}"></image>
+      <image src="/common/UI/del.png" style="right: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="()=>{del(nowID);pages=[0];pages[10]=1;send('已完成')}"></image>
+      <image src="/common/UI/more.png" style="left: 6px;bottom: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="()=>{toMore2()}"></image>
+    
+    </div>
+
+    <div class="page" if="{{pages[100]}}">
+      
+      <scroll class="inside page scroll1" scroll-y="true" bounces="true">
+
+        <div class="blackBtn" @click="()=>{
+          if(chosenProv<city_prov.length-1){chosenProv++;chosenCity=0}
+          else {chosenProv=0;chosenCity=0}
+        }">
+          <text class="tex">省份</text>
+          <text class="paragraphs">{{city_prov[chosenProv].city_name}}</text>
+        </div>
+
+        <div class="blackBtn" @click="()=>{
+          if(chosenCity<city_prov[chosenProv].cities.length-1)chosenCity++;
+          else chosenCity=0;
+        }">
+          <text class="tex">城市</text>
+          <text class="paragraphs">{{city_prov[chosenProv].cities[chosenCity]}}</text>
+        </div>
+
+      </scroll>
+      
+      <image src="/common/UI/top.png" style="position: absolute;bottom:378px"></image>
+      <text class="title">区域选择</text>
+      <image src="/common/UI/save.png" style="right: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="()=>{saveAdres(0);send(`已完成`);}"></image>
+      <image src="/common/UI/return.png" style="left: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="()=>{pages=[1];}"></image>
+    </div>
+    <div class="page"  if="{{pages[200]}}">
+
+      <scroll class="inside page scroll1" scroll-y="true" bounces="true">
+        <div class="blackBtn"for="{{titleSegments}}" @click="()=>{nowDoc=titleSegments[$idx].docID;getDoc();getReady();nowID=100;wangyi.data[100].picInfo[0].url=titleSegments[$idx].image;wangyi.data[100].title=titleSegments[$idx].title;pages=[0,1];}">
+          <text class="tex" style="text-overflow:unset;top:3px;font-size:24px;height:100px">
+            <span for="{{ titleSegments[$idx].segments }}">
+              <!-- 强调部分：使用 .em-style 样式 -->
+              <span if="{{ $item.isEm }}" class="em-style">{{ $item.text }}</span>
+              <!-- 普通部分：使用 .normal-style 样式 -->
+              <span if="{{ !$item.isEm }}" class="normal-style">{{ $item.text }}</span>
+            </span>
+          </text>
+        </div>
+      </scroll>
+      <div class='inputer' if="{{!hide}}">
+        <image src='/common/UI/down.png' class='send' @click="()=>{hide=!hide}" />
+        <div class='inp'>
+          <image src='/common/UI/input.png' class='inp'/>
+          <text class='inputText'>
+            {{input}}
+            <span style="color: rgba(13, 132, 255, 1);">|</span>
+          </text>
+        </div>
+      </div>
+      <input-method
+        hide="{{hide}}"
+        keyboardtype="{{keyboardtype}}"
+        maxlength="5"
+        vibratemode="{{vibratemode}}"
+        screentype="{{screentype}}"
+        @visibility-change="onVisibilityChange"
+        @key-down="onKeyDown"
+        @delete="onDelete"
+        @complete="onComplete"
+      ></input-method>
+      <image src="/common/UI/top.png" style="position: absolute;bottom:378px"></image>
+      <text class="title">搜索结果</text>
+      <image src="/common/UI/return.png" style="left: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="()=>{pages=[1]}"></image>
+      
+      <image src="/common/UI/send.png" style="right: 6px;bottom: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="()=>{hide=!hide}" if="{{hide}}"></image>
+      <image src="/common/UI/search.png" style="right: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="search()"></image>
+      
+    </div>
+    <div class="page" if="{{pages[300]}}">
+      <scroll class="inside page scroll1" scroll-y="true" bounces="true">
+        <!-- <div class="blackBtn" @click="()=>{pages=[0,0,0,1]}">
+          <text class="tex">链接</text>
+          <text class="paragraphs">新闻请求API(开发中)</text>
+        </div> -->
+
+        <div class="blackBtn" @click="()=>{showImageSrc='internal://files/'+$item.title;showImageTitle=$item.title;pages=[];pages[301]=1}" for="{{fileList}}">
+          <text class="tex">{{$item.title}}</text>
+          <text class="paragraphs">{{$item.time}}</text>
+        </div>
+      </scroll>
+      <text class="title" style="position: absolute;top:100px;font-size:24px;font-weight:500;" if="{{fileList.length==0}}">文件为空</text>
+      <image src="/common/UI/top.png" style="position: absolute;bottom:378px"></image>
+      <text class="title">文件列表</text>
+      <image src="/common/UI/return.png" style="left: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="()=>{pages=[1];}"></image>
+      
+    </div>
+    <div class="page" if="{{pages[301]}}">
+      <image src='{{showImageSrc}}' style="position: absolute;top:120px;width:318px;left:9px"/>
+      <text class="title" style="position: absolute;top:100px;font-size:24px;font-weight:500;" if="{{fileList.length==0}}">文件为空</text>
+      <image src="/common/UI/top.png" style="position: absolute;bottom:378px"></image>
+      <text class="title">查看图片</text>
+      <image src="/common/UI/return.png" style="left: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="()=>{pages=[0];pages[300]=1}"></image>
+      <image src="/common/UI/del.png" style="right: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="del(showImageTitle,300)"></image>
+      
+    </div>
+    <div class="page" if="{{pages[400]}}">
+      <text class="title">缓存设置</text>
+      <image src="/common/UI/return.png" style="left: 6px;top: 6px;width: 72px;height: 72px;position: absolute;position: absolute;position: absolute;" @click="()=>{pages=[0];pages[10]=1}"></image>
+      
+    </div>
+    <text class="time"style="left: 77px;top: 7px;width: 182px;height: 32px;">{{showTime}}</text>
+  </div>
+</template>
+
+<script>
+import fetch from '@system.fetch' 
+import storage from '@system.storage' 
+import prompt from '@system.prompt' 
+import request from '@system.request' 
+import router from '@system.router' 
+import file from '@system.file'
+
+
+const ver=1.4
+
+
+/**
+ * 从JSON字符串中提取数据，转换为searchList数组
+ * @param {string} jsonString - 输入的JSON字符串
+ * @returns {Array} searchList数组，包含title、image、docID和segments
+ */
+ function extractDataFromJson(jsonString) {
+  try {
+    // 1. 解析JSON字符串
+    const data = JSON.parse(jsonString);
+    
+    // 2. 检查数据结构
+    if (!data || !data.data || !Array.isArray(data.data.result)) {
+      console.error('JSON结构不符合预期');
+      return [];
+    }
+    
+    // 3. 提取并转换数据
+    const searchList = [];
+    const results = data.data.result;
+    
+    for (let i = 0; i < results.length; i++) {
+      const item = results[i];
+      
+      // 提取基础字段
+      const title = item.title || '';
+      const image = item.imgurl && item.imgurl.length > 0 ? item.imgurl[0] : '';
+      const docID = item.skipID || item.docid || '';
+      
+      // 处理title中的Unicode转义字符
+      // 将\u003c转换为<，\u003e转换为>，\u0026转换为&等
+      const decodedTitle = decodeUnicodeEscapes(title);
+      
+      // 将解码后的title解析为分段格式（使用您之前的parseStyledText函数）
+      const segments = parseStyledText(decodedTitle);
+      
+      // 添加到结果数组
+      searchList.push({
+        title: decodedTitle.replace(/<\/?em>/g, ''),      // 解码后的标题字符串
+        image: image,            // 图片URL
+        docID: docID,           // 文档ID
+        segments: segments      // 解析后的分段数组，用于显示
+      });
+    }
+    
+    return searchList;
+    
+  } catch (error) {
+    console.error('解析JSON时出错:', error);
+    return [];
+  }
+}
+
+/**
+ * 解码Unicode转义字符
+ * @param {string} str - 包含Unicode转义的字符串
+ * @returns {string} 解码后的字符串
+ */
+function decodeUnicodeEscapes(str) {
+  if (!str) return '';
+  
+  // 常见的HTML实体转义
+  const escapeMap = {
+    '\\u003c': '<',    // 小于号
+    '\\u003e': '>',    // 大于号
+    '\\u0026': '&',    // &符号
+    '\\u0027': "'",    // 单引号
+    '\\u0022': '"',    // 双引号
+    '\\u003d': '=',    // 等于号
+    '\\u005c': '\\',   // 反斜杠
+    '&lt;': '<',       // 小于号(HTML实体)
+    '&gt;': '>',       // 大于号(HTML实体)
+    '&amp;': '&',      // &符号(HTML实体)
+    '&quot;': '"',     // 双引号(HTML实体)
+    '&#39;': "'",      // 单引号(HTML实体)
+  };
+  
+  let result = str;
+  
+  // 替换所有Unicode转义字符
+  for (const [escape, replacement] of Object.entries(escapeMap)) {
+    const regex = new RegExp(escape, 'g');
+    result = result.replace(regex, replacement);
+  }
+  
+  // 处理其他Unicode字符（通用方法）
+  result = result.replace(/\\u([\dA-F]{4})/gi, (match, hex) => {
+    return String.fromCharCode(parseInt(hex, 16));
+  });
+  
+  return result;
+}
+
+/**
+ * 解析字符串，转换为片段数组（复用您之前的函数）
+ * 输入：'<em>北京</em>润园(售楼处)官方网站'
+ * 输出：[ {text: '北京', isEm: true}, {text: '润园(售楼处)官方网站', isEm: false} ]
+ */
+function parseStyledText(str) {
+  const segments = [];
+  // 正则表达式匹配 <em>标签内容 或 非标签纯文本
+  const regex = /<em>([^<]*)<\/em>|([^<]+)/g;
+  let match;
+  while ((match = regex.exec(str)) !== null) {
+    if (match[1] !== undefined) {
+      // 匹配到 <em> 标签内的内容
+      segments.push({ text: match[1], isEm: true });
+    } else if (match[2] !== undefined) {
+      // 匹配到标签外的纯文本
+      segments.push({ text: match[2], isEm: false });
+    }
+  }
+  return segments;
+}
+
+
+function rand(minNum,maxNum){ 
+  switch(arguments.length){ 
+      case 1: 
+          return parseInt(Math.random()*minNum+1,10); 
+      break; 
+      case 2: 
+          return parseInt(Math.random()*(maxNum-minNum+1)+minNum,10); 
+      break; 
+          default: 
+              return 0; 
+          break; 
+  } 
+}
+
+// const tpl    = 'https://api.example.com/cat/$/page/$?ts=$';
+// const ranges = [
+//   { min: 0,  max: 10 },   // 第 1 个 $
+//   { min: 1,  max: 50 },   // 第 2 个 $
+//   { min: 1000, max: 9999 } // 第 3 个 $
+// ];
+
+function randomizeUrl(template, ranges) {
+  let i = 0;                                     // 当前占位符序号
+  return template.replace(/\$/g, () => {
+    if (i >= ranges.length) {
+      throw new Error(`占位符数量 (${i + 1}) 超过 ranges 数组长度 (${ranges.length})`);
+    }
+    const { min, max } = ranges[i++];
+    // 生成 [min, max] 闭区间内的随机整数
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  });
+}
+
+//过滤返回结果
+function filterArticles(raw) {
+  if (raw.code !== 0 || !Array.isArray(raw.data?.result)) return [];
+
+  return raw.data.result.filter(item => {
+    // ① 服务端明确标记的文章
+    if (item.skipType === 'doc') return true;
+
+    // ② 兜底：有些文章没写 skipType，但它们的 docid 规则固定为 “16 位字母数字”
+    //      同时排除任何 _video_ 标记
+    return (
+      /^[A-Z0-9]{16}$/.test(item.docid) && !item.docid.includes('_video_')
+    );
+  });
+}
+
+function ptot(html) {
+  return (html.match(/<p[^>]*>[\s\S]*?<\/p>/gi) || [])
+    .map(seg => seg.replace(/<[^>]+>/g, '').trim())  // 去标签
+    .filter(Boolean)
+    .join('\n\n');
+}
+
+// —— demo ——
+// console.log(extractPTextRegex(html));
+function cut(arr, len) {
+  if (len <= 0 || !Number.isInteger(len)) {
+    throw new Error('len 必须是正整数');
+  }
+
+  const result = [];
+  for (let i = 0; i < arr.length; i += len) {
+    // slice 取出一段
+    const chunk = arr.slice(i, i + len);
+    // 不足 len 个时用 null 递补
+    while (chunk.length < len) {
+      chunk.push(null);
+    }
+    result.push(chunk);
+  }
+  return result;
+
+}
+
+/**
+ * 获取当前时间，格式化为 "HH:MM"（24小时制，两位数）
+ * @returns {string} 格式化的时间字符串，例如 "14:05" 或 "01:02"
+ */
+function getFormattedTime() {
+  // 1. 获取当前系统时间
+  const now = new Date();
+  
+  // 2. 获取小时和分钟
+  let hours = now.getHours(); // 0-23
+  let minutes = now.getMinutes(); // 0-59
+  
+  // 3. 格式化为两位数：使用 String.padStart 方法
+  const formattedHours = String(hours).padStart(2, '0');
+  const formattedMinutes = String(minutes).padStart(2, '0');
+  
+  // 4. 拼接并返回结果
+  return `${formattedHours}:${formattedMinutes}`;
+}
+
+function formatTimestamp(timestamp) {
+  // 1. 创建Date对象（注意：JavaScript时间戳通常以毫秒为单位）
+  const date = new Date(timestamp); // 如果传入的是秒级时间戳，需要乘以1000
+  
+  // 2. 获取年、月、日、时、分、秒（月份要+1，因为getMonth()返回0-11）
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0'); // 补零
+  const day = String(date.getDate()).padStart(2, '0');
+  const hours = String(date.getHours()).padStart(2, '0');
+  const minutes = String(date.getMinutes()).padStart(2, '0');
+  const seconds = String(date.getSeconds()).padStart(2, '0');
+  
+  // 3. 拼接成常见的格式，例如 "YYYY-MM-DD HH:MM:SS"
+  return `${year}-${month}-${day} ${hours}:${minutes}`;
+}
+
+export default {
+  private: {
+      showTime:"25:61",
+      wangyi: {},
+      pages:[true],
+      nowDoc:'',
+      nowID:0,
+
+      len:30,
+      cutlen:5,
+      searchLen:5,
+      
+      showPic:false,
+      picSrc:"",
+
+      wait:[],
+
+
+      input:"北京",
+      hide:false,
+      keyboardtype: "QWERTY", //QWERTY, T9
+      vibratemode: "short",
+      screentype: "rect", //pill-shaped, rect, circle
+
+      url:"https://m.163.com/touch/jsonp/article/local/$_@/0-#.do",
+      urd:['$nowDoc','body'],
+      urc:"https://c.m.163.com/news/a/$.html",
+      urn:['data','$','docid'],
+      urp:['data','$','picInfo','0','url'],
+      urs:"https://gw.m.163.com/nc/api/v1/pc-wap/search?query=$&size=@&from=wap&needPcUrl=true&skipType=doc",
+      ura:"http://121.40.67.208/ver.json",
+
+      log:[],
+      fileList:[],
+
+      doc:{},
+      showData:"",
+      showTite:"",
+      showList:[],
+      nowPage:0,
+      chosenProv:0,
+      chosenCity:0,
+
+
+      showImageSrc:"",
+      showImageTitle:"",
+
+
+      saveList:[],
+      showPng:"",
+      
+      titleSegments:[],
+
+      city_prov:[
+        {city_name:'北京', cities:['北京']},
+        {city_name:'四川', cities:['阿坝','巴中','成都','达州','德阳','甘孜','广安','广元','凉山','乐山','泸州','眉山','绵阳','内江','南充','攀枝花','遂宁','雅安','宜宾','资阳','自贡']},
+        {city_name:'新疆', cities:['阿克苏','阿勒泰','巴州','博州','昌吉','哈密','和田','喀什','克拉玛依','克州','石河子','塔城','吐鲁番','乌鲁木齐','伊犁']},
+        {city_name:'西藏', cities:['阿里','昌都','拉萨','林芝','那曲','日喀则','山南']},
+        {city_name:'内蒙古', cities:['阿拉善盟','巴彦淖尔','包头','赤峰','鄂尔多斯','呼和浩特','呼伦贝尔','通辽','乌海','乌兰察布','锡林郭勒','兴安盟']},
+        {city_name:'河南', cities:['安阳','鹤壁','焦作','济源','开封','洛阳','漯河','南阳','平顶山','濮阳','三门峡','商丘','新乡','信阳','许昌','郑州','周口','驻马店']},
+        {city_name:'陕西', cities:['安康','宝鸡','汉中','商洛','铜川','渭南','西安','咸阳','延安','杨凌','榆林']},
+        {city_name:'安徽', cities:['安庆','蚌埠','亳州','巢湖','池州','滁州','阜阳','合肥','淮北','淮南','黄山','六安','马鞍山','宿州','铜陵','芜湖','宣城']},
+        {city_name:'贵州', cities:['安顺','毕节','贵阳','六盘水','黔东南','黔南','黔西南','铜仁','遵义']},
+        {city_name:'辽宁', cities:['鞍山','本溪','朝阳','大连','丹东','抚顺','阜新','葫芦岛','锦州','辽阳','盘锦','沈阳','铁岭','营口']},
+        {city_name:'河北', cities:['保定','沧州','承德','邯郸','衡水','廊坊','秦皇岛','石家庄','唐山','邢台','张家口']},
+        {city_name:'广西', cities:['百色','北海','崇左','防城港','桂林','贵港','河池','贺州','来宾','柳州','南宁','钦州','梧州','玉林']},
+        {city_name:'海南', cities:['白沙','保亭','昌江','澄迈','儋州','定安','东方','海口','乐东','临高','陵水','琼海','琼中','三亚','屯昌','万宁','文昌','五指山','西沙']},
+        {city_name:'云南', cities:['保山','楚雄','大理','德宏','迪庆','红河','昆明','丽江','临沧','怒江','普洱','曲靖','文山','西双版纳','玉溪','昭通']},
+        {city_name:'甘肃', cities:['白银','定西','甘南','嘉峪关','金昌','酒泉','兰州','临夏','陇南','平凉','庆阳','天水','武威','张掖']},
+        {city_name:'吉林', cities:['白城','白山','长春','吉林','辽源','四平','松原','通化','延边']},
+        {city_name:'山东', cities:['滨州','德州','东营','菏泽','济南','济宁','莱芜','聊城','临沂','青岛','日照','泰安','威海','潍坊','烟台','枣庄','淄博']},
+        {city_name:'山西', cities:['长治','大同','晋城','晋中','临汾','吕梁','朔州','太原','忻州','阳泉','运城']},
+        {city_name:'江苏', cities:['常州','淮安','连云港','南京','南通','苏州','宿迁','泰州','无锡','徐州','盐城','扬州','镇江']},
+        {city_name:'湖南', cities:['常德','长沙','郴州','衡阳','怀化','娄底','邵阳','湘潭','湘西','益阳','永州','岳阳','张家界','株洲']},
+        {city_name:'江西', cities:['抚州','赣州','吉安','景德镇','九江','南昌','萍乡','上饶','新余','宜春','鹰潭']},
+        {city_name:'青海', cities:['格尔木','果洛','海北','海东','海南','海西','黄南','西宁','玉树']},
+        {city_name:'黑龙江', cities:['大庆','大兴安岭','哈尔滨','鹤岗','黑河','佳木斯','鸡西','牡丹江','七台河','齐齐哈尔','双鸭山','绥化','伊春']},
+        {city_name:'广东', cities:['潮州','东莞','佛山','广州','河源','惠州','江门','揭阳','茂名','梅州','清远','汕头','汕尾','韶关','深圳','阳江','云浮','湛江','肇庆','中山','珠海']},
+        {city_name:'浙江', cities:['杭州','湖州','嘉兴','金华','丽水','宁波','衢州','绍兴','台州','温州','舟山']},
+        {city_name:'福建', cities:['福州','龙岩','南平','宁德','莆田','泉州','三明','厦门','漳州']},
+        {city_name:'湖北', cities:['鄂州','恩施','黄冈','黄石','荆门','荆州','潜江','神农架','十堰','随州','天门','武汉','仙桃','咸宁','襄阳','孝感','宜昌']},
+        {city_name:'宁夏', cities:['固原','石嘴山','吴忠','银川','中卫']},
+        {city_name:'上海', cities:['上海']},
+        {city_name:'重庆', cities:['重庆']},
+        {city_name:'天津', cities:['天津']}
+    ]
+  },
+
+  //INPUTER
+  onVisibilityChange(evt) {
+    console.log("显示状态变更:"+JSON.stringify(evt));
+  },
+  onKeyDown(evt) {
+    // this.textValue += evt.detail.content;
+    console.log("按下按键:"+JSON.stringify(evt));
+  },
+  onDelete() {
+    this.input = this.input.slice(0, -1);
+    console.log("删除字符");
+  },
+  onComplete(evt) {
+    this.input += evt.detail.content;
+    console.log("返回字符:"+JSON.stringify(evt));
+  },
+
+  showFiles(){
+    file.list({
+      uri: `internal://files/`,
+      success: (data) =>{
+        this.log.push("get file list ,successful")
+        this.fileList=[];
+        let list=data.fileList;
+        for(let i=0,sz=list.length;i<sz;i++){
+          let newi={title:"name",time:"time"};
+          let name=list[i].uri;
+          const uriParts = name.split('/');
+          name = uriParts[uriParts.length - 1];
+          
+          if (name.includes('://')) {
+            const protocolParts = name.split('://');
+            name = protocolParts[protocolParts.length - 1];
+          }
+          newi.title=name;
+          newi.time=formatTimestamp(list[i].lastModifiedTime);
+          this.fileList.push(newi);
+        }
+        console.log(JSON.stringify(data));
+      },
+      fail: (data, code)=>{
+        this.send(`失败，代码${code}`)
+      }
+    })
+
+  },
+  toMore(){
+    let saveTmp={title:this.wangyi.data[this.nowID].title,text:this.showData};
+    storage.set({
+      key: 'tmpText',
+      value: JSON.stringify(saveTmp),
+      success: (data) => {
+        console.log('toThis')
+        router.replace({
+          uri: 'pages/detail'
+        })
+      },
+      fail: (data, code)=> {
+        prompt.showToast({message:'失败，请联系开发者',duration:2000});
+      }
+    }) 
+  },
+
+  toMore2(){
+    let saveTmp={title:this.showTite,text:this.showData};
+    storage.set({
+      key: 'tmpText',
+      value: JSON.stringify(saveTmp),
+      success: (data) => {
+        console.log('toThis')
+        router.replace({
+          uri: 'pages/detail'
+        })
+      },
+      fail: (data, code)=> {
+        prompt.showToast({message:'失败，请联系开发者',duration:2000});
+      }
+    }) 
+  },
+
+  getReady(){
+    let newP={
+      picInfo:
+      [
+        {url:null}
+      ],
+      title:'load~'
+    }
+    this.wangyi.data[100]=newP;
+  },
+
+  save(){
+    let json={title:this.wangyi.data[this.nowID].title,para:this.showData,ID:this.nowDoc};
+    storage.get({
+      key: 'save',
+      default:JSON.stringify([]),
+      success: (data) => {
+        let list = JSON.parse(data);
+        list.push(json);
+
+        storage.set({
+          key: 'save',
+          value: JSON.stringify(list),
+          success: (data) => {
+            this.log.push('"set" handling success')
+          },
+          fail: function(data, code) {
+            console.log(`handling fail, code = ${code}`)
+          }
+        })
+
+        this.log.push('"get" handling success')
+      },
+      fail: function(data, code) {
+        console.log(`handling fail, code = ${code}`)
+      }
+    })
+    request.download({
+      url: this.wangyi.data[this.nowID].picInfo[0].url,
+      filename:`${this.nowDoc}.png`,
+      success: (data)=> {
+        this.send('下载图像文件中…'+data.token,2000);
+      },
+      fail: function(data, code) {
+        console.log(`handling fail, code = ${code}`)
+      }
+    })
+  },
+
+  del(sth,a){
+    if(a){
+      file.delete({
+          uri: `internal://files/${sth}`,
+          success:(data)=>{
+            prompt.showToast({message:'已删除图片文件',duration:500})
+          }
+          
+        })
+        this.showFiles();
+        this.pages=[0];
+        this.pages[a]=1;
+        return;
+    }
+    storage.get({
+      key: 'save',
+      success: (data) => {
+        let list = JSON.parse(data);
+        list.splice(sth,1)
+        storage.set({
+          key: 'save',
+          value: JSON.stringify(list),
+          success: (data) => {
+            this.log.push('"delete" handling success')
+            this.read();
+            prompt.showToast({message:'已删除',duration:500})
+          },
+          fail: function(data, code) {
+            console.log(`handling fail, code = ${code}`)
+          }
+        })
+
+        this.log.push('"get" handling success')
+        file.delete({
+          uri: `internal://files/${this.showPng}.png`,
+          success:(data)=>{
+            prompt.showToast({message:'已删除图片文件',duration:500})
+          }
+        })
+        
+      },
+      fail: function(data, code) {
+        console.log(`handling fail, code = ${code}`)
+      }
+    })
+  },
+
+  setTime(){
+    this.showTime=getFormattedTime();
+  },
+
+  read(){
+    storage.get({
+      key: 'save',
+      default:JSON.stringify([]),
+      success: (data) => {
+        console.log(data);
+        this.saveList=JSON.parse(data);
+        this.log.push('"get" handling success')
+      },
+      fail: function(data, code) {
+        console.log(`handling fail, code = ${code}`)
+      }
+    })
+  },
+
+  saveAdres(sth){
+    if(sth==1){
+      storage.get({
+        default:JSON.stringify({a:0,b:0}),
+        key: 'dz',
+        default:JSON.stringify([]),
+        success: (data) => {
+          let list = JSON.parse(data);
+          this.chosenCity=list.a;this.chosenProv=list.b;
+        }
+      })
+    }
+    storage.set({
+      key: 'dz',
+      value: JSON.stringify({a:this.chosenCity,b:this.chosenProv}),
+      success: (data) => {
+        this.log.push('"set" handling success')
+      },
+      fail: function(data, code) {
+        console.log(`handling fail, code = ${code}`)
+      }
+    })
+  },
+
+  search(){
+    this.hide=true;
+    fetch.fetch({
+      url: this.rp(this.rp(this.urs,encodeURIComponent(this.input),'$'),this.searchLen,'@'),
+      method: 'GET',
+      responseType: 'text',
+      success: res => {
+        this.send('响应请求成功！');
+        this.log.push(`search successed,code: ${res.code}`);
+
+        const json = filterArticles(JSON.parse(res.data));
+        this.titleSegments=extractDataFromJson(res.data);
+        console.log(JSON.stringify(this.titleSegments))
+        this.send("搜索完成！")
+      },
+      fail: (err,code) => {
+        prompt.showToast({ message: `网络错误：${code} 代码 ${err}` })
+        this.log.push(`fetch fail,code: ${code} ${err}`)
+      }
+    })
+  },
+
+  rp(sth,tag,str){
+    //替换函数
+    if(str=='$')return sth.replace(/\$/g, () => tag);
+    else if(str=='#')return sth.replace(/\#/g, () => tag);
+    else if(str=='@')return sth.replace(/\@/g, () => tag);
+  },
+  onInit () {
+    this.search();
+    this.read();
+    this.get();
+    this.saveAdres(1);
+    this.setTime();
+    this.getUpdate();
+    this.saveRead();
+    setInterval(() => {
+      this.setTime();
+    }, 2000);
+  },
+  clear(){global.runGC()},
+  send (msg,time=500) { prompt.showToast({ message: msg,duration :time}) },
+
+  // 更新信息
+  getUpdate(){
+    fetch.fetch({
+      url: this.ura,
+      method: 'GET',
+      responseType: 'text',
+      success: res => {
+        this.log.push(`fetch successed,code: ${res.code}`);
+
+        const json = JSON.parse(res.data);
+        this.send(`最近更新版本：${json.dev}\n\n${JSON.parse(json.ver)>ver?'现有可进行的更新！':'已是最新版本！'}`,3000)
+      },
+    })
+  },
+
+
+  /** 抓取首页推荐列表 */
+  get () {
+    this.log.push(`start getting ${this.url}`)
+    
+
+
+    fetch.fetch({
+      url: this.rp(this.rp(this.rp(this.url,this.len,'#'),encodeURIComponent(this.city_prov[this.chosenProv].city_name),'$'),encodeURIComponent(this.city_prov[this.chosenProv].cities[this.chosenCity]),'@'),
+      method: 'GET',
+      responseType: 'text',
+      success: res => {
+        this.log.push(`fetch successed,code: ${res.code}`);
+
+        const json = JSON.parse(res.data);
+        this.wangyi=json;
+        this.showList=cut(json.data,this.cutlen)
+        // const cards = (json.data.cards || []).filter(c => c.mblog)
+        // this.posts = [...this.posts, ...cards.map(c => c.mblog)]
+        // this.sinceId = json.data.cardlistInfo.since_id
+        // console.log(`data res success is${JSON.stringify (res.data)}`);
+      },
+      fail: (err,code) => {
+        prompt.showToast({ message: `网络错误：${code} 代码 ${err}` })
+        this.log.push(`fetch fail,code: ${code} ${err}`)
+      }
+    })
+    // 根据需要可继续调用 URL2
+  },
+
+
+
+  getDoc(){ 
+    this.send('开始请求……');
+    if(this.nowDoc.length!=16){
+      this.send(`此非文章！！`);
+      this.pages=[1,0];
+      return;
+    }
+
+    //nowDoc:文章编号
+    const API=this.rp(this.urc,this.nowDoc,'$');
+
+    fetch.fetch({
+      url:API,
+      method: 'GET',
+      responseType: 'text',
+      success: res => {
+        const now=ptot(String(res.data));
+        // console.log(now)
+        // console.log(ptot(now));
+        if(now){
+          this.showData=String(now);
+          
+        }
+        else{
+          this.send(`错误，对于html,此文本不可为“read”`)
+        }
+
+        this.log.push("get html and replace successed");
+      },
+      fail: (err,code) => {
+        this.send(`网络错误！代码${code},${err}`);
+      }
+    })
+  },
+
+  
+  inLen(){
+    for(let i=0;i<rawTitles.length;i++){
+      let nweL=this.parseStyledText(rawTitles[i]);
+      this.titleSegments.push(nweL);
+    }
+  },
+  /**
+   * 解析字符串，转换为片段数组。
+   * 输入：'<em>北京</em>润园(售楼处)官方网站'
+   * 输出：[ {text: '北京', isEm: true}, {text: '润园(售楼处)官方网站', isEm: false} ]
+   */
+  parseStyledText(str) {
+    const segments = [];
+    // 正则表达式匹配 <em>标签内容 或 非标签纯文本
+    const regex = /<em>([^<]*)<\/em>|([^<]+)/g;
+    let match;
+    while ((match = regex.exec(str)) !== null) {
+        if (match[1] !== undefined) {
+            // 匹配到 <em> 标签内的内容
+            segments.push({ text: match[1], isEm: true });
+        } else if (match[2] !== undefined) {
+            // 匹配到标签外的普通文本
+            segments.push({ text: match[2], isEm: false });
+        }
+    }
+    return segments;
+  },
+
+
+
+  //2026-1-18 更新内容
+  saveSet(){
+    let set={len:this.len,cut:this.cutlen,sea:this.searchLen};
+    storage.set({
+      key: 'setting',
+      value: JSON.stringify(set),
+      success: (data) => {
+        this.send('保存成功~',500);
+      },
+      fail: (data, code)=> {
+        prompt.showToast({message:'失败，请联系开发者',duration:2000});
+      }
+    }) 
+  },
+
+  saveRead(){
+    storage.get({
+      key: 'setting',
+      default:JSON.stringify({len:10,cut:4,sea:10}),
+      success: (data) => {
+        console.log(data);
+        let set=JSON.parse(data);
+        this.len=set.len;
+        this.cutlen=set.cut;
+        this.searchLen=set.sea;
+        this.log.push('"set" handling success')
+      },
+      fail: function(data, code) {
+        console.log(`handling fail, code = ${code}`)
+      }
+    })
+  }
+}
+</script>
+
+<style>
+.page{width:336px;height:480px;position:absolute;background-color:black}
+.inside{left:6px;top:86px;width:324px;height:394px;overflow:visible}
+.tex{position:absolute;left:19px;top:14px;height:45px;font-size:32px;font-weight:700;line-height:44.8px;color:#fff;text-align:left;width: 300px;}
+.paragraphs{position:absolute;left:19px;top:61px;width:286px;height:45px;font-size:28px;font-weight:700;line-height:39.2px;color:rgba(255,255,255,0.6);text-overflow:ellipsis}
+.title{text-overflow:ellipsis;width:182px;height:42px;font-size:32px;font-weight:700;line-height:44.8px;color:#fff;text-align:center;position:absolute;top:35px;left:77px}
+.blackBtn{margin-bottom:20px;width:324px;height:112px;border-radius:36px;background-color:rgba(38,38,38,1)}
+.scroll1{flex-wrap:nowrap;flex-direction:column;align-items:center}
+.time{position: absolute;font-size: 24px;font-weight: bold;letter-spacing: 0px;line-height: 33.6px;color: rgba(255, 255, 255, 0.6);text-align: center;}
+
+/* 强调部分的样式 */
+.em-style {
+  color: #f09797; /* 强调色：橙色 (可按需更改，例如 #ff6600) */
+  /* 可以添加其他强调效果，如下划线或背景色 */
+  text-decoration: underline;
+  /* background-color: rgba(255, 153, 0, 0.1); */
+}
+
+/* 普通部分的样式 */
+.normal-style {
+  color: white; /* 继承.title的白色 */
+}
+
+.inputer{
+  position: absolute;
+  left: 0px;
+  top: 166px;
+  width: 336px;
+  height: 60px;
+  opacity: 1;
+}
+
+.send{
+  position: absolute;
+  left: 270px;
+  top: 0px;
+  width: 60px;
+  height: 60px;
+  opacity: 1;
+
+}
+
+.inp{
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 258px;
+  height: 59.02px;
+  opacity: 1;
+
+}
+
+.inputText{
+  position: absolute;
+  left: 17px;
+  top: 9px;
+  width: 224px;
+  height: 42px;
+  opacity: 1;
+  /** 文本1 */
+  font-size: 32px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  line-height: 44.8px;
+  color: rgba(255, 255, 255, 1);
+
+}
+
+</style>
