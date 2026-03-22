@@ -1,0 +1,81 @@
+<template>
+  <div class="page abs" style="background-color:rgba(212, 222, 202, 1);" >
+    <image src='/common/main.png' class='abs' style="top:10px;width:200px;left:68px"></image>
+    <text class="abs" style="text-align: center;font-family: pxfont;background-color:rgb(100,100,100);color:white;font-size:24px;font-weight:bold;width:336px;height:30px;left:0px;bottom:0px" value="最高分 {{maxScore}} 分"></text>
+    <text class='btn abs' @click="startGame" style="height:40px;top:200px;left:68px">开始游戏</text>
+    <text class='btn abs' @click="win" style="height:40px;top:280px;left:68px">查看成就</text>
+    <text class='btn abs' @click="about" style="height:40px;top:360px;left:68px">关于游戏</text>
+  </div>
+</template>
+
+<script>
+import storage from '@system.storage' 
+import router from "@system.router";
+import { PHYSICS_CONFIG, FRUIT_TYPES, createFruit, applyPhysics, applyBoundary, handleCollisions } from '../../common/util';
+
+function getRandomInt(min, max) {
+ const minCeiled = Math.ceil(min);
+ const maxFloored = Math.floor(max);
+ return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled);
+}
+
+export default {
+  data: {
+    maxScore:0
+  },
+  onInit() {
+    //获取最高分
+    storage.get({
+      key: 'max',
+      default:JSON.stringify(0),
+      success: (data) => {
+        this.maxScore = JSON.parse(data);
+      }
+    })
+  },
+  startGame(){
+    router.replace({
+      uri: 'pages/detail',
+    })
+  },
+  win(){
+    router.replace({
+      uri: 'pages/wins',
+    })
+  },
+  about(){
+    router.replace({
+      uri: 'pages/about',
+    })
+  }
+
+}
+</script>
+
+<style>
+  .page {
+    background-color: #eaeaea;
+    width: 100%;
+    height: 100%;
+  }
+
+  .abs{
+    position: absolute;
+  }
+
+  .btn{
+    font-family: pxfont;
+    text-align: center;
+    font-size:24px;
+    color:black;
+    background-color: #6aff506b;
+    width:200px;
+    border-radius: 10px;
+  }
+
+  @font-face {
+    font-family: pxfont;
+    src: url('/common/VonwaonBitmap-12px.ttf');
+  }
+
+</style>
