@@ -1,0 +1,283 @@
+<template>
+  <div class="page abs" style="background-color:rgba(212, 222, 202, 1);" onswipe="out" ontouchmove="move" ontouchstart="move" ontouchend="move(event,1)">
+    
+    
+    <text class="abs" if="{{Game}}" style="font-family: pxfont;left:10px;top:5px;font-size:24px;font-weight:bold;color:black;width:326px">{{"得分：" + score}}</text>
+    <text class="abs" if="{{Game}}" style="font-family: pxfont;text-align: right;right:10px;top:5px;font-size:24px;color:black;width:326px">下滑退出</text>
+    
+    <div if="{{!textsure&&type!=11 && Game}}" class="abs" style="width:{{FRUIT_TYPES[type].radius*2}};height:{{FRUIT_TYPES[type].radius*2}};top:40px;left:{{intX-FRUIT_TYPES[type].radius}};background-color: {{FRUIT_TYPES[type].color}};border-radius: 50%"></div>
+    <image if="{{textsure&&type!=11 && Game}}" class="abs" style="width:{{FRUIT_TYPES[type].radius*2}};height:{{FRUIT_TYPES[type].radius*2}};top:40px;left:{{intX-FRUIT_TYPES[type].radius}};border-radius: 50%" src="/common/fruits/{{FRUIT_TYPES[type].name}}.png"/>
+    
+    <!-- <input class="abs" style="width:80px;height:40px;left:100px" @click="creat(0)"></input> -->
+    
+    <!-- 分割线 -->
+    <div class="abs" if="{{Game}}" style="width:100%;height:5px;top:40px;background-color:red"></div>
+    <div class="abs" if="{{Game}}" style="width:100%;height:5px;bottom:15px;background-color:black"></div>
+    
+    
+    <div class="abs" if="{{!textsure && Game}}" style="width:{{$item.radius*2}};height:{{$item.radius*2}};top:{{$item.y-$item.radius}};left:{{$item.x-$item.radius}};background-color: {{$item.color}};border-radius: 50%" for="{{fruits}}"></div>
+    <image class="abs" if="{{textsure && Game}}" style="width:{{$item.radius*2}};height:{{$item.radius*2}};top:{{$item.y-$item.radius}};left:{{$item.x-$item.radius}};border-radius: 50%" for="{{fruits}}" src="/common/fruits/{{$item.name}}.png"/>
+    
+    <div class="page abs" if="{{!Game && !Fail}}" style="background-color: rgba(64, 64, 64, 0.53);">
+      <text class="abs" if="{{show[0]}}" style="text-align: center;font-family: pxfont;background-color:rgb(100,100,100);color:white;font-size:24px;font-weight:bold;width:300px;height:80px;left:18px;top:100px" value="点我切换 {{textsure==1?'非贴图显示模式':'贴图显示模式'}}" @click="()=>{textsure=!textsure}"></text>
+      <text class="abs" if="{{show[1]}}" style="text-align: center;font-family: pxfont;background-color:rgb(100,100,100);color:white;font-size:24px;font-weight:bold;width:300px;height:80px;left:18px;top:200px" value="点击我开始游戏" @click="startGame"></text>
+      <text class="abs" if="{{show[2]}}" style="text-align: center;font-family: pxfont;background-color:rgb(100,100,100);color:white;font-size:24px;font-weight:bold;width:300px;height:80px;left:18px;top:300px" value="点击我退出游戏" @click="GameOver"></text>
+    </div>
+
+    <div class="page abs" if="{{Fail}}" style="background-color: rgba(64, 64, 64, 0.53);">
+      <text class="abs" style="text-align: center;font-family: pxfont;background-color:rgb(100,100,100);color:white;font-size:40px;font-weight:bold;width:300px;height:80px;left:18px;top:100px" if="{{show[0]}}" value="游戏结束"></text>
+      <text class="abs" style="text-align: center;font-family: pxfont;background-color:rgb(100,100,100);color:white;font-size:24px;font-weight:bold;width:300px;height:120px;left:18px;top:200px" if="{{show[1]}}" value="你获得了 {{score}} 分 {{'\n\n'+'你的最高分是 ' + maxScore +' 分'}}"></text>
+      <text class="abs" style="text-align: center;font-family: pxfont;background-color:rgb(100,100,100);color:white;font-size:24px;font-weight:bold;width:300px;height:40px;left:18px;top:340px" if="{{show[2]}}" @click="startGame" value="重新开始"></text>
+      <text class="abs" style="text-align: center;font-family: pxfont;background-color:rgb(100,100,100);color:white;font-size:24px;font-weight:bold;width:300px;height:40px;left:18px;top:400px" if="{{show[3]}}" @click="back" value="返回主页"></text>
+    
+    </div>
+  </div>
+</template>
+
+<script>
+import storage from '@system.storage' 
+import router from "@system.router";
+import { PHYSICS_CONFIG, FRUIT_TYPES, createFruit, applyPhysics, applyBoundary, handleCollisions } from '../../common/util';
+
+function getRandomInt(min, max) {
+ const minCeiled = Math.ceil(min);
+ const maxFloored = Math.floor(max);
+ return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled);
+}
+
+export default {
+  data: {
+    cnt:{
+      Grape: 0,
+      Cherry: 0,
+      Orange: 0,
+      Lemon: 0,
+      Kiwi: 0,
+      Tomato: 0,
+      Peach: 0,
+      Pineapple: 0,
+      Coconut: 0,
+      Watermelon: 0,
+      BigWatermelon: 0
+    },
+    lis:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    show:[1,1,1,1,1,1],
+    textsure:true,
+    FRUIT_TYPES:FRUIT_TYPES,
+    intX:0,
+    type:0,
+    fruits:[],
+    Game:false,
+    Fail:false,
+    id:"",
+    score:0,
+    maxScore:0
+  },
+  out(event){
+    if(event.direction=='down'){
+      this.lis[12]=1;
+      this.GameOver();
+    }
+  },
+  move(event,condition){
+    if(this.type==11 || !this.Game)return;
+    if(condition){
+      this.creat(this.intX,this.type);
+      this.type=11;
+      this.intX=168;
+      setTimeout(() => {
+        this.type=getRandomInt(0,5);
+      }, 2000);
+    }
+    this.intX=event.changedTouches[0].clientX;
+
+    //处理边界
+    if(this.intX>(336-FRUIT_TYPES[this.type].radius))this.intX=(336-FRUIT_TYPES[this.type].radius);
+    if(this.intX<(FRUIT_TYPES[this.type].radius))this.intX=(FRUIT_TYPES[this.type].radius);
+
+    console.log(this.intX);
+  },
+  onInit() {
+    //获取最高分
+    storage.get({
+      key: 'max',
+      default:JSON.stringify(0),
+      success: (data) => {
+        this.maxScore = JSON.parse(data);
+      }
+    })
+    storage.get({
+      key: 'wins',
+      default:JSON.stringify([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]),
+      success: (data) => {
+        this.lis = JSON.parse(data);
+      }
+    })
+  },
+  creat(x,typ){
+    this.fruits[this.fruits.length]=createFruit(x,50+FRUIT_TYPES[typ].radius,typ);
+    this.cnt[this.fruits[this.fruits.length-1].name]++;
+    console.log(this.fruits[this.fruits.length-1].name)
+  },
+
+  //游戏入口
+  startGame(){
+    
+    setTimeout(() => {
+      this.show[0]=0;
+    }, 100);
+    setTimeout(() => {
+      this.show[1]=0;
+    }, 300);
+    setTimeout(() => {
+      this.show[2]=0;
+    }, 500);
+    setTimeout(() => {
+      this.show[3]=0;
+    }, 600);
+    setTimeout(() => {
+      this.Fail=false;
+      this.fruits=[];
+      this.Game=true;
+    }, 700);
+    setTimeout(() => {
+      this.id=setInterval(() => {
+        this.changePhysics()
+      }, 30);
+    }, 800);
+
+    
+  },
+  
+  //返回主页
+  back(){
+    router.replace({
+      uri: 'pages/index',
+      params: {
+        testId: '1'
+      }
+    })
+  },
+
+  GameOver(){
+    clearInterval(this.id);
+    this.Game=false;
+    this.Fail=true;
+
+    setTimeout(() => {
+      this.show[0]=1;
+    }, 100);
+    setTimeout(() => {
+      this.show[1]=1;
+    }, 1000);
+    setTimeout(() => {
+      this.show[2]=1;
+    }, 1500);
+    setTimeout(() => {
+      this.show[3]=1;
+    }, 2000);
+
+    //分析成就
+    // { name: '起初', price: '得到一个葡萄' },
+    if(this.cnt.Grape)this.lis[0]=1;
+    // { name: '红彤彤', price: '得到一个樱桃' },
+    if(this.cnt.Cherry)this.lis[1]=1;
+    // { name: '广西沃柑', price: '得到一个橘子' },
+    if(this.cnt.Orange)this.lis[2]=1;
+    // { name: '“好甜甜”', price: '得到一个柠檬' },
+    if(this.cnt.Lemon)this.lis[3]=1;
+    // { name: '为啥叫做…', price: '得到一个猕猴桃' },
+    if(this.cnt.Kiwi)this.lis[4]=1;
+    // { name: '圣女变胖了', price: '得到一个西红柿' },
+    if(this.cnt.Tomato)this.lis[5]=1;
+    // { name: '吃个桃桃', price: '得到一个桃子' },
+    if(this.cnt.Peach)this.lis[6]=1;
+    // { name: '“大螺旋”', price: '得到一个菠萝' },
+    if(this.cnt.Pineapple)this.lis[7]=1;
+    // { name: '无色“小甜水”', price: '得到一个椰子' },
+    if(this.cnt.Coconut)this.lis[8]=1;
+    // { name: '半步临门', price: '得到半个大西瓜' },
+    if(this.cnt.Watermelon)this.lis[9]=1;
+    // { name: '我成“攻”啦', price: '得到一个大西瓜' },
+    if(this.cnt.BigWatermelon)this.lis[10]=1;
+
+    // { name: '无奈之举', price: '因为顶格结束游戏' },
+    // { name: '批发商后悔', price: '因为下滑结束一次游戏' },
+    
+    // { name: '杂交会议', price: '所有水果在同一局内游戏里出现过' },
+    let t=true;
+    for(let i=0;i<=10;i++){
+      if(!this.cnt[i]){t=false;break;}
+    }
+    if(t)this.lis[13]=1;
+    // { name: '六六大顺', price: '合成六个大西瓜' }
+    if(this.cnt.BigWatermelon>=6)this.lis[14]=1;
+
+    console.log(this.cnt);
+
+    storage.set({
+      key: 'wins',
+      value: JSON.stringify(this.lis),
+    })
+    this.cnt={};
+
+    //存储最高分
+    if(this.maxScore<this.score)this.maxScore=this.score;
+    storage.set({
+      key: 'max',
+      value: JSON.stringify(this.maxScore),
+    })
+
+    
+
+  },
+
+
+  changePhysics(){
+    handleCollisions(this.fruits,{
+      onScore: (points) => {
+        this.score += points;
+      },
+      onMerge: (newFruitsNames) => {
+        console.log(JSON.stringify(newFruitsNames.name))
+        this.cnt[newFruitsNames.name]++;
+      }
+    })
+
+    for(let i=0;i<this.fruits.length;i++){
+      applyPhysics(this.fruits[i])
+      if(applyBoundary(this.fruits[i],336,460)){
+        clearInterval(this.id);
+        this.lis[11]=1;
+        this.Game=false;
+        this.Fail=true;
+        this.GameOver();
+      }
+      
+    }
+  }
+
+}
+</script>
+
+<style>
+  .central {
+    
+    transform-origin: -50% -50%;
+  }
+  .page {
+    background-color: #eaeaea;
+    width: 100%;
+    height: 100%;
+  }
+
+  .abs{
+    position: absolute;
+  }
+
+  @font-face {
+    font-family: pxfont;
+    src: url('/common/VonwaonBitmap-12px.ttf');
+  }
+
+</style>
