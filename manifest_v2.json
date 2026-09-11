@@ -1,0 +1,30 @@
+{
+  "item": {
+    "id": "com.ppyycc.dict",
+    "restype": "quick_app",
+    "name": "com.ppyycc.dict",
+    "description": "这是一个简单的环上词典小软件，全程由AI完成，开发者仅提供了必要的引导与素材。\n实现了中、英文搜索，预计词库大小3w+词，适合初中到高中甚至考研使用。\n本人创意性的设置了许多其他的东西，欢迎大家一起探索！",
+    "preview": [
+      "media/Vela_Virtual_Device2-2026-09-12-02-09-35.png",
+      "media/Vela_Virtual_Device2-2026-09-12-02-12-42.png",
+      "media/Vela_Virtual_Device2-2026-09-12-02-13-12.png"
+    ],
+    "icon": "media/logo.png",
+    "cover": "media/画板 1.png",
+    "author": [
+      {
+        "name": "ppyycc",
+        "bindABAccount": true
+      }
+    ]
+  },
+  "links": [],
+  "downloads": {
+    "xmb10p": {
+      "version": "1.0.0",
+      "file_name": "downloads/com.ppyycc.dict.debug.1.0.0.rpk",
+      "versionCode": 1
+    }
+  },
+  "ext": {}
+}
